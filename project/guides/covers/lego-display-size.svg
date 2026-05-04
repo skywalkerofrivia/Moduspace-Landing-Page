@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#171a20" stop-opacity="1"></stop>
+      <stop offset="1" stop-color="#0e0c0a" stop-opacity="1"></stop>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8b070" stop-opacity="0.18"></stop>
+      <stop offset="1" stop-color="#d8b070" stop-opacity="0"></stop>
+    </linearGradient>
+    <pattern id="grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M0 80 L80 80 M80 0 L80 80" stroke="#d8b070" stroke-opacity="0.05" stroke-width="1"></path>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"></rect>
+  <rect width="1600" height="1000" fill="url(#grid)"></rect>
+  
+  <polygon points="700,0 900,0 1100,1000 500,1000" fill="url(#beam)"></polygon>
+  
+  <rect x="600" y="320" width="400" height="500" fill="none" stroke="#d8b070" stroke-opacity="0.4" stroke-width="2"></rect>
+  <rect x="640" y="360" width="320" height="420" fill="#d8b070" fill-opacity="0.04" stroke="#d8b070" stroke-opacity="0.18" stroke-width="1"></rect>
+  <line x1="600" y1="820" x2="1000" y2="820" stroke="#d8b070" stroke-opacity="0.6" stroke-width="2"></line>
+  
+  <g font-family="Inter, sans-serif" fill="#d8b070">
+    <text x="80" y="120" font-size="20" letter-spacing="6" font-weight="500">MODUSPACE / THE LIBRARY</text>
+    <text x="80" y="940" font-size="14" letter-spacing="4" opacity="0.55">DF SERIES</text>
+  </g>
+  <text x="800" y="540" font-family="&#39;Cormorant Garamond&#39;, serif" font-size="64" fill="#d8b070" fill-opacity="0.85" text-anchor="middle" font-style="italic">LEGO</text>
+</svg>

@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Features — Moduspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:    #0a0a0a;
+    --black-2:  #181818;
+    --black-3:  #121212;
+    --offwhite: #f0ebe3;
+    --bronze:   #c9a876;
+    --bronze-2: #d9bd8f;
+    --cream:    #d8d0c8;
+    --cream-2:  #a8a099;
+    --muted:    #6e6a64;
+    --line:     rgba(201, 168, 118, 0.18);
+    --line-2:   rgba(216, 208, 200, 0.10);
+    --danger:   #b04a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--black); color: var(--cream); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400; font-size: 17px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+
+  /* NAV */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,10,0.82); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line-2);
+  }
+  nav.top .wrap { display: flex; align-items: center; gap: 56px; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 0.22em; font-size: 12.5px; color: var(--cream); text-decoration: none;}
+  .logo-mark { width: 32px; height: 32px; background-image: url('assets/logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; color: var(--cream-2); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--bronze); }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 24px; font-size: 14px; }
+  .nav-cart { color: var(--cream-2); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; border: none; text-decoration: none;
+    transition: all .2s ease;
+  }
+  .btn-primary { background: var(--bronze); color: #1a1306; border-radius: 7px;}
+  .btn-primary:hover { background: var(--bronze-2); transform: translateY(-1px); }
+  .btn svg { width: 14px; height: 14px; }
+
+  /* HEADER — cinematic cover */
+  .features-header {
+    padding: 200px 0 160px;
+    border-bottom: 1px solid var(--line-2);
+    text-align: center;
+    position: relative; overflow: hidden;
+    background-image: url('assets/features-hero.avif');
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+    min-height: 78vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .features-header > .wrap { position: relative; z-index: 2; }
+  .features-header::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.25) 35%, rgba(8,8,10,0.55) 75%, rgba(8,8,10,0.92) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .features-header::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 45%, rgba(201,168,118,0.10), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 28px; font-weight: 500;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: clamp(48px, 6vw, 84px);
+    line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 24px;
+    text-shadow: 0 2px 28px rgba(0,0,0,0.55);
+  }
+  .features-header .eyebrow { text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
+  .features-header > .wrap > p { text-shadow: 0 1px 14px rgba(0,0,0,0.55); }
+  h1 em { font-style: italic; color: var(--bronze); font-weight: 300; }
+  .features-header > .wrap > p {
+    color: var(--cream-2); font-size: 18px; max-width: 620px;
+    margin: 0 auto 64px; font-weight: 300;
+  }
+  .pillar-jumps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(201,168,118,0.18);
+    border: 1px solid rgba(201,168,118,0.28);
+    max-width: 920px; margin: 0 auto;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .pillar-jump {
+    background: rgba(10,10,10,0.65);
+    padding: 28px 24px;
+    text-align: left;
+    text-decoration: none; color: var(--cream);
+    transition: background .25s ease;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .pillar-jump:hover { background: var(--black-2); }
+  .pillar-jump .num {
+    font-size: 11px; letter-spacing: 0.32em; color: var(--bronze); font-weight: 500;
+  }
+  .pillar-jump .ttl {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 26px; line-height: 1.05; font-weight: 400;
+  }
+  @media (max-width: 760px) { .pillar-jumps { grid-template-columns: repeat(2,1fr);} }
+
+  /* PILLAR SECTIONS */
+  .pillar { padding: 140px 0; border-bottom: 1px solid var(--line-2); position: relative; overflow: hidden;}
+  .pillar:nth-child(even) { background: var(--black-3); }
+  .pillar-num {
+    font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 28px; font-weight: 500;
+  }
+  .pillar h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(40px, 5vw, 68px); line-height: 1.02;
+    letter-spacing: -0.015em; margin-bottom: 32px; max-width: 760px;
+  }
+  .pillar h2 em { font-style: italic; color: var(--bronze); font-weight: 300; }
+
+  .pillar-body { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;}
+  @media (max-width: 980px) { .pillar-body { grid-template-columns: 1fr; gap: 56px;} }
+
+  .pillar-copy p {
+    color: var(--cream-2); font-size: 17.5px; font-weight: 300;
+    margin-bottom: 22px; line-height: 1.65;
+  }
+  .pillar-copy p:last-of-type { margin-bottom: 36px; }
+  .check-list { list-style: none; padding: 0; }
+  .check-list li {
+    padding: 14px 0; padding-left: 32px;
+    position: relative;
+    border-bottom: 1px solid var(--line-2);
+    font-size: 15px; color: var(--cream); font-weight: 400;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: ""; position: absolute; left: 0; top: 22px;
+    width: 12px; height: 6px;
+    border-left: 1.5px solid var(--bronze);
+    border-bottom: 1.5px solid var(--bronze);
+    transform: rotate(-45deg);
+  }
+
+  /* COMPARISON */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .compare figure { margin: 0; position: relative; }
+  .compare-frame {
+    aspect-ratio: 4/5; width: 100%;
+    overflow: hidden; position: relative;
+    border: 1px solid var(--line-2);
+    background: var(--black);
+  }
+  .compare-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .compare-frame:hover img { transform: scale(1.06); }
+  .compare-frame .ph { transition: transform 1.1s cubic-bezier(.2,.7,.2,1); }
+  .compare-frame:hover .ph { transform: scale(1.06); }
+  .compare-label {
+    position: absolute; top: 16px; left: 16px;
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 7px 12px; font-weight: 500;
+    background: rgba(10,10,10,0.7); backdrop-filter: blur(6px);
+    border: 1px solid var(--line-2);
+    z-index: 2;
+  }
+  .compare figcaption {
+    margin-top: 14px; font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--cream-2); font-weight: 500;
+  }
+  .compare figcaption.bad { color: var(--danger); }
+  .compare figcaption.good { color: var(--bronze); }
+
+  /* PLACEHOLDER ART */
+  .ph {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .ph::after {
+    content: attr(data-label);
+    position: absolute; bottom: 14px; right: 14px;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(216,208,200,0.4);
+  }
+  /* good = clean Moducase render */
+  .ph-good {
+    background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+  }
+  .ph-good .case {
+    width: 62%; height: 78%;
+    border: 1px solid rgba(201,168,118,0.35);
+    background: linear-gradient(180deg, rgba(201,168,118,0.04), transparent);
+    position: relative;
+    box-shadow: 0 0 60px rgba(201,168,118,0.08), inset 0 0 30px rgba(255,255,255,0.02);
+  }
+  .ph-good .case::before {
+    content: ""; position: absolute; left: 18%; top: 8%;
+    width: 64%; height: 84%;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1410 100%);
+    border-radius: 35% 35% 6% 6% / 22% 22% 6% 6%;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .ph-good .glow {
+    position: absolute; left: 0; right: 0; top: 92%;
+    height: 8%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,118,0.25), transparent 70%);
+    filter: blur(3px);
+  }
+
+  /* PILLAR-SPECIFIC PLACEHOLDERS */
+  /* 01 — glass with green tint failing */
+  .ph-glass {
+    background: linear-gradient(180deg, #0a1a14 0%, #0a0f0c 100%);
+  }
+  .ph-glass .pane {
+    width: 65%; height: 80%;
+    background: linear-gradient(135deg, rgba(120, 200, 160, 0.18) 0%, rgba(80, 140, 110, 0.08) 100%);
+    border: 1px solid rgba(120, 200, 160, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .ph-glass .crack {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.6) 49%, rgba(255,255,255,0.6) 50%, transparent 51%) no-repeat,
+      linear-gradient(110deg, transparent 35%, rgba(255,255,255,0.5) 36%, rgba(255,255,255,0.5) 36.5%, transparent 38%) no-repeat,
+      linear-gradient(70deg, transparent 60%, rgba(255,255,255,0.4) 61%, transparent 62.5%) no-repeat,
+      linear-gradient(20deg, transparent 45%, rgba(255,255,255,0.4) 46%, transparent 47%) no-repeat;
+    background-size: 100% 100%;
+    mix-blend-mode: screen;
+  }
+  .ph-glass .crack::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 55% 45%, rgba(255,255,255,0.5) 0%, transparent 8%),
+      radial-gradient(circle at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 6%);
+  }
+
+  /* 02 — sagging shelf with heavy weight */
+  .ph-sag { background: linear-gradient(180deg, #1a0f08 0%, #0a0a0a 100%); flex-direction: column; gap: 6%; padding: 12% 15%;}
+  .ph-sag .shelf {
+    width: 100%; height: 14%;
+    background: linear-gradient(180deg, #3a2a1a, #2a1a0a);
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    transform: scaleY(1.4);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    position: relative;
+  }
+  .ph-sag .shelf::after {
+    content: ""; position: absolute; left: 30%; right: 30%; top: -50%;
+    height: 80%;
+    background: linear-gradient(180deg, #050505, #1a1410);
+    border-radius: 35% 35% 8% 8%;
+  }
+  .ph-sag .shelf:nth-child(2) { transform: scaleY(2); }
+  .ph-sag .shelf:nth-child(3) { transform: scaleY(2.6); }
+
+  /* 03 — dust on figure */
+  .ph-dust { background: radial-gradient(circle at 50% 30%, #2a2418 0%, #0a0a0a 75%); }
+  .ph-dust .fig {
+    width: 45%; height: 75%;
+    background: linear-gradient(180deg, #2a1f12 0%, #0a0a0a 100%);
+    border-radius: 35% 35% 8% 8% / 22% 22% 8% 8%;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
+  .ph-dust .fig::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(220, 200, 170, 0.4) 0%, transparent 4%),
+      radial-gradient(circle at 60% 35%, rgba(220, 200, 170, 0.35) 0%, transparent 3%),
+      radial-gradient(circle at 45% 60%, rgba(220, 200, 170, 0.4) 0%, transparent 3%),
+      radial-gradient(circle at 70% 70%, rgba(220, 200, 170, 0.3) 0%, transparent 4%),
+      radial-gradient(circle at 25% 45%, rgba(220, 200, 170, 0.35) 0%, transparent 3%),
+      radial-gradient(circle at 55% 15%, rgba(220, 200, 170, 0.3) 0%, transparent 3%),
+      radial-gradient(circle at 80% 50%, rgba(220, 200, 170, 0.35) 0%, transparent 3%);
+    border-radius: inherit;
+    mix-blend-mode: screen;
+  }
+  .ph-dust .fig::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(220, 200, 170, 0.12) 0%, transparent 30%);
+    border-radius: inherit;
+  }
+
+  /* 04 — overcrowded mismatched shelves */
+  .ph-mess {
+    background: linear-gradient(180deg, #1a1410 0%, #0a0a0a 100%);
+    flex-wrap: wrap;
+    align-content: flex-end;
+    padding: 10%;
+    gap: 8px;
+  }
+  .ph-mess .item {
+    background: linear-gradient(180deg, #1a0f08, #050505);
+    border-radius: 35% 35% 8% 8%;
+  }
+  .ph-mess .item:nth-child(1) { width: 18%; height: 50%;}
+  .ph-mess .item:nth-child(2) { width: 14%; height: 38%; transform: rotate(8deg);}
+  .ph-mess .item:nth-child(3) { width: 20%; height: 60%;}
+  .ph-mess .item:nth-child(4) { width: 12%; height: 42%; transform: rotate(-5deg);}
+  .ph-mess .item:nth-child(5) { width: 22%; height: 30%; border-radius: 8%;}
+  .ph-mess .item:nth-child(6) { width: 16%; height: 48%;}
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in { opacity: 1; transform: translateY(0);}
+
+  /* ALTERNATING LAYOUT */
+  .pillar:nth-of-type(even) .pillar-body { direction: rtl; }
+  .pillar:nth-of-type(even) .pillar-body > * { direction: ltr; }
+
+  /* CTA */
+  .cta-strip {
+    padding: 110px 0 130px;
+    background: var(--black);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-strip h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px); line-height: 1.02;
+    letter-spacing: -0.015em; margin-bottom: 20px; position: relative;
+  }
+  .cta-strip h2 em { font-style: italic; color: var(--bronze); font-weight: 300; }
+  .cta-strip p { color: var(--cream-2); margin-bottom: 36px; font-weight: 300; position: relative;}
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--line-2);
+    padding: 72px 0 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .footer-brand p {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 17px;
+    color: var(--cream-2);
+    max-width: 280px;
+    font-weight: 300;
+  }
+  .footer-col h4 {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 18px; font-weight: 500;
+  }
+  .footer-col a {
+    display: block; padding: 5px 0;
+    color: var(--cream-2); text-decoration: none;
+    font-size: 14px; transition: color .2s; font-weight: 300;
+  }
+  .footer-col a:hover { color: var(--bronze); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px;
+    font-size: 12px; color: var(--muted); letter-spacing: 0.1em;
+  }
+  @media (max-width: 760px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="Landing Page.html" class="logo">
+      <div class="logo-mark"></div>
+      <span>MODUSPACE</span>
+    </a>
+    <div class="nav-links">
+      <a href="Landing Page.html">Shop</a>
+      <a href="Gallery.html">Gallery</a>
+      <a href="Features.html" class="active">Features</a>
+      <a href="Landing Page.html#plan">How It Works</a>
+      <a href="Landing Page.html#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-cart">Cart · 0</span>
+      <a class="btn btn-primary" href="Landing Page.html#build">Shop Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="features-header">
+  <div class="wrap">
+    <div class="eyebrow">Your Collection Deserves This</div>
+    <h1>Every detail engineered<br>for your <em>peace of mind.</em></h1>
+    <p>Four reasons collectors in 18 countries trust Moducase to protect and showcase what they've spent years curating.</p>
+
+    <div class="pillar-jumps">
+      <a href="#panels" class="pillar-jump">
+        <span class="num">01</span>
+        <span class="ttl">Acrylic Panels</span>
+      </a>
+      <a href="#frame" class="pillar-jump">
+        <span class="num">02</span>
+        <span class="ttl">Frame Engineering</span>
+      </a>
+      <a href="#sealing" class="pillar-jump">
+        <span class="num">03</span>
+        <span class="ttl">Dust Sealing</span>
+      </a>
+      <a href="#modularity" class="pillar-jump">
+        <span class="num">04</span>
+        <span class="ttl">Modularity</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- 01 — PANELS -->
+<section class="pillar" id="panels">
+  <div class="wrap">
+    <div class="pillar-num reveal">01 — Panels</div>
+    <h2 class="reveal">Crystal clear.<br>Zero <em>glass risk.</em></h2>
+    <div class="pillar-body">
+      <div class="pillar-copy reveal">
+        <p>Glass carries a green tint from the iron in its composition — visible the moment you put it next to acrylic. And when it fails, it fails completely. One bump, one knock, and tempered glass shatters without warning, taking your items with it.</p>
+        <p>Our acrylic panels are optically clearer than glass, shatter-proof, and lighter at every size. Because panels seat directly into the aluminum frame, there's no seam running through the middle of your display — just an uninterrupted view of your collection.</p>
+        <ul class="check-list">
+          <li>6mm crystal-clear cast acrylic</li>
+          <li>No shatter risk — safe around children and pets</li>
+          <li>Lighter than glass, reducing frame stress</li>
+          <li>Panels are individually replaceable</li>
+          <li>No visible seam — panels sit inside the frame, not in front of it</li>
+        </ul>
+      </div>
+      <div class="compare reveal">
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--danger);">Glass cabinet</span>
+            <div class="ph ph-glass" data-label="Image: shattered IKEA Detolf">
+              <div class="pane"><div class="crack"></div></div>
+            </div>
+          </div>
+          <figcaption class="bad">— Detolf, after the fall</figcaption>
+        </figure>
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--bronze);">Moducase</span>
+            <div class="ph ph-good" data-label="Image: Moducase Mono">
+              <div class="case"></div>
+              <div class="glow"></div>
+            </div>
+          </div>
+          <figcaption class="good">— Moducase, optically clear acrylic</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — FRAME -->
+<section class="pillar" id="frame">
+  <div class="wrap">
+    <div class="pillar-num reveal">02 — Frame</div>
+    <h2 class="reveal">No wobble.<br>No <em>sag.</em> Ever.</h2>
+    <div class="pillar-body">
+      <div class="pillar-copy reveal">
+        <p>A large statue can weigh over 10kg. Stack three cases and you're asking the frame to hold serious weight, case after case, year after year. Budget shelving collapses. Muscle racks buckle. Most display cases aren't engineered for what collectors actually put inside them.</p>
+        <p>Moducase frames are precision-cut metal alloys — designed to support heavy collectibles and stack securely without flex. Add a case now, add another next year. The system doesn't compromise.</p>
+        <ul class="check-list">
+          <li>Precision-cut metal frame construction</li>
+          <li>Engineered for vertical stacking — no flex over time</li>
+          <li>Uniform dimensions across each series for seamless walls</li>
+        </ul>
+      </div>
+      <div class="compare reveal">
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--danger);">Wire rack</span>
+            <div class="ph ph-sag" data-label="Image: shelf sagging under weight">
+              <div class="shelf"></div>
+              <div class="shelf"></div>
+              <div class="shelf"></div>
+            </div>
+          </div>
+          <figcaption class="bad">— Budget rack, year two</figcaption>
+        </figure>
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--bronze);">Moducase</span>
+            <div class="ph ph-good" data-label="Image: Moducase MAX stack">
+              <div class="case"></div>
+              <div class="glow"></div>
+            </div>
+          </div>
+          <figcaption class="good">— Moducase, stacked &amp; level</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — SEALING -->
+<section class="pillar" id="sealing">
+  <div class="wrap">
+    <div class="pillar-num reveal">03 — Sealing</div>
+    <h2 class="reveal">Dust stays out.<br>You stay in <em>control.</em></h2>
+    <div class="pillar-body">
+      <div class="pillar-copy reveal">
+        <p>Dust isn't just cosmetic. Fine particles settle into paint detail, joints, and fabric over months. By the time you notice, the grime is embedded — and on a $400 figure, that's damage difficult to undo.</p>
+        <p>Open shelves guarantee dust. Even closed cases with poor seals let it migrate in slowly. Most DIY attempts end one of two ways: the panel falls because adhesive tape has degraded, or the builder compensates with a single large door spanning multiple cases.</p>
+        <p>Moducase panels seat on a precision-engineered foot — custom-built — that carries the weight. Magnets seal each panel shut. Access one case. The rest stay closed.</p>
+        <ul class="check-list">
+          <li>Precision edge seals on all acrylic panels</li>
+          <li>Custom panel foot + magnetic closure — no adhesive strips that degrade</li>
+          <li>Significantly reduces dust accumulation between cleanings</li>
+          <li>Panels remove easily for cleaning and rearranging</li>
+        </ul>
+      </div>
+      <div class="compare reveal">
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--danger);">Open cabinet</span>
+            <div class="ph ph-dust" data-label="Image: dusty open-shelf figure">
+              <div class="fig"></div>
+            </div>
+          </div>
+          <figcaption class="bad">— Open shelf, six months in</figcaption>
+        </figure>
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--bronze);">Moducase</span>
+            <div class="ph ph-good" data-label="Image: Moducase sealed unit">
+              <div class="case"></div>
+              <div class="glow"></div>
+            </div>
+          </div>
+          <figcaption class="good">— Moducase, magnetically sealed</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — MODULARITY -->
+<section class="pillar" id="modularity">
+  <div class="wrap">
+    <div class="pillar-num reveal">04 — Modularity</div>
+    <h2 class="reveal">Start with one.<br>Build a <em>wall.</em></h2>
+    <div class="pillar-body">
+      <div class="pillar-copy reveal">
+        <p>Your collection isn't static. You add pieces, rearrange themes, run out of space, and find more. Your display system should work the same way.</p>
+        <p>Every Moducase connects with every other Moducase in its series. Same dimensions, same mounting system, seamless alignment. Buy one case today. Add three next year. The system never compromises — and neither does the look.</p>
+        <ul class="check-list">
+          <li>5 series for every collection size — Mono, Sixth, DF, MAX and MAX Plus</li>
+          <li>Uniform dimensions within each series for perfect stacking without misalignment</li>
+          <li>Connectors and accessories share a single mounting standard</li>
+          <li>Average client buys more than once — collectors keep coming back</li>
+        </ul>
+      </div>
+      <div class="compare reveal">
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--danger);">Mismatched shelves</span>
+            <div class="ph ph-mess" data-label="Image: overcrowded mismatched shelves">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <figcaption class="bad">— Years of mismatched buys</figcaption>
+        </figure>
+        <figure>
+          <div class="compare-frame">
+            <span class="compare-label" style="color: var(--bronze);">Moducase</span>
+            <div class="ph ph-good" data-label="Image: Moducase 3×3 wall">
+              <div class="case"></div>
+              <div class="glow"></div>
+            </div>
+          </div>
+          <figcaption class="good">— Moducase, one system, every time</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to <em>build yours?</em></h2>
+    <p>Start with one case. Add more whenever. Every Moducase fits the next.</p>
+    <a href="Landing Page.html#build" class="btn btn-primary">
+      Shop from $180
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="Landing Page.html" class="logo">
+          <div class="logo-mark"></div>
+          <span>MODUSPACE</span>
+        </a>
+        <p>From our collection to yours. Modular display cases, made to order since 2019.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="Landing Page.html">All Cases</a>
+        <a href="Landing Page.html#build">Configurator</a>
+        <a href="Gallery.html">Gallery</a>
+        <a href="Landing Page.html">Accessories</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="Landing Page.html#plan">How It Works</a>
+        <a href="Landing Page.html#faq">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Press</a>
+        <a href="#">Instagram</a>
+        <a href="#">Retailers</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MODUSPACE</span>
+      <span>MADE TO ORDER · SHIPPED WORLDWIDE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

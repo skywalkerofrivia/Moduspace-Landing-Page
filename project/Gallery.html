@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery — Moduspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:    #0a0a0a;
+    --black-2:  #181818;
+    --offwhite: #f0ebe3;
+    --bronze:   #c9a876;
+    --bronze-2: #d9bd8f;
+    --cream:    #d8d0c8;
+    --cream-2:  #a8a099;
+    --muted:    #6e6a64;
+    --line:     rgba(201, 168, 118, 0.18);
+    --line-2:   rgba(216, 208, 200, 0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--black); color: var(--cream); }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400; font-size: 17px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+
+  /* NAV (matches landing page) */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,10,0.82); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line-2);
+  }
+  nav.top .wrap { display: flex; align-items: center; gap: 56px; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 0.22em; font-size: 12.5px; color: var(--cream); text-decoration: none;}
+  .logo-mark { width: 32px; height: 32px; background-image: url('assets/logo.png'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+  .nav-links { display: flex; gap: 36px; font-size: 14px; color: var(--cream-2); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--bronze); }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 24px; font-size: 14px; }
+  .nav-cart { color: var(--cream-2); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer; border: none; text-decoration: none;
+    transition: all .2s ease;
+  }
+  .btn-primary { background: var(--bronze); color: #1a1306; }
+  .btn-primary:hover { background: var(--bronze-2); transform: translateY(-1px); }
+  .btn svg { width: 14px; height: 14px; }
+
+  /* HEADER */
+  .gallery-header {
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--line-2);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .gallery-header::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(201,168,118,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .breadcrumb {
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 24px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .breadcrumb a { color: inherit; text-decoration: none; opacity: 0.6; transition: opacity .2s;}
+  .breadcrumb a:hover { opacity: 1; }
+  .breadcrumb span { opacity: 0.4; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: clamp(48px, 6vw, 84px);
+    line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 20px;
+  }
+  h1 em { font-style: italic; color: var(--bronze); font-weight: 300; }
+  .gallery-header p { color: var(--cream-2); font-size: 18px; max-width: 540px; margin: 0 auto; font-weight: 300; }
+
+  /* FILTERS */
+  .filters {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line-2);
+    position: sticky; top: 72px; z-index: 30;
+    background: rgba(10,10,10,0.85); backdrop-filter: blur(16px);
+  }
+  .filters .wrap { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; justify-content: space-between;}
+  .filter-group { display: flex; gap: 8px; flex-wrap: wrap;}
+  .filter-btn {
+    padding: 9px 18px; background: transparent; border: 1px solid var(--line-2);
+    color: var(--cream-2); font-family: inherit; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+    transition: all .2s ease;
+  }
+  .filter-btn:hover { color: var(--cream); border-color: var(--bronze); }
+  .filter-btn.active { background: var(--bronze); color: #0a0a0a; border-color: var(--bronze); font-weight: 500; }
+  .filter-count { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .filter-count strong { color: var(--cream); font-weight: 500; }
+
+  /* MASONRY GRID */
+  .gallery {
+    padding: 56px 0 120px;
+  }
+  .grid {
+    column-count: 3; column-gap: 18px;
+  }
+  @media (max-width: 1024px) { .grid { column-count: 2; } }
+  @media (max-width: 640px) { .grid { column-count: 1; } }
+
+  .tile {
+    break-inside: avoid;
+    margin-bottom: 18px;
+    position: relative; overflow: hidden;
+    border: 1px solid var(--line-2);
+    background: var(--black-2);
+    cursor: pointer;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .tile.in { opacity: 1; transform: translateY(0); }
+  .tile-media {
+    position: relative; overflow: hidden;
+    transition: transform 1.2s cubic-bezier(.2,.7,.2,1), filter .4s ease;
+    filter: saturate(0.92) brightness(0.95);
+  }
+  .tile:hover .tile-media { filter: saturate(1.05) brightness(1); }
+  .tile-media img { display: block; width: 100%; height: auto; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .tile:hover .tile-media img { transform: scale(1.06); }
+  .tile-placeholder {
+    aspect-ratio: var(--ar, 1/1);
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 1.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .tile:hover .tile-placeholder { transform: scale(1.04); }
+  .tile-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.9) 100%);
+    opacity: 0; transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .tile:hover .tile-overlay { opacity: 1; }
+  .tile-meta {
+    position: absolute; left: 20px; right: 20px; bottom: 18px;
+    z-index: 2;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .3s ease, transform .3s ease;
+    pointer-events: none;
+  }
+  .tile:hover .tile-meta { opacity: 1; transform: translateY(0); }
+  .tile-title {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 22px; color: var(--cream); font-weight: 400;
+  }
+  .tile-tag {
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bronze); font-weight: 500;
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    padding: 100px 0 120px;
+    background: var(--black-2);
+    border-top: 1px solid var(--line-2);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-strip h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px); line-height: 1.02;
+    letter-spacing: -0.015em; margin-bottom: 20px; position: relative;
+  }
+  .cta-strip h2 em { font-style: italic; color: var(--bronze); font-weight: 300; }
+  .cta-strip p { color: var(--cream-2); margin-bottom: 36px; font-weight: 300; position: relative;}
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--line-2);
+    padding: 72px 0 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .footer-brand p {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 17px;
+    color: var(--cream-2);
+    max-width: 280px;
+    font-weight: 300;
+  }
+  .footer-col h4 {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 18px; font-weight: 500;
+  }
+  .footer-col a {
+    display: block; padding: 5px 0;
+    color: var(--cream-2); text-decoration: none;
+    font-size: 14px; transition: color .2s; font-weight: 300;
+  }
+  .footer-col a:hover { color: var(--bronze); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px;
+    font-size: 12px; color: var(--muted); letter-spacing: 0.1em;
+  }
+  @media (max-width: 760px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(10,10,10,0.96); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center;
+    padding: 60px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-content {
+    max-width: 1100px; width: 100%; max-height: 80vh;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .lightbox-content > * { width: 100%; height: 100%;}
+  .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px;
+    background: rgba(10,10,10,0.6); border: 1px solid var(--line);
+    color: var(--cream); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .lightbox-close:hover { background: var(--bronze); color: #0a0a0a; }
+  .lightbox-info {
+    position: absolute; left: 32px; bottom: 32px;
+    font-family: 'Cormorant Garamond', serif; color: var(--cream);
+  }
+  .lightbox-info .t { font-size: 28px; font-style: italic;}
+  .lightbox-info .s { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze); margin-top: 8px; font-family: 'Inter';}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="Landing Page.html" class="logo">
+      <div class="logo-mark"></div>
+      <span>MODUSPACE</span>
+    </a>
+    <div class="nav-links">
+      <a href="Landing Page.html">Shop</a>
+      <a href="Gallery.html" class="active">Gallery</a>
+      <a href="Features.html">Features</a>
+      <a href="Landing Page.html#plan">How It Works</a>
+      <a href="Landing Page.html#faq">FAQ</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-cart">Cart · 0</span>
+      <a class="btn btn-primary" href="Landing Page.html#build">Shop Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="gallery-header">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="Landing Page.html">Moduspace</a>
+      <span>/</span>
+      <span style="opacity:1;">Gallery</span>
+    </div>
+    <h1>Real walls.<br>Real <em>collectors.</em></h1>
+    <p>Configurations sent in by the people who built them. Every photo a Moduspace owner.</p>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<div class="filters">
+  <div class="wrap">
+    <div class="filter-group" id="filters">
+      <button class="filter-btn active" data-f="all">All</button>
+      <button class="filter-btn" data-f="figures">Figures</button>
+      <button class="filter-btn" data-f="helmets">Helmets</button>
+      <button class="filter-btn" data-f="dioramas">Dioramas</button>
+      <button class="filter-btn" data-f="statues">Statues</button>
+      <button class="filter-btn" data-f="walls">Walls</button>
+    </div>
+    <div class="filter-count"><strong id="count">24</strong> configurations</div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="grid" id="grid">
+      <!-- Real hero image as the showpiece -->
+      <div class="tile" data-cat="walls">
+        <div class="tile-media"><img src="assets/hero-batcave.png" alt="Batmobile collection wall" /></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">The Batcave Wall</span><span class="tile-tag">3×3 · Los Angeles</span></div>
+      </div>
+
+      <!-- Placeholder tiles, varied aspect ratios -->
+      <div class="tile" data-cat="helmets">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 4/5; background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 60%, #3a2e20 100%);">
+          <div style="width: 55%; height: 70%; background: linear-gradient(180deg, #0a0a0a, #000); border-radius: 48% 48% 6% 6%; box-shadow: inset -8px -4px 12px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,118,0.15);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Helmet Sanctuary</span><span class="tile-tag">2×1 · Berlin</span></div>
+      </div>
+
+      <div class="tile" data-cat="figures">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 16/10; background: radial-gradient(circle at 30% 40%, #2a2015 0%, #0f0f0f 70%); display: flex; gap: 12px;">
+          <div style="width: 22%; height: 65%; background: linear-gradient(180deg, #0a0a0a, #1a1410); border-radius: 40% 40% 8% 8%;"></div>
+          <div style="width: 22%; height: 65%; background: linear-gradient(180deg, #0a0a0a, #1a1410); border-radius: 40% 40% 8% 8%;"></div>
+          <div style="width: 22%; height: 65%; background: linear-gradient(180deg, #0a0a0a, #1a1410); border-radius: 40% 40% 8% 8%;"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Vintage Figures</span><span class="tile-tag">3×1 · Tokyo</span></div>
+      </div>
+
+      <div class="tile" data-cat="dioramas">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 1/1; background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);">
+          <div style="width: 60%; height: 75%; background: radial-gradient(ellipse at 50% 30%, #2a2015 0%, #0a0a0a 70%); border: 1px solid rgba(201,168,118,0.2);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Diorama Showcase</span><span class="tile-tag">1×1 · NYC</span></div>
+      </div>
+
+      <div class="tile" data-cat="statues">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 3/4; background: linear-gradient(135deg, #181818 0%, #0a0a0a 100%); align-items: flex-end; padding: 12% 0;">
+          <div style="width: 45%; height: 80%; background: linear-gradient(180deg, #0a0a0a 0%, #000 100%); border-radius: 35% 35% 8% 8% / 28% 28% 8% 8%;"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Statue Pedestal</span><span class="tile-tag">1×1 · Sydney</span></div>
+      </div>
+
+      <div class="tile" data-cat="walls">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 1/1; background: linear-gradient(90deg, #1a1a1a 0%, #0a0a0a 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 14px;">
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.2), transparent 65%); border: 1px solid rgba(201,168,118,0.15);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.2), transparent 65%); border: 1px solid rgba(201,168,118,0.15);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.2), transparent 65%); border: 1px solid rgba(201,168,118,0.15);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.2), transparent 65%); border: 1px solid rgba(201,168,118,0.15);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Modular Wall 2×2</span><span class="tile-tag">Starter · London</span></div>
+      </div>
+
+      <div class="tile" data-cat="figures">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 3/5; background: linear-gradient(180deg, #1a1410 0%, #0a0a0a 100%); align-items: flex-end; padding: 8% 0;">
+          <div style="width: 40%; height: 85%; background: linear-gradient(180deg, #1a0f08 0%, #000 100%); border-radius: 30% 30% 6% 6% / 20% 20% 6% 6%;"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Sideshow Premium</span><span class="tile-tag">1×1 · Toronto</span></div>
+      </div>
+
+      <div class="tile" data-cat="helmets">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 5/4; background: radial-gradient(circle at 40% 30%, #2a1f12 0%, #0a0a0a 75%);">
+          <div style="width: 60%; height: 70%; background: linear-gradient(180deg, #0a0a0a, #050505); border-radius: 50% 50% 25% 25% / 60% 60% 15% 15%; box-shadow: inset -10px -6px 16px rgba(0,0,0,0.7);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Mandalorian Build</span><span class="tile-tag">1×1 · Austin</span></div>
+      </div>
+
+      <div class="tile" data-cat="walls">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 4/3; background: #0a0a0a; display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; padding: 10px;">
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+          <div style="background: radial-gradient(circle at 50% 40%, rgba(201,168,118,0.18), transparent 65%); border: 1px solid rgba(201,168,118,0.12);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">3×2 Display Wall</span><span class="tile-tag">Mid · Paris</span></div>
+      </div>
+
+      <div class="tile" data-cat="dioramas">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 16/9; background: linear-gradient(135deg, #1a1410 0%, #0a0a0a 80%);">
+          <div style="width: 70%; height: 60%; background: radial-gradient(ellipse at center, #2a1f12 0%, #0a0a0a 75%); border: 1px solid rgba(201,168,118,0.18);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Battle Diorama</span><span class="tile-tag">2×1 · Madrid</span></div>
+      </div>
+
+      <div class="tile" data-cat="statues">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 2/3; background: linear-gradient(180deg, #181818 0%, #0a0a0a 100%); align-items: flex-end; padding: 10% 0;">
+          <div style="width: 50%; height: 80%; background: linear-gradient(180deg, #1a1410 0%, #000 100%); clip-path: polygon(20% 0, 80% 0, 95% 100%, 5% 100%);"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Premium Statue</span><span class="tile-tag">1×1 · Dubai</span></div>
+      </div>
+
+      <div class="tile" data-cat="figures">
+        <div class="tile-media"><div class="tile-placeholder" style="--ar: 1/1; background: radial-gradient(ellipse at 50% 30%, #2a1f12 0%, #0a0a0a 75%); display: flex; gap: 10px;">
+          <div style="width: 25%; height: 70%; background: linear-gradient(180deg, #0a0a0a, #1a1410); border-radius: 35% 35% 8% 8%;"></div>
+          <div style="width: 25%; height: 70%; background: linear-gradient(180deg, #0a0a0a, #1a1410); border-radius: 35% 35% 8% 8%;"></div>
+        </div></div>
+        <div class="tile-overlay"></div>
+        <div class="tile-meta"><span class="tile-title">Twin Figures</span><span class="tile-tag">2×1 · São Paulo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Ready to <em>build yours?</em></h2>
+    <p>Start with one case. Add more whenever. Every Moducase fits the next.</p>
+    <a href="Landing Page.html#build" class="btn btn-primary">
+      Shop from $180
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="Landing Page.html" class="logo">
+          <div class="logo-mark"></div>
+          <span>MODUSPACE</span>
+        </a>
+        <p>From our collection to yours. Modular display cases, made to order since 2019.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="Landing Page.html">All Cases</a>
+        <a href="Landing Page.html#build">Configurator</a>
+        <a href="Gallery.html">Gallery</a>
+        <a href="Landing Page.html">Accessories</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="Landing Page.html#plan">How It Works</a>
+        <a href="Landing Page.html#faq">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">Our Story</a>
+        <a href="#">Press</a>
+        <a href="#">Instagram</a>
+        <a href="#">Retailers</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MODUSPACE</span>
+      <span>MADE TO ORDER · SHIPPED WORLDWIDE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content" id="lb-content"></div>
+  <button class="lightbox-close" id="lb-close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="lightbox-info" id="lb-info"></div>
+</div>
+
+<script>
+  // Scroll reveal stagger
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const tiles = [...document.querySelectorAll('.tile:not(.in)')];
+        const idx = tiles.indexOf(entry.target);
+        entry.target.style.transitionDelay = Math.min(idx * 70, 600) + 'ms';
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.tile').forEach(t => io.observe(t));
+
+  // Filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const tiles = document.querySelectorAll('.tile');
+  const countEl = document.getElementById('count');
+  function applyFilter(f) {
+    let visible = 0;
+    tiles.forEach(t => {
+      const show = f === 'all' || t.dataset.cat === f;
+      t.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    countEl.textContent = visible;
+  }
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.f);
+    });
+  });
+  countEl.textContent = tiles.length;
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbContent = document.getElementById('lb-content');
+  const lbInfo = document.getElementById('lb-info');
+  document.getElementById('lb-close').addEventListener('click', () => lb.classList.remove('open'));
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('open'); });
+  tiles.forEach(t => {
+    t.addEventListener('click', () => {
+      const media = t.querySelector('.tile-media').cloneNode(true);
+      lbContent.innerHTML = '';
+      lbContent.appendChild(media);
+      const title = t.querySelector('.tile-title').textContent;
+      const tag = t.querySelector('.tile-tag').textContent;
+      lbInfo.innerHTML = `<div class="t">${title}</div><div class="s">${tag}</div>`;
+      lb.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
