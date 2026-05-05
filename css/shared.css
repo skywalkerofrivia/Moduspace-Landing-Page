@@ -184,29 +184,66 @@ nav.top .wrap {
   position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
   background: rgba(10,10,10,0.98); backdrop-filter: blur(20px);
   z-index: 99; overflow-y: auto;
-  padding: 40px 24px 60px;
+  padding: 24px 24px 60px;
   flex-direction: column; gap: 0;
 }
 .nav-drawer.open { display: flex; }
-.nav-drawer a {
-  display: block; padding: 18px 0;
+.nav-drawer a,
+.nav-drawer summary {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0;
   color: var(--cream); text-decoration: none;
-  font-size: 28px; font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 21px; font-family: var(--serif); font-style: italic; font-weight: 300;
   border-bottom: 1px solid var(--line-2);
   transition: color .2s;
+  cursor: pointer; user-select: none;
+  list-style: none;
 }
-.nav-drawer a:hover { color: var(--bronze); }
-.nav-drawer .drawer-sub {
-  padding: 8px 0 8px 24px;
-  font-size: 18px;
+.nav-drawer summary::-webkit-details-marker { display: none; }
+.nav-drawer summary::marker { content: ''; }
+.nav-drawer a:hover,
+.nav-drawer summary:hover { color: var(--bronze); }
+.nav-drawer .drawer-chevron {
+  width: 12px; height: 12px;
+  stroke: currentColor; fill: none; stroke-width: 1.5;
+  transition: transform .25s ease;
+  flex-shrink: 0;
+}
+.nav-drawer details[open] > summary .drawer-chevron { transform: rotate(90deg); }
+.nav-drawer details {
+  border-bottom: 1px solid var(--line-2);
+}
+.nav-drawer details > summary { border-bottom: none; }
+.nav-drawer .drawer-sub-list {
+  display: flex; flex-direction: column;
+  padding: 0 0 14px 4px;
+}
+.nav-drawer .drawer-sub-list a {
+  padding: 9px 0;
   color: var(--cream-2);
+  font-size: 15px; font-family: var(--sans);
+  font-style: normal; font-weight: 400;
+  letter-spacing: 0.02em; text-transform: uppercase;
+  border-bottom: none;
+  display: block;
+}
+.nav-drawer .drawer-sub-list a:hover { color: var(--bronze); }
+/* Legacy single-line drawer-sub (kept for backward compat) */
+.nav-drawer .drawer-sub {
+  padding: 8px 0 8px 16px;
+  font-size: 15px; font-family: var(--sans);
+  font-style: normal; font-weight: 400;
+  color: var(--cream-2);
+  letter-spacing: 0.02em; text-transform: uppercase;
+  border-bottom: none;
 }
 .nav-drawer .drawer-sub:hover { color: var(--bronze); }
 .nav-drawer .drawer-cta {
-  margin-top: 32px; padding: 18px 0;
+  margin-top: 28px; padding: 0;
   display: flex; flex-direction: column; gap: 12px;
   border-bottom: none;
 }
+.nav-drawer .drawer-cta a { border-bottom: none; padding: 0; }
 .nav-drawer .btn { font-size: 14px; justify-content: center; width: 100%; }
 
 @media (max-width: 1024px) {
