@@ -240,11 +240,16 @@ nav.top .wrap {
 .nav-drawer .drawer-sub:hover { color: var(--bronze); }
 .nav-drawer .drawer-cta {
   margin-top: 28px; padding: 0;
-  display: flex; flex-direction: column; gap: 12px;
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: center;
   border-bottom: none;
 }
 .nav-drawer .drawer-cta a { border-bottom: none; padding: 0; }
-.nav-drawer .btn { font-size: 14px; justify-content: center; width: 100%; }
+.nav-drawer .btn {
+  font-size: 14px; justify-content: center;
+  width: auto; max-width: 320px; min-width: 240px;
+  padding: 18px 32px;
+}
 
 @media (max-width: 1024px) {
   .nav-links, .nav-right .nav-cart, .nav-right .btn { display: none; }
