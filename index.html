@@ -171,7 +171,7 @@
   /* ---- GUIDE (parallax) ---- */
   :root { --collectors-bg: url('assets/hero-batcave.png'); }
   .guide {
-    position: relative; min-height: 680px; padding: 0;
+    position: relative; padding: 0;
     border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
     overflow: hidden; isolation: isolate; display: flex; align-items: center;
   }
@@ -188,7 +188,7 @@
       linear-gradient(90deg, rgba(10,10,10,0.94) 0%, rgba(10,10,10,0.72) 50%, rgba(10,10,10,0.35) 100%),
       linear-gradient(180deg, rgba(10,10,10,0.55) 0%, transparent 35%, rgba(10,10,10,0.7) 100%);
   }
-  .guide .wrap { position: relative; z-index: 1; padding-top: 120px; padding-bottom: 120px; width: 100%; }
+  .guide .wrap { position: relative; z-index: 1; padding-top: 64px; padding-bottom: 64px; width: 100%; }
   .guide-inner { max-width: 580px; }
   .guide-eye { font-size: 11.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 28px; font-weight: 500; display: flex; align-items: center; gap: 14px; }
   .guide-eye::before { content: ""; width: 28px; height: 1px; background: var(--bronze); flex-shrink: 0; }
@@ -203,7 +203,7 @@
   }
   .guide-press svg { width: 18px; height: 18px; stroke: var(--bronze); fill: none; stroke-width: 1.5; flex-shrink: 0; }
   .guide-press em { color: var(--cream); font-style: italic; font-family: var(--serif); font-size: 17px; }
-  @media (max-width: 640px) { .guide .wrap { padding-top: 80px; padding-bottom: 80px; } }
+  @media (max-width: 640px) { .guide .wrap { padding-top: 48px; padding-bottom: 48px; } }
 
   /* ---- FEATURES ---- */
   .features { padding: 120px 0; }
