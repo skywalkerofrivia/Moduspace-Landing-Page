@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Choose a Display Case for 1/6 Scale Figures — Moduspace Library</title>
+  <meta name="description" content="Hot Toys, Sideshow, Threezero — every figure in the 12-inch class has different posing demands. A field guide to case dimensions, lighting, and base configurations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .article-content ul { margin: 0 0 24px 0; padding-left: 24px; }
+    .article-content li { font-size: 17px; line-height: 1.65; color: var(--cream); margin-bottom: 8px; }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+
+    .spec-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 15px; }
+    .spec-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .spec-table td { padding: 14px 0; border-bottom: 1px solid var(--line-2); color: var(--cream-2); vertical-align: top; }
+    .spec-table td:first-child { color: var(--cream); font-weight: 500; width: 35%; }
+
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .guide-cta .btn { position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side { display: none; }
+      .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-mark"></span>
+      MODUSPACE
+    </a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col">
+            <h5>By Series</h5>
+            <a href="../index.html#shop">Sixth Series</a>
+            <a href="../index.html#shop">DF Series</a>
+            <a href="../index.html#shop">Max &amp; Max Plus</a>
+            <a href="../index.html#shop">Moducase Mini</a>
+          </div>
+          <div class="nav-menu-col">
+            <h5>By Use</h5>
+            <a href="../index.html#shop">Figures &amp; Statues</a>
+            <a href="../index.html#shop">LEGO &amp; Models</a>
+            <a href="../index.html#shop">Dioramas</a>
+            <a href="../index.html#shop">Full Room Walls</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#shop" class="drawer-sub">Shop</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta">
+    <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="index.html">The Library</a>
+      <span class="sep">/</span>
+      <span class="current">1/6 Scale Figures</span>
+    </div>
+    <p class="eyebrow">Figures · 11 min read</p>
+    <h1>How to Choose a Display Case<br>for <em>1/6 Scale</em> Figures</h1>
+    <div class="guide-hero-meta">
+      <span>Figures</span>
+      <span class="meta-sep">·</span>
+      <span>11 min read</span>
+      <span class="meta-sep">·</span>
+      <span>April 2026</span>
+      <span class="meta-sep">·</span>
+      <span class="paired">Paired with Sixth Series</span>
+    </div>
+    <div class="guide-cover-img">
+      <img src="covers/1-6-figures.svg" alt="1/6 Scale Figure Display Cases" />
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE -->
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#dimensions">Understanding 1/6 dimensions</a>
+        <a href="#posing">The posing problem</a>
+        <a href="#depth">Case depth for action poses</a>
+        <a href="#lighting">Lighting for fabric costumes</a>
+        <a href="#recommendation">Our recommendation</a>
+      </aside>
+
+      <article class="article-content">
+        <p class="lede">A 1/6 scale figure isn't just a tall object. It's a posed object — arms extended, weapons drawn, capes sweeping — and the case you choose must accommodate not just the standing height but the full three-dimensional envelope of the pose you've chosen to display. Most collectors find this out after they've already bought the wrong case.</p>
+
+        <h2 id="dimensions">Understanding <em>1/6 scale</em> dimensions</h2>
+        <p>The "1/6 scale" designation means a figure is approximately one-sixth the height of a real person — which puts most figures in the 28–36cm range for body height. But body height is only part of the equation.</p>
+        <p>Hot Toys figures in particular are engineered with remarkable anatomical accuracy, which means the shoulder width and arm span of a figure in a wide stance can easily extend to 40cm or more. A figure holding a rifle at port arms, or a figure with both arms raised, can need 50cm or more of interior horizontal clearance. A figure with a swept cape — any of the Batman variants, the Spider-Man figures with flowing fabric — needs depth as well as width.</p>
+
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Figure type</th>
+              <th>Typical height</th>
+              <th>Recommended interior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard standing pose</td><td>28–32 cm</td><td>H: 40cm, W: 30cm, D: 25cm</td></tr>
+            <tr><td>Wide stance / combat pose</td><td>30–36 cm</td><td>H: 45cm, W: 45cm, D: 35cm</td></tr>
+            <tr><td>Weapon extended / cape</td><td>30–36 cm</td><td>H: 45cm, W: 50cm, D: 40cm</td></tr>
+            <tr><td>Diorama base included</td><td>32–40 cm</td><td>H: 55cm, W: 60cm, D: 45cm</td></tr>
+          </tbody>
+        </table>
+
+        <p>The standard Sixth Series case provides 480mm interior height, 380mm width, and 320mm depth per module — sized to accommodate the full posing range of virtually every 1/6 figure currently in production, including those with extended accessories, without requiring custom configurations for most manufacturers.</p>
+
+        <h2 id="posing">The <em>posing</em> problem</h2>
+        <p>Here's what the dimension tables don't capture: you will change your mind about the pose. This is almost universal among serious 1/6 collectors. The figure arrives, you pose it one way, display it for six months, then revisit the posing options and decide you'd rather display the alternate head with the weapon holstered and the right arm raised.</p>
+        <p>A case that precisely fitted your original pose now doesn't accommodate the new one. This is why the Sixth Series is sized with deliberate headroom — not to give your figure a swimming pool to rattle around in, but to give you the flexibility to pose freely without measuring against case constraints before every display decision.</p>
+        <p>It also matters for multi-figure displays. Collectors who start with single figures often end up wanting to display pairs — Tony and Rhodey in their respective armours, or a hero-villain confrontation. These groupings require significantly more horizontal clearance than the sum of two individual figure widths, because the composition itself takes up space.</p>
+
+        <div class="pull-quote">"The case you buy should accommodate the collection you'll have in three years, not the pose you chose yesterday."</div>
+
+        <h2 id="depth">Case depth <em>for action poses</em></h2>
+        <p>Depth is the most underestimated dimension in figure display. Collectors who've never worked with 1/6 scale figures in a case often think about height and width — but the depth of the case determines what poses are actually displayable.</p>
+        <p>A figure in a standard standing pose with arms at sides might need only 20–22cm of depth. The same figure in a walking pose, with one leg forward and the torso rotated, might need 30cm. A cape — especially a fabric cape with good drape — can extend 20–25cm behind the figure's back at rest. Put that figure on a raised base and you're looking at a total depth requirement of 40cm or more.</p>
+        <p>Many collectors discover this after mounting a beautiful Hot Toys Batman in their existing case and finding that the cape doesn't drape — it's pressed flat against the back panel, taking a permanent set that destroys the sculptural quality of the fabric.</p>
+        <p>The correct solution isn't to cut the case — it's to buy the right depth from the start. The Sixth Series standard depth of 320mm handles 95% of poses. For diorama bases and the largest fabric elements, the 400mm extended-depth configuration removes all compromises entirely.</p>
+
+        <h2 id="lighting">Lighting <em>for fabric costumes</em></h2>
+        <p>1/6 scale figures are exceptional in one specific way: the textured surfaces that other scale figures fake with paint — fabric suits, leather textures, metal mesh — are actually present in physical form. Hot Toys figures wear real fabric. This is both their greatest quality and their most demanding lighting challenge.</p>
+        <p>Overhead LED strips — the default option in most budget cases — flatten fabric texture. The light comes from above, fills the shadows in woven cloth, and what should read as luxurious textured leather reads as a flat painted surface. You lose the quality you paid for.</p>
+        <p>The correct approach is angled front lighting: LEDs positioned at the front edge of the top of the case, angled down and in at approximately 30–45 degrees. This creates the grazing light that reveals surface texture, makes fabric look dimensional, and catches the micro-detail of weathering and paintwork that 1/6 manufacturers invest so much in.</p>
+        <p>The Sixth Series Lighting Kit uses precisely this configuration — a front-mounted LED channel with adjustable angle and 2700K–5000K colour temperature control, so you can match the warmth of your room lighting or dial in a cooler, more dramatic tone for display.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/1-6-figures-1.svg" alt="Customer setup" />
+            <div class="ph-tag">James L. · Los Angeles</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">JAMES L. <span>· Los Angeles, US</span></div>
+            <div class="quote">"I have seventeen Hot Toys figures in a 3×2 Sixth Series wall. The single best upgrade I made was switching from overhead to front-angled lighting. The fabric texture on my suits went from 'nice' to genuinely museum-quality."</div>
+            <div class="config">Configuration: <strong>3×2 Sixth Series · Front-Angle LED Kit · Mirror Base Panels</strong></div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div class="callout-label">Sixth Series specification</div>
+          <p>The Sixth Series is designed around a 480×380×320mm interior (H×W×D per module), with optional 400mm deep configuration. It's sized to handle every major 1/6 manufacturer's full catalogue, posed at full extension, with fabric drape included.</p>
+        </div>
+
+        <h2 id="recommendation">Our <em>recommendation</em></h2>
+        <p>For most 1/6 collectors, the Sixth Series standard configuration handles the full range of display needs. Here's how to approach the decision:</p>
+        <ul>
+          <li><strong>Start with how many figures you plan to display</strong> — and add 30% for the ones you'll acquire after you buy the case.</li>
+          <li><strong>Measure your most extreme existing pose</strong> — the widest stance, the most extended arm, the longest weapon — and confirm the case depth and width cover it with at least 40mm to spare on each side.</li>
+          <li><strong>Plan for diorama bases now</strong> — if any of your figures sit on raised scenic bases, add the base height to the figure height and confirm the interior clearance is sufficient before ordering.</li>
+          <li><strong>Order the lighting kit with the case</strong> — retrofitting lighting into an installed case is significantly more difficult than building it in from the start.</li>
+        </ul>
+        <p>If you're unsure, book a free consultation. We'll look at your collection, your space, and your planned growth — and configure the wall before you spend a dollar.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/1-6-figures-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Priya N. · London</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">PRIYA N. <span>· London, UK</span></div>
+            <div class="quote">"My Sideshow Premium Format pieces were too tall for most 1/6 cases. The Sixth Series extended depth config was the only off-the-shelf solution that actually worked without requiring custom fabrication."</div>
+            <div class="config">Configuration: <strong>2×3 Sixth Series Extended Depth · Warm LED · Custom Base Riser</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Paired product</div>
+          <p style="margin-bottom:20px;">The Sixth Series is built for 1/6 scale collectors — 480mm interior height, modular depth, angled LED kit included.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="guide-cta">
+      <h3>Ready to build<br>your <em>display?</em></h3>
+      <p>The Sixth Series is designed specifically for 1/6 scale figure collectors — with the interior height, depth, and lighting options your collection demands.</p>
+      <div class="cta-btns">
+        <a href="../index.html#shop" class="btn btn-primary">Shop Sixth Series</a>
+        <a href="../consultation.html" class="btn btn-ghost">Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related">
+  <div class="wrap">
+    <div class="related-header">
+      <p class="eyebrow">Continue reading</p>
+      <h2>More from <em>The Library</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="acrylic-vs-glass.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass" /></div>
+        <div class="related-body">
+          <div class="related-cat">Materials</div>
+          <h4>Acrylic vs Glass Display Cases: Which Is Better for Collectors?</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="statues-dioramas.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/statues-dioramas.svg" alt="Statues and Dioramas" /></div>
+        <div class="related-body">
+          <div class="related-cat">Statues</div>
+          <h4>Display Case Buying Guide for Statues, Dioramas, and Centerpiece Pieces</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="collector-room-layout.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/collector-room-layout.svg" alt="Collector Room Layout" /></div>
+        <div class="related-body">
+          <div class="related-cat">Room Design</div>
+          <h4>How to Plan a Collector Room Without Making It Look Cluttered</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="../index.html#shop">Sixth Series</a>
+        <a href="../index.html#shop">DF Series</a>
+        <a href="../index.html#shop">Max &amp; Max Plus</a>
+        <a href="../index.html#shop">Moducase Mini</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="index.html">The Library</a>
+        <a href="../features.html">Features</a>
+        <a href="../gallery.html">Gallery</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../consultation.html">Free Consultation</a>
+        <a href="../index.html">About</a>
+        <a href="../index.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Moduspace. All rights reserved.</span>
+      <span>Designed for collectors, by collectors.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

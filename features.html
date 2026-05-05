@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Features — Moduspace</title>
+<meta name="description" content="Four engineering pillars that protect your collection — optically clear acrylic, rigid aluminium frames, magnetic dust seals, and a fully modular system." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+
+/* ============================================================
+   FEATURES PAGE — local overrides
+============================================================ */
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url('assets/features-hero.avif');
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+/* dark scrim */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8,8,10,0.55) 0%,
+    rgba(8,8,10,0.25) 35%,
+    rgba(8,8,10,0.55) 75%,
+    rgba(8,8,10,0.92) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* bronze radial glow */
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 50% 48%, rgba(201,168,118,0.12), transparent 68%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 120px 48px 100px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-weight: 500;
+  margin-bottom: 28px;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.7);
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6.5vw, 90px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 26px;
+  text-shadow: 0 2px 32px rgba(0,0,0,0.6);
+}
+
+.hero-sub {
+  font-size: clamp(16px, 1.6vw, 19px);
+  color: var(--cream-2);
+  font-weight: 300;
+  max-width: 580px;
+  margin: 0 auto 64px;
+  line-height: 1.6;
+  text-shadow: 0 1px 16px rgba(0,0,0,0.6);
+}
+
+/* ---- HERO JUMP PILLS ---- */
+.jump-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 920px;
+  margin: 0 auto;
+  background: rgba(201,168,118,0.18);
+  border: 1px solid rgba(201,168,118,0.28);
+  gap: 1px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.jump-pill {
+  background: rgba(8,8,10,0.65);
+  padding: 26px 22px;
+  text-decoration: none;
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  transition: background 0.25s ease;
+}
+
+.jump-pill:hover {
+  background: rgba(24,24,24,0.85);
+  color: var(--bronze);
+}
+
+.jump-num {
+  font-size: 10.5px;
+  letter-spacing: 0.36em;
+  color: var(--bronze);
+  font-weight: 500;
+}
+
+.jump-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.05;
+  font-weight: 300;
+}
+
+/* ---- FEATURE PILLARS ---- */
+.pillar {
+  padding: 140px 0;
+  border-bottom: 1px solid var(--line-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar:nth-of-type(even) {
+  background: var(--black-3);
+}
+
+.pillar-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.pillar h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.0;
+  letter-spacing: -0.018em;
+  margin-bottom: 52px;
+  max-width: 680px;
+}
+
+.pillar-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Alternating: even pillars flip the grid direction */
+.pillar:nth-of-type(even) .pillar-body {
+  direction: rtl;
+}
+.pillar:nth-of-type(even) .pillar-body > * {
+  direction: ltr;
+}
+
+.pillar-copy p {
+  color: var(--cream-2);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.pillar-copy p:last-of-type {
+  margin-bottom: 36px;
+}
+
+/* Bullet checklist */
+.check-list {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.check-list li {
+  padding: 13px 0 13px 32px;
+  position: relative;
+  border-bottom: 1px solid var(--line-2);
+  font-size: 14.5px;
+  color: var(--cream);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 21px;
+  width: 11px;
+  height: 6px;
+  border-left: 1.5px solid var(--bronze);
+  border-bottom: 1.5px solid var(--bronze);
+  transform: rotate(-45deg);
+}
+
+/* ---- COMPARISON FRAMES ---- */
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.compare-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  background: var(--black-2);
+  transition: transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+
+.compare-frame:hover {
+  transform: scale(1.04);
+}
+
+.compare-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 6px 11px;
+  background: rgba(8,8,10,0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line-2);
+  z-index: 3;
+}
+
+.compare-badge.bad { color: var(--danger); }
+.compare-badge.good { color: var(--bronze); }
+
+.compare-caption {
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.compare-caption.bad { color: var(--danger); }
+.compare-caption.good { color: var(--bronze); }
+
+/* ---- PLACEHOLDER ARTWORK ---- */
+.ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* GOOD frame — clean dark with bronze hint */
+.ph-good {
+  background: linear-gradient(160deg, #101010 0%, #181510 100%);
+}
+
+.ph-good-inner {
+  width: 58%;
+  height: 76%;
+  border: 1px solid rgba(201,168,118,0.28);
+  background: linear-gradient(160deg, rgba(201,168,118,0.05), transparent 60%);
+  position: relative;
+  box-shadow:
+    0 0 60px rgba(201,168,118,0.07),
+    inset 0 0 28px rgba(255,255,255,0.015);
+}
+
+.ph-good-inner::before {
+  content: "";
+  position: absolute;
+  left: 16%; top: 8%;
+  width: 68%; height: 80%;
+  background: linear-gradient(180deg, #0c0c0c 0%, #181410 100%);
+  border-radius: 38% 38% 8% 8% / 24% 24% 8% 8%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+
+.ph-good-glow {
+  position: absolute;
+  left: 8%; right: 8%;
+  bottom: 10%;
+  height: 6%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,118,0.22), transparent 70%);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* BAD 01 — glass with green tint */
+.ph-glass {
+  background: linear-gradient(180deg, #081a10 0%, #060e0a 100%);
+}
+
+.ph-glass-pane {
+  width: 62%;
+  height: 78%;
+  background: linear-gradient(135deg, rgba(100,190,140,0.18) 0%, rgba(60,120,90,0.08) 100%);
+  border: 1px solid rgba(100,190,140,0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.ph-glass-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(80,180,120,0.22) 0%, rgba(40,120,80,0.12) 100%);
+  mix-blend-mode: color;
+}
+
+.ph-glass-crack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ph-glass-crack::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(52deg, transparent 46%, rgba(255,255,255,0.55) 47%, rgba(255,255,255,0.55) 47.5%, transparent 48.5%) no-repeat,
+    linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.48) 33%, rgba(255,255,255,0.48) 33.4%, transparent 34.4%) no-repeat,
+    linear-gradient(72deg, transparent 57%, rgba(255,255,255,0.38) 58%, rgba(255,255,255,0.38) 58.3%, transparent 59.3%) no-repeat;
+  background-size: 100% 100%;
+  mix-blend-mode: screen;
+}
+
+.ph-glass-crack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 52% 44%, rgba(255,255,255,0.45) 0%, transparent 5%),
+    radial-gradient(circle at 36% 60%, rgba(255,255,255,0.3) 0%, transparent 4%);
+}
+
+/* BAD 02 — sagging shelf */
+.ph-sag {
+  background: linear-gradient(180deg, #180f06 0%, #080808 100%);
+  flex-direction: column;
+  gap: 6%;
+  padding: 10% 14%;
+  align-items: center;
+}
+
+.ph-sag-shelf {
+  width: 100%;
+  position: relative;
+}
+
+.ph-sag-shelf-board {
+  width: 100%;
+  height: 14px;
+  background: linear-gradient(180deg, #3a2a18, #281a0a);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.55);
+}
+
+.ph-sag-shelf:nth-child(1) .ph-sag-shelf-board {
+  border-radius: 0 0 48% 48% / 0 0 90% 90%;
+  transform: scaleY(1.2);
+}
+
+.ph-sag-shelf:nth-child(2) .ph-sag-shelf-board {
+  border-radius: 0 0 50% 50% / 0 0 120% 120%;
+  transform: scaleY(1.8);
+}
+
+.ph-sag-shelf:nth-child(3) .ph-sag-shelf-board {
+  border-radius: 0 0 52% 52% / 0 0 160% 160%;
+  transform: scaleY(2.5);
+}
+
+.ph-sag-weight {
+  position: absolute;
+  left: 28%; right: 28%;
+  bottom: 100%;
+  height: 26px;
+  background: linear-gradient(180deg, #080808, #181410);
+  border-radius: 35% 35% 0 0 / 50% 50% 0 0;
+}
+
+/* BAD 03 — dusty open shelf */
+.ph-dust {
+  background: radial-gradient(circle at 50% 30%, #201c14 0%, #080808 72%);
+}
+
+.ph-dust-fig {
+  width: 42%;
+  height: 72%;
+  background: linear-gradient(180deg, #281e10 0%, #080808 100%);
+  border-radius: 36% 36% 8% 8% / 22% 22% 8% 8%;
+  position: relative;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.6);
+}
+
+.ph-dust-fig::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(220,205,175,0.42) 0%, transparent 4%),
+    radial-gradient(circle at 62% 33%, rgba(220,205,175,0.36) 0%, transparent 3%),
+    radial-gradient(circle at 46% 58%, rgba(220,205,175,0.40) 0%, transparent 3.5%),
+    radial-gradient(circle at 72% 68%, rgba(220,205,175,0.30) 0%, transparent 4%),
+    radial-gradient(circle at 22% 47%, rgba(220,205,175,0.35) 0%, transparent 3%),
+    radial-gradient(circle at 54% 14%, rgba(220,205,175,0.32) 0%, transparent 3.5%),
+    radial-gradient(circle at 80% 48%, rgba(220,205,175,0.38) 0%, transparent 3%),
+    radial-gradient(circle at 40% 80%, rgba(220,205,175,0.28) 0%, transparent 4%);
+  border-radius: inherit;
+  mix-blend-mode: screen;
+}
+
+.ph-dust-fig::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(200,185,155,0.14) 0%, transparent 35%);
+  border-radius: inherit;
+}
+
+.ph-dust-open {
+  position: absolute;
+  top: 14px; left: 14px; right: 14px;
+  border-top: 1px dashed rgba(160,140,110,0.25);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(160,140,110,0.4);
+  padding-top: 6px;
+  text-transform: uppercase;
+}
+
+/* BAD 04 — mismatched chaotic shelves */
+.ph-mess {
+  background: linear-gradient(180deg, #141008 0%, #080808 100%);
+  flex-wrap: wrap;
+  align-content: flex-end;
+  padding: 8% 10%;
+  gap: 10px;
+}
+
+.ph-mess-item {
+  background: linear-gradient(180deg, #1c1008, #050505);
+  border-radius: 34% 34% 8% 8%;
+  flex-shrink: 0;
+}
+
+.ph-mess-item:nth-child(1) { width: 17%; height: 52%; }
+.ph-mess-item:nth-child(2) { width: 13%; height: 36%; transform: rotate(9deg) translateY(6px); margin-top: auto; }
+.ph-mess-item:nth-child(3) { width: 21%; height: 62%; }
+.ph-mess-item:nth-child(4) { width: 12%; height: 44%; transform: rotate(-6deg) translateY(4px); margin-top: auto; border-radius: 30% 30% 8% 8%; }
+.ph-mess-item:nth-child(5) { width: 20%; height: 28%; border-radius: 8%; align-self: flex-end; }
+.ph-mess-item:nth-child(6) { width: 15%; height: 50%; }
+
+/* ---- SCROLL REVEAL ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(.2,.7,.2,1),
+    transform 0.9s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+
+/* ---- FINAL CTA ---- */
+.final-cta {
+  background: var(--black-3);
+  text-align: center;
+  padding: 130px 0 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 62% 70% at 50% 52%, rgba(201,168,118,0.09), transparent 68%);
+  pointer-events: none;
+}
+
+.final-cta .eyebrow {
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.final-cta h2 {
+  font-size: clamp(42px, 5.5vw, 70px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.final-cta > .wrap > p {
+  color: var(--cream-2);
+  font-size: 17px;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto 44px;
+  line-height: 1.65;
+  position: relative;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.trust-note {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .pillar {
+    padding: 100px 0;
+  }
+
+  .pillar-body {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .pillar:nth-of-type(even) .pillar-body {
+    direction: ltr;
+  }
+
+  .pillar h2 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-inner {
+    padding: 100px 24px 80px;
+  }
+
+  .jump-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .compare-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .pillar {
+    padding: 72px 0;
+  }
+
+  .final-cta {
+    padding: 90px 0 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .jump-label {
+    font-size: 20px;
+  }
+
+  .jump-pill {
+    padding: 20px 16px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="top">
+  <div class="wrap">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"></div>
+      <span>MODUSPACE</span>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a href="#">Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col">
+            <h5>Moducases</h5>
+            <a href="#">Mono</a>
+            <a href="#">Sixth</a>
+            <a href="#">DF</a>
+            <a href="#">Max</a>
+            <a href="#">Max Plus</a>
+          </div>
+          <div class="nav-menu-col">
+            <h5>Accessories</h5>
+            <a href="#">Lighting Kits</a>
+            <a href="#">Connectors</a>
+            <a href="#">Base Plates</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="features.html" class="active">Features</a></li>
+      <li><a href="index.html#plan">How It Works</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <span class="nav-cart">Cart · 0</span>
+      <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+    </div>
+
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" role="navigation" aria-label="Mobile navigation">
+  <a href="#">Shop — Mono</a>
+  <a href="#" class="drawer-sub">Mono</a>
+  <a href="#" class="drawer-sub">Sixth</a>
+  <a href="#" class="drawer-sub">DF</a>
+  <a href="#" class="drawer-sub">Max</a>
+  <a href="#" class="drawer-sub">Max Plus</a>
+  <a href="#" class="drawer-sub">Accessories</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="features.html" style="color:var(--bronze)">Features</a>
+  <a href="index.html#plan">How It Works</a>
+  <a href="index.html#faq">FAQ</a>
+  <div class="drawer-cta">
+    <span class="nav-cart" style="font-size:14px;color:var(--cream-2)">Cart · 0</span>
+    <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Engineering · Every Detail</p>
+    <h1>Every detail<br>engineered for <em>peace of mind.</em></h1>
+    <p class="hero-sub">Four things we refuse to compromise on — because your collection has already cost you enough.</p>
+
+    <div class="jump-grid">
+      <a href="#acrylic" class="jump-pill">
+        <span class="jump-num">01</span>
+        <span class="jump-label">Crystal Clear</span>
+      </a>
+      <a href="#rigidity" class="jump-pill">
+        <span class="jump-num">02</span>
+        <span class="jump-label">No Wobble</span>
+      </a>
+      <a href="#seals" class="jump-pill">
+        <span class="jump-num">03</span>
+        <span class="jump-label">Dust Sealed</span>
+      </a>
+      <a href="#modular" class="jump-pill">
+        <span class="jump-num">04</span>
+        <span class="jump-label">Modular</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILLAR 01 — ACRYLIC
+============================================================ -->
+<section class="pillar" id="acrylic">
+  <div class="wrap">
+    <p class="pillar-eyebrow reveal">01 · Clarity</p>
+    <h2 class="reveal reveal-delay-1">Crystal clear.<br><em>Zero glass risk.</em></h2>
+
+    <div class="pillar-body">
+      <div class="pillar-copy reveal reveal-delay-2">
+        <p>Acrylic that looks like glass, without the shatter. Crystal clear with no iron-green tint. Child-safe, lighter, and repairability if scratched — glass offers none of that. Most collectors discover the green hue only after comparing side by side. Moducase acrylic is optically neutral.</p>
+        <ul class="check-list">
+          <li>No green tint</li>
+          <li>No shatter risk</li>
+          <li>Child-safe</li>
+          <li>Optically clear</li>
+          <li>Repairable</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <div class="compare-row">
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge bad">Tempered Glass</span>
+              <div class="ph ph-glass">
+                <div class="ph-glass-pane">
+                  <div class="ph-glass-tint"></div>
+                  <div class="ph-glass-crack"></div>
+                </div>
+              </div>
+            </div>
+            <p class="compare-caption bad">Tempered glass — green hue</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge good">Moducase Acrylic</span>
+              <div class="ph ph-good">
+                <div class="ph-good-inner"></div>
+                <div class="ph-good-glow"></div>
+              </div>
+            </div>
+            <p class="compare-caption good">Moducase acrylic — true clarity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILLAR 02 — RIGIDITY
+============================================================ -->
+<section class="pillar" id="rigidity">
+  <div class="wrap">
+    <p class="pillar-eyebrow reveal">02 · Structure</p>
+    <h2 class="reveal reveal-delay-1">No wobble.<br><em>No sag. Ever.</em></h2>
+
+    <div class="pillar-body">
+      <div class="pillar-copy reveal reveal-delay-2">
+        <p>Rigid anodised aluminium frames, welded at the corners. Each case safely holds up to 40 lbs of static display weight, with load-tested stacking up to five units tall. The kind of engineering that lets you stop worrying and start displaying.</p>
+        <ul class="check-list">
+          <li>40 lb capacity</li>
+          <li>Stack up to 5 units</li>
+          <li>Welded corners</li>
+          <li>Zero flex</li>
+          <li>10-year frame guarantee</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <div class="compare-row">
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge bad">Plywood Shelf</span>
+              <div class="ph ph-sag">
+                <div class="ph-sag-shelf">
+                  <div class="ph-sag-weight"></div>
+                  <div class="ph-sag-shelf-board"></div>
+                </div>
+                <div class="ph-sag-shelf">
+                  <div class="ph-sag-weight"></div>
+                  <div class="ph-sag-shelf-board"></div>
+                </div>
+                <div class="ph-sag-shelf">
+                  <div class="ph-sag-weight"></div>
+                  <div class="ph-sag-shelf-board"></div>
+                </div>
+              </div>
+            </div>
+            <p class="compare-caption bad">Sagging plywood — structural failure</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge good">Moducase Frame</span>
+              <div class="ph ph-good">
+                <div class="ph-good-inner"></div>
+                <div class="ph-good-glow"></div>
+              </div>
+            </div>
+            <p class="compare-caption good">Clean rigid frame — zero flex</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILLAR 03 — SEALS
+============================================================ -->
+<section class="pillar" id="seals">
+  <div class="wrap">
+    <p class="pillar-eyebrow reveal">03 · Precision</p>
+    <h2 class="reveal reveal-delay-1">Dust stays out.<br><em>You stay in control.</em></h2>
+
+    <div class="pillar-body">
+      <div class="pillar-copy reveal reveal-delay-2">
+        <p>Magnetic channel seals on all four edges. An industry-standard brush seal where the door meets the frame. The result: figures stay clean between wipes. Most collectors who upgrade from open shelving report cutting their cleaning frequency from weekly to monthly.</p>
+        <ul class="check-list">
+          <li>Magnetic channel seals</li>
+          <li>Brush door seal</li>
+          <li>No dust ingress</li>
+          <li>Weekly → monthly cleaning</li>
+          <li>Removable for reconfiguration</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <div class="compare-row">
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge bad">Open Shelving</span>
+              <div class="ph ph-dust">
+                <div class="ph-dust-fig"></div>
+              </div>
+            </div>
+            <p class="compare-caption bad">Dusty open shelves — weekly cleaning</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge good">Moducase Sealed</span>
+              <div class="ph ph-good">
+                <div class="ph-good-inner"></div>
+                <div class="ph-good-glow"></div>
+              </div>
+            </div>
+            <p class="compare-caption good">Sealed clean display — monthly cleaning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILLAR 04 — MODULAR
+============================================================ -->
+<section class="pillar" id="modular">
+  <div class="wrap">
+    <p class="pillar-eyebrow reveal">04 · System</p>
+    <h2 class="reveal reveal-delay-1">Start with one.<br><em>Build a wall.</em></h2>
+
+    <div class="pillar-body">
+      <div class="pillar-copy reveal reveal-delay-2">
+        <p>Every case in the Moduspace system shares the same external dimensions. Every connection point aligns. Buy one Mono today, add a Max Plus next year — the wall still fits. No adapter plates. No compromises. A display system designed to grow the way a collection grows.</p>
+        <ul class="check-list">
+          <li>Universal dimensions</li>
+          <li>Same connection system</li>
+          <li>Mix case families</li>
+          <li>No adapters needed</li>
+          <li>Future-proof</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <div class="compare-row">
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge bad">Mismatched Shelves</span>
+              <div class="ph ph-mess">
+                <div class="ph-mess-item"></div>
+                <div class="ph-mess-item"></div>
+                <div class="ph-mess-item"></div>
+                <div class="ph-mess-item"></div>
+                <div class="ph-mess-item"></div>
+                <div class="ph-mess-item"></div>
+              </div>
+            </div>
+            <p class="compare-caption bad">Mismatched shelves — no cohesion</p>
+          </div>
+          <div class="compare-item">
+            <div class="compare-frame">
+              <span class="compare-badge good">Moducase System</span>
+              <div class="ph ph-good">
+                <div class="ph-good-inner"></div>
+                <div class="ph-good-glow"></div>
+              </div>
+            </div>
+            <p class="compare-caption good">Seamless modular wall — one system</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FINAL CTA
+============================================================ -->
+<section class="final-cta">
+  <div class="wrap">
+    <p class="eyebrow reveal">Ready to build?</p>
+    <h2 class="reveal reveal-delay-1">Your collection<br>deserves <em>better.</em></h2>
+    <p class="reveal reveal-delay-2">Book a free consultation or shop from $180. Made to order, shipped worldwide.</p>
+    <div class="cta-btns reveal reveal-delay-3">
+      <a href="index.html#build" class="btn btn-primary">
+        Shop from $180
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="consultation.html" class="btn btn-ghost">Free Consultation</a>
+    </div>
+    <p class="trust-note reveal reveal-delay-3">Made to order · Ships worldwide · 30-day cancellation</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-mark"></div>
+          <span>MODUSPACE</span>
+        </a>
+        <p>From our collection to yours. Modular display cases, made to order.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#">Mono</a>
+        <a href="#">Sixth</a>
+        <a href="#">DF</a>
+        <a href="#">Max</a>
+        <a href="#">Max Plus</a>
+        <a href="#">Accessories</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="index.html#plan">How It Works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">Our Story</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#">Press</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Moduspace</span>
+      <span>Made to order · Shipped worldwide</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JS — hamburger + scroll reveal
+============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---- Hamburger ---- */
+  const burger = document.querySelector('.nav-burger');
+  const drawer = document.querySelector('.nav-drawer');
+
+  if (burger && drawer) {
+    burger.addEventListener('click', () => {
+      const isOpen = drawer.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close on drawer link click
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        burger.focus();
+      }
+    });
+  }
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    // Fallback: show all immediately
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---- Smooth scroll for jump links ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - navH - 20;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

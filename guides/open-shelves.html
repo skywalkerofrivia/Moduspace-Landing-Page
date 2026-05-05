@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Open Shelves Make Expensive Collections Look Cheaper — Moduspace Library</title>
+  <meta name="description" content="Dust is only the second-worst thing about open shelving. The first is what it does to perceived value." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .guide-cta .btn { position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; text-decoration: none; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side, .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+    <ul class="nav-links">
+      <li class="nav-drop"><a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col"><h5>Moducases</h5><a href="../index.html">Mono</a><a href="../index.html">Sixth</a><a href="../index.html">DF</a><a href="../index.html">Max</a><a href="../index.html">Max Plus</a></div>
+          <div class="nav-menu-col"><h5>Accessories</h5><a href="../index.html">Lighting</a><a href="../index.html">Bases &amp; Risers</a><a href="../index.html">Connectors</a><a href="../index.html">Cleaning Kit</a></div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+</nav>
+
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">The Library</a><span class="sep">/</span><span class="current">Open Shelves</span></div>
+    <p class="eyebrow">Display Theory · 6 min read</p>
+    <h1>Why Open Shelves<br>Make Expensive Collections<br>Look <em>Cheaper.</em></h1>
+    <div class="guide-hero-meta">
+      <span>Display Theory</span><span class="meta-sep">·</span><span>6 min read</span><span class="meta-sep">·</span><span>February 2026</span><span class="meta-sep">·</span><span class="paired">Paired with All Moducases</span>
+    </div>
+    <div class="guide-cover-img"><img src="covers/open-shelves.svg" alt="Open shelves vs cased displays" /></div>
+  </div>
+</header>
+
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#dust">Dust is the obvious problem</a>
+        <a href="#framing">The framing problem</a>
+        <a href="#perceived-value">Perceived value</a>
+        <a href="#paradox">The collector's paradox</a>
+        <a href="#switch">Making the switch</a>
+      </aside>
+
+      <article class="article-content">
+        <p class="lede">A figure on an open shelf and the same figure inside a case do not appear to cost the same amount. The piece is identical. The price tag is identical. But the perceived value is wildly different — and the difference is almost entirely in the frame.</p>
+
+        <h2 id="dust">Dust is the <em>obvious</em> problem</h2>
+        <p>Let's clear the easy argument first. Dust accumulates on open displays at a rate that surprises most collectors. A figure displayed openly in a typical home environment requires meaningful cleaning every two to three weeks to stay presentable. Detailed paint applications, fabric costumes, and weapon details collect dust faster than smooth surfaces. Cleaning, even gentle cleaning, gradually wears on these surfaces over years.</p>
+        <p>This is the argument every collector eventually makes for cases, and it's true. But it's also the second-worst thing about open shelving.</p>
+
+        <h2 id="framing">The <em>framing</em> problem</h2>
+        <p>Here's the harder argument: open shelving prevents your collection from being seen the way it was meant to be seen. Without a frame around it, an object is contextless. It has no edge that says "this is meaningful, look here." It exists in the same visual category as a candle, a book, a houseplant — domestic miscellany.</p>
+        <p>Galleries, museums, and high-end retailers have understood this for centuries. The frame doesn't just protect the work; it announces the work. It says: this is a finished object, presented with intention. Without the frame, even masterpieces can read as decorative clutter.</p>
+        <p>For collectors, the frame is the case. And the absence of a case is the absence of context.</p>
+
+        <div class="pull-quote">"Without a frame, an object is contextless. It exists in the same visual category as a candle."</div>
+
+        <h2 id="perceived-value">What a case does for <em>perceived value</em></h2>
+        <p>This is uncomfortable to say out loud, but it's true: a $400 figure inside a clean acrylic case looks more expensive than a $4,000 figure on a dusty shelf. The case is doing visual work the figure can't do alone. It signals that the object is precious enough to merit protection, presentation, and consideration.</p>
+        <p>The collector knows what they paid. The case is for everyone else — visitors, family members, people who don't read collector forums. To them, the framing is most of the story.</p>
+        <p>This is why some collectors notice that their friends and family take their hobby more seriously after the cases arrive. The objects didn't change. The framing did.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/open-shelves-1.svg" alt="Customer setup" />
+            <div class="ph-tag">Naomi K. · Toronto</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">NAOMI K. <span>· Toronto, CA</span></div>
+            <div class="quote">"My partner thought my collection was clutter for ten years. I moved everything into Moducases over a weekend. He's the one who suggests adding shelves now."</div>
+            <div class="config">Configuration: <strong>3×4 Sixth Series · Mounted as a single wall</strong></div>
+          </div>
+        </div>
+
+        <h2 id="paradox">The <em>collector's paradox</em></h2>
+        <p>Most collectors invest disproportionately in the objects and almost nothing in their presentation. This is rational on a per-object basis — adding a $200 case to a $400 figure feels like a 50% premium. It's irrational on a collection level, because the case isn't an addition to one figure; it's a multiplier on the perceived value of the entire wall.</p>
+        <p>Ten figures on a shelf look like ten figures on a shelf. Ten figures in a coordinated wall of cases look like a collection. The total cost difference might be 25–40%; the perceived value difference is closer to 5x. The case investment compounds across every piece behind it.</p>
+
+        <div class="callout">
+          <div class="callout-label">A note on cost</div>
+          <p>The most expensive Moducase wall is cheaper than the cheapest replacement of even one mid-tier figure damaged on an open shelf. The case isn't an upgrade — it's insurance for everything you already own.</p>
+        </div>
+
+        <h2 id="switch">Making the <em>switch</em></h2>
+        <p>The transition from open shelves to cased displays doesn't have to happen all at once. Most collectors phase it: start with the most valuable or most fragile pieces in cases first, then expand the cased section over months as budget allows. A wall that's half open shelves and half Moducases looks awkward; a wall with one full row of Moducases at eye level and remaining open shelves below or above looks intentional.</p>
+        <p>Eventually, every collector who makes this transition reports the same realisation: they spent years caring for objects in a way that didn't reflect what those objects meant to them. The switch isn't an upgrade. It's an alignment.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/open-shelves-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Marcello B. · Milan</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">MARCELLO B. <span>· Milan, IT</span></div>
+            <div class="quote">"For twenty years I had my collection in IKEA Detolfs. Then I bought one Moducase 'just to try.' Within six months, all the Detolfs were gone. The collection finally reads as a collection."</div>
+            <div class="config">Configuration: <strong>2×5 Sixth Series · Phased migration over 14 months</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Plan your migration</div>
+          <p style="margin-bottom:20px;">Most collectors phase the switch over months, not weeks. Free consultation to plan your phasing.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="guide-cta">
+      <h3>Stop hiding it.<br><em>Start showing it.</em></h3>
+      <p>The case is the frame. The frame is the difference. Free consultation, no quotas, no pressure.</p>
+      <div class="cta-btns">
+        <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+        <a href="../index.html#shop" class="btn btn-ghost">Shop All Cases</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related">
+  <div class="wrap">
+    <div class="related-header"><p class="eyebrow">Continue reading</p><h2>More from <em>The Library</em></h2></div>
+    <div class="related-grid">
+      <a href="collector-room-layout.html" class="related-card">
+        <div class="related-cover"><img src="covers/collector-room-layout.svg" alt="Collector Room Layout" /></div>
+        <div class="related-body"><div class="related-cat">Room Design</div><h4>How to Plan a Collector Room Without Making It Look Cluttered</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="acrylic-vs-glass.html" class="related-card">
+        <div class="related-cover"><img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass" /></div>
+        <div class="related-body"><div class="related-cat">Materials</div><h4>Acrylic vs Glass Display Cases: Which Is Better for Collectors?</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="statues-dioramas.html" class="related-card">
+        <div class="related-cover"><img src="covers/statues-dioramas.svg" alt="Statues and Dioramas" /></div>
+        <div class="related-body"><div class="related-cat">Statues</div><h4>Display Case Buying Guide for Statues, Dioramas, and Centerpiece Pieces</h4><span class="read-link">Read →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="../index.html">All Cases</a><a href="../index.html">Configurator</a><a href="../gallery.html">Gallery</a><a href="../index.html">Accessories</a></div>
+      <div class="footer-col"><h4>Learn</h4><a href="index.html">The Library</a><a href="../features.html">Features</a><a href="../gallery.html">Gallery</a><a href="../index.html#faq">FAQ</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="../consultation.html">Free Consultation</a><a href="../index.html">About</a><a href="../index.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 MODUSPACE</span><span>MADE TO ORDER · SHIPPED WORLDWIDE</span></div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
+</script>
+</body>
+</html>

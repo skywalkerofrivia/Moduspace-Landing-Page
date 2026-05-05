@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Display Case Size for LEGO Sets — Moduspace Library</title>
+  <meta name="description" content="From the Bonsai Tree to the Millennium Falcon UCS, here's how to size a case to a set — and how to plan ahead for the next build." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .article-content ul { margin: 0 0 24px 0; padding-left: 24px; }
+    .article-content li { font-size: 17px; line-height: 1.65; color: var(--cream); margin-bottom: 8px; }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+    .spec-card { background: var(--black-3); border: 1px solid var(--line-2); padding: 24px 28px; }
+    .spec-card-label { font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 10px; }
+    .spec-card-title { font-family: var(--serif); font-size: 20px; font-weight: 300; margin-bottom: 8px; }
+    .spec-card-dims { font-size: 14px; color: var(--cream-2); line-height: 1.6; }
+
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side { display: none; }
+      .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+      .spec-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-mark"></span>
+      MODUSPACE
+    </a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col">
+            <h5>By Series</h5>
+            <a href="../index.html#shop">Sixth Series</a>
+            <a href="../index.html#shop">DF Series</a>
+            <a href="../index.html#shop">Max &amp; Max Plus</a>
+            <a href="../index.html#shop">Moducase Mini</a>
+          </div>
+          <div class="nav-menu-col">
+            <h5>By Use</h5>
+            <a href="../index.html#shop">Figures &amp; Statues</a>
+            <a href="../index.html#shop">LEGO &amp; Models</a>
+            <a href="../index.html#shop">Dioramas</a>
+            <a href="../index.html#shop">Full Room Walls</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#shop" class="drawer-sub">Shop</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta">
+    <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+  </div>
+</div>
+
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="index.html">The Library</a>
+      <span class="sep">/</span>
+      <span class="current">LEGO Display Size</span>
+    </div>
+    <p class="eyebrow">LEGO · 7 min read</p>
+    <h1>Best Display Case Size<br>for <em>LEGO</em> Sets</h1>
+    <div class="guide-hero-meta">
+      <span>LEGO</span>
+      <span class="meta-sep">·</span>
+      <span>7 min read</span>
+      <span class="meta-sep">·</span>
+      <span>March 2026</span>
+      <span class="meta-sep">·</span>
+      <span class="paired">Paired with DF Series</span>
+    </div>
+    <div class="guide-cover-img">
+      <img src="covers/lego-display-size.svg" alt="LEGO Display Cases" />
+    </div>
+  </div>
+</header>
+
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#sizing-problem">Why sizing is hard</a>
+        <a href="#modular-paradox">The modular paradox</a>
+        <a href="#width-depth">Width vs depth tradeoffs</a>
+        <a href="#next-set">Planning for the next set</a>
+        <a href="#df-advantage">The DF Series advantage</a>
+      </aside>
+
+      <article class="article-content">
+        <p class="lede">The LEGO Bonsai Tree is 176mm tall and 177mm wide. The Millennium Falcon UCS is 210mm tall and 827mm long. Both are "LEGO sets" — and the difference between them is more than scale. It's the entire discipline of case sizing, compressed into a single product line.</p>
+
+        <h2 id="sizing-problem">Why LEGO sizing is <em>harder than it looks</em></h2>
+        <p>Most collector categories have predictable proportions. 1/6 scale figures cluster around 30–36cm tall. Statues have standardised base conventions. But LEGO sets range from a few hundred pieces to over 9,000 — and the physical dimensions scale not just with piece count but with set geometry.</p>
+        <p>The Icons Creator series, the Botanical Collection, the Architecture series — all have wildly different footprints. A display case that fits the Empire State Building set neatly (317mm tall, 120mm square footprint) will look absurdly large around a Bonsai Tree and too shallow for a Grand Piano (58mm tall but 296mm wide and 185mm deep).</p>
+        <p>The other complication is dust. Open shelves are aesthetically forgiving of small imprecision — a set that's slightly too tall for its shelf just sits in front of it. But a case that's too small physically can't house the set. And a case with interior dimensions that match the set exactly leaves no room to remove and replace the set without disassembling it — which, for large UCS sets, risks piece separation and stud damage.</p>
+
+        <div class="spec-grid">
+          <div class="spec-card">
+            <div class="spec-card-label">Small / Medium sets</div>
+            <div class="spec-card-title">Botanical, Icons</div>
+            <div class="spec-card-dims">
+              Height: 200–350mm<br>Width: 150–250mm<br>Depth: 150–220mm<br><br>
+              Recommended: DF Series S<br>Interior: 360×280×240mm
+            </div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card-label">Large / UCS sets</div>
+            <div class="spec-card-title">Millennium Falcon, Eiffel Tower</div>
+            <div class="spec-card-dims">
+              Height: 200–500mm<br>Width: 600–900mm<br>Depth: 400–600mm<br><br>
+              Recommended: DF Series XL<br>Interior: 560×960×640mm
+            </div>
+          </div>
+        </div>
+
+        <h2 id="modular-paradox">The <em>modular</em> paradox</h2>
+        <p>Here's the trap that catches most LEGO collectors: they design their case wall around current sets, then discover that LEGO's modular nature means the sets are going to change.</p>
+        <p>The LEGO Modular Buildings series is the clearest example. Each building is designed to connect to the others on a standard 32×32 stud baseplate footprint, but the heights vary — the Assembly Square is 395mm tall, the Bookshop is 340mm, the upcoming releases are consistently growing. A collector who bought cases sized to the 2020 modular line is already running out of headroom on the 2025 releases.</p>
+        <p>The same dynamic plays out in the UCS Star Wars line. The original UCS Millennium Falcon (2007) was the largest LEGO set ever made at the time. Then came the 2017 version, 75% larger. Then the UCS Imperial Star Destroyer. Then the Razor Crest. Each generation of "ultimate" sets redefines what large means.</p>
+        <p>This isn't an argument against buying cases — it's an argument for buying the right cases. The correct LEGO display strategy isn't sized to current sets; it's sized to the category of sets you collect, with explicit room for the releases you don't know about yet.</p>
+
+        <div class="pull-quote">"Buy a case for the collection you'll have in three years, not the one on your shelf today."</div>
+
+        <h2 id="width-depth">Width vs depth <em>tradeoffs</em></h2>
+        <p>For most LEGO sets, width and depth matter more than height. Sets like the Titanic (1,353 studs long — 1,086mm in physical terms), the Eiffel Tower (149cm tall), and the newer UCS vehicles are horizontal or vertical monuments that require cases designed for monumental objects.</p>
+        <p>The depth problem is particularly common. LEGO sets often look narrow from the front but extend substantially into the case. The Modular Buildings are 32 studs deep (256mm), which requires a case depth of at least 300mm to allow comfortable placement and retrieval. The UCS vehicles are worse — the AT-AT is 500mm deep at its widest point, and that's before you consider the display angle most collectors prefer (angled 30 degrees off square to show the articulated legs).</p>
+        <p>There's also a second depth consideration for collectors who display minifigures alongside their sets: the figure display requires its own depth envelope, and most collectors prefer to position minifigures in front of the set they accompany rather than alongside it, which means the total depth requirement is set depth plus figure projection.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/lego-display-size-1.svg" alt="Customer setup" />
+            <div class="ph-tag">David K. · Toronto</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">DAVID K. <span>· Toronto, CA</span></div>
+            <div class="quote">"I've built every Modular Building since the Café Corner in 2007. The DF Series XL is the only case I've found that fits the full row together — and when the next release arrives, I just extend the configuration."</div>
+            <div class="config">Configuration: <strong>1×5 DF Series XL · No lighting · Full-seal magnetic closure</strong></div>
+          </div>
+        </div>
+
+        <h2 id="next-set">Planning <em>for the next set</em></h2>
+        <p>The most effective LEGO display strategy is modular by design. Rather than buying one large case for your current collection, buy a system that can grow — adding modules as your collection grows, without replacing what you've already installed.</p>
+        <p>This requires thinking about case depth and mounting pattern before you buy the first module. A wall-mounted DF Series configuration designed for 300mm depth cannot easily accept a module retrofitted to 450mm depth without remounting the entire rail system. Plan the deepest dimension you'll ever need and buy to that specification from the first purchase.</p>
+        <p>The other planning consideration is set retirement. LEGO sets are produced for a limited window before being retired and replaced by newer releases. Collectors who display retired sets often want to display them permanently — which is a different brief than a collector who rotates what's on display. The permanent display collector needs a case sized exactly; the rotating collector needs deliberate extra clearance for easier handling.</p>
+
+        <div class="callout">
+          <div class="callout-label">DF Series specification</div>
+          <p>The DF Series is designed for flat builds, wide footprints, and collections that grow. Available in S, M, L, and XL interior configurations — and designed to extend horizontally without gaps when multiple modules are mounted side by side on the same rail.</p>
+        </div>
+
+        <h2 id="df-advantage">The <em>DF Series</em> advantage</h2>
+        <p>The DF Series (Display Flat) was designed specifically for the wide, shallow footprint of LEGO sets, architectural models, and vehicle displays. The standard width-to-height ratio is 16:9 per module — deliberately wide relative to height — because that's the aspect ratio that matches most horizontal LEGO builds.</p>
+        <p>The modular extension system allows collectors to start with a single module and extend horizontally without gaps, without visible seams, and without remounting. The rail system is designed to accommodate the full width of every current UCS set in production. The depth configurations — 240mm, 320mm, 420mm, and 560mm — cover the full range from Botanical Collection sets to UCS vehicles at display angle.</p>
+        <p>Lighting in the DF Series is optimised for horizontal builds: a full-width LED channel runs across the front of the case top, providing even illumination across the entire build footprint rather than spotlighting individual peaks of a vertical structure. This matters for Modular Buildings in particular, where uneven lighting creates harsh shadows at the building joins.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/lego-display-size-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Yuki M. · Tokyo</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">YUKI M. <span>· Tokyo, JP</span></div>
+            <div class="quote">"I display the full Botanical Collection in a 2×4 DF Series Medium configuration — each module holds two sets with space between them. The front-lighting makes the translucent leaf pieces glow in a way I've never seen on an open shelf."</div>
+            <div class="config">Configuration: <strong>2×4 DF Series M · Warm 3000K LED · Magnetic Seal</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Paired product</div>
+          <p style="margin-bottom:20px;">The DF Series is built for LEGO's wide footprint — modular, dust-sealed, and sized for every set from Bonsai to Falcon.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="guide-cta">
+      <h3>Ready to build<br>your <em>display?</em></h3>
+      <p>The DF Series was designed for LEGO — modular, extendable, and sized to match every build from the Botanical Collection to UCS scale.</p>
+      <div class="cta-btns">
+        <a href="../index.html#shop" class="btn btn-primary">Shop DF Series</a>
+        <a href="../consultation.html" class="btn btn-ghost">Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related">
+  <div class="wrap">
+    <div class="related-header">
+      <p class="eyebrow">Continue reading</p>
+      <h2>More from <em>The Library</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="acrylic-vs-glass.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass" /></div>
+        <div class="related-body">
+          <div class="related-cat">Materials</div>
+          <h4>Acrylic vs Glass Display Cases: Which Is Better for Collectors?</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="open-shelves.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/open-shelves.svg" alt="Open Shelves" /></div>
+        <div class="related-body">
+          <div class="related-cat">Display Theory</div>
+          <h4>Why Open Shelves Make Expensive Collections Look Cheaper</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="collector-room-layout.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover"><img src="covers/collector-room-layout.svg" alt="Collector Room Layout" /></div>
+        <div class="related-body">
+          <div class="related-cat">Room Design</div>
+          <h4>How to Plan a Collector Room Without Making It Look Cluttered</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="../index.html#shop">Sixth Series</a>
+        <a href="../index.html#shop">DF Series</a>
+        <a href="../index.html#shop">Max &amp; Max Plus</a>
+        <a href="../index.html#shop">Moducase Mini</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="index.html">The Library</a>
+        <a href="../features.html">Features</a>
+        <a href="../gallery.html">Gallery</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../consultation.html">Free Consultation</a>
+        <a href="../index.html">About</a>
+        <a href="../index.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Moduspace. All rights reserved.</span>
+      <span>Designed for collectors, by collectors.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acrylic vs Glass Display Cases — Moduspace Library</title>
+  <meta name="description" content="Glass carries an iron-green tint and shatters without warning. Acrylic doesn't. The case-by-case comparison every collector should read." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+
+    /* ---- GUIDE HERO ---- */
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream-2);
+    }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ---- ARTICLE LAYOUT ---- */
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .article-content ul { margin: 0 0 24px 0; padding-left: 24px; }
+    .article-content li { font-size: 17px; line-height: 1.65; color: var(--cream); margin-bottom: 8px; }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+
+    /* ---- SETUP BLOCKS ---- */
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+
+    /* ---- GUIDE CTA ---- */
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .guide-cta .btn { position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* ---- RELATED ---- */
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+
+    /* ---- MOBILE ---- */
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side { display: none; }
+      .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-mark"></span>
+      MODUSPACE
+    </a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col">
+            <h5>By Series</h5>
+            <a href="../index.html#shop">Sixth Series</a>
+            <a href="../index.html#shop">DF Series</a>
+            <a href="../index.html#shop">Max &amp; Max Plus</a>
+            <a href="../index.html#shop">Moducase Mini</a>
+          </div>
+          <div class="nav-menu-col">
+            <h5>By Use</h5>
+            <a href="../index.html#shop">Figures &amp; Statues</a>
+            <a href="../index.html#shop">LEGO &amp; Models</a>
+            <a href="../index.html#shop">Dioramas</a>
+            <a href="../index.html#shop">Full Room Walls</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#shop" class="drawer-sub">Shop</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta">
+    <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="index.html">The Library</a>
+      <span class="sep">/</span>
+      <span class="current">Acrylic vs Glass</span>
+    </div>
+    <p class="eyebrow">Materials · 8 min read</p>
+    <h1>Acrylic vs Glass Display Cases:<br>Which Is <em>Better</em> for Collectors?</h1>
+    <div class="guide-hero-meta">
+      <span>Materials</span>
+      <span class="meta-sep">·</span>
+      <span>8 min read</span>
+      <span class="meta-sep">·</span>
+      <span>April 2026</span>
+      <span class="meta-sep">·</span>
+      <span class="paired">Paired with All Moducases</span>
+    </div>
+    <div class="guide-cover-img">
+      <img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass Display Cases" />
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE -->
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <!-- TOC -->
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#glass-problem">The glass problem</a>
+        <a href="#acrylic-performance">Acrylic in real environments</a>
+        <a href="#optical-clarity">Optical clarity</a>
+        <a href="#safety-weight">Safety &amp; repairability</a>
+        <a href="#verdict">The verdict</a>
+      </aside>
+
+      <!-- CONTENT -->
+      <article class="article-content">
+        <p class="lede">Hold a piece of float glass up to a white wall and look through it edge-on. What you see — that faint, unmistakable green — is iron oxide baked into the silica, and it doesn't go away. It just accumulates across every centimeter of thickness until your painstaking display glows slightly wrong, like a photograph seen through a tinted lens.</p>
+
+        <h2 id="glass-problem">The glass problem <em>nobody talks about</em></h2>
+        <p>Most collector discussions about glass vs acrylic focus on scratch resistance. That's the wrong argument. The real issue is optical quality, and it's one that affects every glass case regardless of price point.</p>
+        <p>Standard float glass — even the kind used in high-end display cases — contains iron impurities that create a greenish tint. It's subtle in a single pane, but when you frame an entire collection behind it, when the light bouncing off a figure's chrome or a statue's paintwork passes through that tinted medium before reaching your eye, the colour balance shifts. Warm tones cool off. Reds lose saturation. Whites pick up a faint sea-glass cast.</p>
+        <p>There are low-iron glass options — Starphire, Optiwhite — that reduce this substantially, but they're expensive specialty materials not commonly found in mass-market display cases. And even with low-iron glass, you still have the second problem: weight, and what happens when it breaks.</p>
+        <p>A standard glass display case door large enough to protect a 1/6 scale figure at 300mm height can weigh six to ten kilograms. Multiply that across a modular wall of cases and you're adding structural load that most residential walls weren't designed for. More importantly, glass breaks catastrophically. It doesn't crack and hold. It shatters into sharp shards, and if your collection is on the other side of the door when that happens — from vibration, from an accidental bump — the damage isn't to the glass.</p>
+
+        <div class="pull-quote">"The green tint of glass is the hidden enemy of your collection."</div>
+
+        <h2 id="acrylic-performance">Why acrylic outperforms <em>in real collector environments</em></h2>
+        <p>Acrylic — specifically cast acrylic rather than extruded — is optically neutral. It doesn't carry the iron-green shift of standard glass. What you see through it is what's actually there: the paint application, the texture of fabric, the metallic finish of chrome and polished resin.</p>
+        <p>It's also substantially lighter. A comparably-sized acrylic panel weighs roughly half what glass does, which matters enormously when you're assembling a modular wall system across twelve or twenty cases. The structural load is halved. The cases can be mounted more flexibly, rearranged without removing and reinstalling hardware designed for heavier panels.</p>
+        <p>The criticism you'll hear most often about acrylic is scratch resistance, and it's fair — acrylic does scratch more easily than tempered glass. The proper response to that is care: use a microfibre cloth, avoid abrasive cleaners, and the panels stay pristine for years. The improper response is to accept green-tinted glass as the price of scratch resistance. That trade is nearly always the wrong one.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/acrylic-vs-glass-1.svg" alt="Customer setup" />
+            <div class="ph-tag">Marcus T. · Singapore</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">MARCUS T. <span>· Singapore, SG</span></div>
+            <div class="quote">"I spent two years behind glass before switching. The first time I saw my Iron Man collection through acrylic panels, I genuinely thought the figures had been repainted. The reds were just — right, for the first time."</div>
+            <div class="config">Configuration: <strong>4×2 Sixth Series · Warm LED Kit · Mirror Base</strong></div>
+          </div>
+        </div>
+
+        <h2 id="optical-clarity">The optical <em>clarity</em> comparison</h2>
+        <p>This is worth being precise about, because the marketing language around both materials can be slippery. "Crystal clear" appears on product listings for glass and acrylic alike, and it means different things in each context.</p>
+        <p>For glass, optical clarity is measured against the iron content of the batch. Standard float glass has a light transmission of around 89–91% and a visible green edge. Low-iron glass reaches 91–92% transmission with a near-neutral edge. Both are limited by the physics of silicate glass.</p>
+        <p>Cast acrylic — the grade used in Moduspace panels — achieves 92% light transmission with no inherent colour cast. The surface can be polished to a near-mirror finish that standard glass cannot match, and the material's internal structure doesn't impose any colour temperature shift on transmitted light.</p>
+        <p>In practical terms: your figures look like your figures. Not like your figures seen through a very good window.</p>
+
+        <div class="callout">
+          <div class="callout-label">Moduspace material standard</div>
+          <p>Moducase acrylic is manufactured to optical-clarity standards normally reserved for camera lenses. Each panel is cast, not extruded, and polished on both faces to ensure zero distortion across the full viewing area.</p>
+        </div>
+
+        <h2 id="safety-weight">Safety, weight, <em>and repairability</em></h2>
+        <p>There are two scenarios where material choice becomes a safety question rather than an aesthetic one: case transport and case failure.</p>
+        <p>Collectors move. Collections grow and get reorganised. Cases get bumped, disassembled, reassembled. In any of these scenarios, a glass panel can break. When it does, the pieces are sharp, the cleanup is hazardous, and replacing a custom-sized glass panel often means waiting weeks for a fabricator. An acrylic panel that cracks — which is much harder to achieve, since acrylic is ten times more impact-resistant than glass of equivalent thickness — can be replaced from stock, often shipped within days.</p>
+        <p>There's also the matter of children, pets, and the general unpredictability of domestic life. A case that faces an active household is a case that will eventually be tested. Acrylic loses. The collection lives.</p>
+        <p>Weight compounds over time. Collectors who start with one or two cases and expand to walls of twelve or twenty often don't anticipate the cumulative structural load of glass. At that scale, the shift to acrylic isn't just aesthetic — it's the difference between a wall you can mount safely and one you're hoping holds.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/acrylic-vs-glass-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Claire V. · Melbourne</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">CLAIRE V. <span>· Melbourne, AU</span></div>
+            <div class="quote">"I have two cats and a three-year-old. The fact that my cases are acrylic is not an aesthetic choice — it's the reason I can have cases at all. One panel took a direct hit from a toy car. Scratched, not shattered."</div>
+            <div class="config">Configuration: <strong>3×3 DF Series · Full Seal · No Lighting</strong></div>
+          </div>
+        </div>
+
+        <h2 id="verdict">The <em>verdict</em></h2>
+        <p>Glass has its applications. There are collector contexts — coin displays, archival museum cases, antique furniture — where the weight and tradition of glass are appropriate, even desirable. But for the overwhelming majority of modern collector displays: figures, LEGO, statues, dioramas, scale models — acrylic is the correct material choice.</p>
+        <p>It transmits light more accurately. It weighs less. It survives impact. It can be replaced. And it doesn't impose a green-tinted correction on colours that artists and manufacturers spent considerable effort getting exactly right.</p>
+        <p>The question collectors should ask isn't "glass or acrylic?" It's "why am I still looking at my collection through iron?"</p>
+      </article>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Paired product</div>
+          <p style="margin-bottom:20px;">Every Moducase is built with optical-grade cast acrylic panels — no upsells, no glass options.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- GUIDE CTA -->
+    <div class="guide-cta">
+      <h3>Ready to build<br>your <em>display?</em></h3>
+      <p>Every Moducase ships with optical-grade cast acrylic panels as standard. No green tint, no glass surcharge, no compromises.</p>
+      <div class="cta-btns">
+        <a href="../index.html#shop" class="btn btn-primary">Shop All Moducases</a>
+        <a href="../consultation.html" class="btn btn-ghost">Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED GUIDES -->
+<section class="related">
+  <div class="wrap">
+    <div class="related-header">
+      <p class="eyebrow">Continue reading</p>
+      <h2>More from <em>The Library</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="open-shelves.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover">
+          <img src="covers/open-shelves.svg" alt="Open Shelves" />
+        </div>
+        <div class="related-body">
+          <div class="related-cat">Display Theory</div>
+          <h4>Why Open Shelves Make Expensive Collections Look Cheaper</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="collector-room-layout.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover">
+          <img src="covers/collector-room-layout.svg" alt="Collector Room Layout" />
+        </div>
+        <div class="related-body">
+          <div class="related-cat">Room Design</div>
+          <h4>How to Plan a Collector Room Without Making It Look Cluttered</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+      <a href="statues-dioramas.html" class="related-card" style="text-decoration:none;">
+        <div class="related-cover">
+          <img src="covers/statues-dioramas.svg" alt="Statues and Dioramas" />
+        </div>
+        <div class="related-body">
+          <div class="related-cat">Statues</div>
+          <h4>Display Case Buying Guide for Statues, Dioramas, and Centerpiece Pieces</h4>
+          <span class="read-link">Read →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-mark"></span>
+          MODUSPACE
+        </a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="../index.html#shop">Sixth Series</a>
+        <a href="../index.html#shop">DF Series</a>
+        <a href="../index.html#shop">Max &amp; Max Plus</a>
+        <a href="../index.html#shop">Moducase Mini</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="index.html">The Library</a>
+        <a href="../features.html">Features</a>
+        <a href="../gallery.html">Gallery</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../consultation.html">Free Consultation</a>
+        <a href="../index.html">About</a>
+        <a href="../index.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Moduspace. All rights reserved.</span>
+      <span>Designed for collectors, by collectors.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

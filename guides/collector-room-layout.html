@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Plan a Collector Room — Moduspace Library</title>
+  <meta name="description" content="The difference between a collection and chaos is rhythm. Six layout principles borrowed from gallery design that work as well in 200 sq ft as a hallway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .guide-cta .btn { position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; text-decoration: none; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side, .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+    <ul class="nav-links">
+      <li class="nav-drop"><a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col"><h5>Moducases</h5><a href="../index.html">Mono</a><a href="../index.html">Sixth</a><a href="../index.html">DF</a><a href="../index.html">Max</a><a href="../index.html">Max Plus</a></div>
+          <div class="nav-menu-col"><h5>Accessories</h5><a href="../index.html">Lighting</a><a href="../index.html">Bases &amp; Risers</a><a href="../index.html">Connectors</a><a href="../index.html">Cleaning Kit</a></div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+</nav>
+
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">The Library</a><span class="sep">/</span><span class="current">Collector Room Layout</span></div>
+    <p class="eyebrow">Room Design · 12 min read</p>
+    <h1>How to Plan a Collector Room<br>Without Making It Look <em>Cluttered.</em></h1>
+    <div class="guide-hero-meta">
+      <span>Room Design</span><span class="meta-sep">·</span><span>12 min read</span><span class="meta-sep">·</span><span>March 2026</span><span class="meta-sep">·</span><span class="paired">Paired with Free Consultation</span>
+    </div>
+    <div class="guide-cover-img"><img src="covers/collector-room-layout.svg" alt="Collector room layout" /></div>
+  </div>
+</header>
+
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#rhythm">Rhythm over density</a>
+        <a href="#anchor">Anchor pieces</a>
+        <a href="#eyelevel">Eye level is money</a>
+        <a href="#lighting">Lighting is 40% of the wall</a>
+        <a href="#negative">Negative space</a>
+        <a href="#exit">The exit point</a>
+      </aside>
+
+      <article class="article-content">
+        <p class="lede">There's a moment in every collector's house when the room turns. The pieces are present, the cases are decent, the lighting is acceptable — and yet, somehow, the space reads as a storage area rather than a display. The diagnosis is almost always rhythm. Galleries solved this problem a hundred years ago, and the principles that work for them work for you.</p>
+
+        <h2 id="rhythm">Principle 1 — <em>Rhythm</em> over density</h2>
+        <p>The instinct, when you have a lot of pieces, is to fit as many as possible into the available space. The trained instinct, borrowed from museum curation, is the opposite: deliberately leave gaps, vary heights, alternate between dense and sparse zones. The eye reads variation as intention. It reads uniform density as inventory.</p>
+        <p>A simple test: if you can take your collection in at a glance and there's no clear focal point, the rhythm is wrong. Reduce, redistribute, and re-balance until the wall has a heartbeat.</p>
+
+        <h2 id="anchor">Principle 2 — <em>Anchor pieces</em></h2>
+        <p>Every wall needs one piece that tells the eye where to land first. This is the anchor — typically your largest, most distinctive, most personally meaningful object. Once the anchor is placed, every other piece organises itself in relation to it. Without an anchor, the eye wanders, then leaves.</p>
+        <p>An anchor doesn't have to be central. It can be off-axis, deliberately disrupting the grid, drawing the gaze diagonally across the wall. What it cannot be is one of three equally-sized pieces of similar visual weight — at that point you have three half-anchors, which is none.</p>
+
+        <div class="pull-quote">"Variation is intention. Uniform density is inventory."</div>
+
+        <h2 id="eyelevel">Principle 3 — Eye level <em>is money</em></h2>
+        <p>The most valuable real estate on any collector wall is the horizontal band between 145cm and 175cm from the floor. This is the natural eye-line for an adult viewer, and it's where attention is most easily captured. Anything above this band is sky; anything below it is ground. The gallery convention is to centre the most important pieces inside this band, with secondary pieces above or below.</p>
+        <p>Most collectors get this exactly wrong. They centre their cases vertically on the wall, which puts everything above eye level. The result: a collection that gets glanced at from below, never properly seen.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/collector-room-layout-1.svg" alt="Customer setup" />
+            <div class="ph-tag">Felix M. · Vienna</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">FELIX M. <span>· Vienna, AT</span></div>
+            <div class="quote">"I had a 4×4 grid that no one could see properly because I'd centred it on the wall. Dropped the whole thing 30cm and the room transformed. Same cases. Different display."</div>
+            <div class="config">Configuration: <strong>4×4 Mixed Series · Mounted at 130cm baseline</strong></div>
+          </div>
+        </div>
+
+        <h2 id="lighting">Principle 4 — Lighting is <em>40% of the wall</em></h2>
+        <p>A perfectly arranged display under bad lighting reads worse than a mediocre arrangement under good lighting. Most domestic environments use overhead room lighting that flattens objects and casts unflattering shadows down the front of every figure. The fix is two-fold: kill the overheads when viewing the collection, and add directional lighting inside or above each case.</p>
+        <p>Warm temperature (2700K–3000K) flatters skin tones, paint applications, and metallic finishes. Cool temperature (4000K+) is technically more accurate but reads clinical. For domestic display, warm wins almost every time.</p>
+
+        <div class="callout">
+          <div class="callout-label">Lighting checklist</div>
+          <p>Each case should have its own light source, ideally directional from above and slightly forward. Avoid pointing lights directly at acrylic — at the wrong angle, glare ruins the view. The best test: photograph your collection. If your phone struggles, your eyes are struggling too.</p>
+        </div>
+
+        <h2 id="negative">Principle 5 — <em>Negative space</em></h2>
+        <p>Galleries deliberately leave large blank areas around important works. The blank wall is part of the composition — it tells the eye where to rest, where to refocus, where to anticipate the next piece. Most collectors instinctively fill negative space with secondary pieces, and the room loses its breathing room as a result.</p>
+        <p>The discipline is hard, especially when you've spent years acquiring pieces you love. But a wall with twelve well-spaced cases will always feel more considered than the same wall with sixteen cases packed edge-to-edge. The four cases you don't display can be rotated in seasonally, displayed in an adjacent room, or simply held in reserve.</p>
+
+        <h2 id="exit">Principle 6 — The <em>exit point</em></h2>
+        <p>This is the most subtle of the six. Every collector wall has an exit point — the place where the eye naturally leaves the composition. Galleries put their final piece there deliberately, often a quieter, more contemplative work that gives closure. Collector walls usually have an exit point by accident, and it's usually the wrong piece.</p>
+        <p>Identify yours. It's typically at the far edge of the wall, in the direction the room flows toward. Place a piece there that you genuinely love but that doesn't compete for first attention — a finishing note, not an opener.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/collector-room-layout-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Lina O. · Amsterdam</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">LINA O. <span>· Amsterdam, NL</span></div>
+            <div class="quote">"I had thirty pieces fighting for attention. We did a consultation, removed eight, repositioned six. The room is the same size. It feels twice as large."</div>
+            <div class="config">Configuration: <strong>22-case Mixed Series Wall · Consultation-planned</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Plan with us</div>
+          <p style="margin-bottom:20px;">Layout planning is the part of building a collector room that's hardest to do alone. Free consultation, no pressure.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="guide-cta">
+      <h3>Plan your<br><em>collector room.</em></h3>
+      <p>Bring photos, dimensions, and your collection list. We'll bring layout suggestions to the call. Free, 20 minutes, no pressure to buy.</p>
+      <div class="cta-btns">
+        <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+        <a href="../index.html#shop" class="btn btn-ghost">Shop All Cases</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related">
+  <div class="wrap">
+    <div class="related-header"><p class="eyebrow">Continue reading</p><h2>More from <em>The Library</em></h2></div>
+    <div class="related-grid">
+      <a href="open-shelves.html" class="related-card">
+        <div class="related-cover"><img src="covers/open-shelves.svg" alt="Open Shelves" /></div>
+        <div class="related-body"><div class="related-cat">Display Theory</div><h4>Why Open Shelves Make Expensive Collections Look Cheaper</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="statues-dioramas.html" class="related-card">
+        <div class="related-cover"><img src="covers/statues-dioramas.svg" alt="Statues and Dioramas" /></div>
+        <div class="related-body"><div class="related-cat">Statues</div><h4>Display Case Buying Guide for Statues, Dioramas, and Centerpiece Pieces</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="acrylic-vs-glass.html" class="related-card">
+        <div class="related-cover"><img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass" /></div>
+        <div class="related-body"><div class="related-cat">Materials</div><h4>Acrylic vs Glass Display Cases: Which Is Better for Collectors?</h4><span class="read-link">Read →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="../index.html">All Cases</a><a href="../index.html">Configurator</a><a href="../gallery.html">Gallery</a><a href="../index.html">Accessories</a></div>
+      <div class="footer-col"><h4>Learn</h4><a href="index.html">The Library</a><a href="../features.html">Features</a><a href="../gallery.html">Gallery</a><a href="../index.html#faq">FAQ</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="../consultation.html">Free Consultation</a><a href="../index.html">About</a><a href="../index.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 MODUSPACE</span><span>MADE TO ORDER · SHIPPED WORLDWIDE</span></div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
+</script>
+</body>
+</html>

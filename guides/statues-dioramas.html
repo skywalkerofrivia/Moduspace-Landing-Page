@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Display Case Buying Guide for Statues, Dioramas — Moduspace Library</title>
+  <meta name="description" content="Centerpiece pieces deserve centerpiece cases. How to size, light, and seal a display for the work you've waited months to display properly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+    .guide-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--line-2); }
+    .crumbs { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 36px; font-weight: 500; }
+    .crumbs a { color: var(--cream-2); text-decoration: none; opacity: 0.6; }
+    .crumbs a:hover { opacity: 1; color: var(--bronze); }
+    .crumbs .sep { opacity: 0.4; margin: 0 12px; }
+    .crumbs .current { color: var(--cream-2); opacity: 0.4; }
+    .guide-hero .eyebrow { margin-bottom: 24px; }
+    .guide-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 5.4vw, 76px); line-height: 1.04; max-width: 920px; margin-bottom: 32px; }
+    .guide-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-2); }
+    .guide-hero-meta .meta-sep { opacity: 0.3; }
+    .guide-hero-meta .paired { color: var(--bronze); }
+    .guide-cover-img { margin-top: 56px; aspect-ratio: 21/9; width: 100%; border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; }
+    .guide-cover-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .article { padding: 88px 0 120px; }
+    .article-wrap { display: grid; grid-template-columns: 1fr 680px 1fr; gap: 0; }
+    .toc { position: sticky; top: 96px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); font-weight: 500; max-width: 220px; height: fit-content; }
+    .toc h6 { color: var(--bronze); margin-bottom: 18px; font-weight: 500; font-size: 10px; letter-spacing: 0.3em; }
+    .toc a { display: block; padding: 10px 0; color: var(--cream-2); text-decoration: none; border-top: 1px solid var(--line-2); transition: color .2s, padding .2s; line-height: 1.45; font-size: 10.5px; }
+    .toc a:hover { color: var(--bronze); padding-left: 6px; }
+    .article-content { max-width: 680px; }
+    .article-side { max-width: 220px; margin-left: auto; }
+    .lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 26px; line-height: 1.45; margin-bottom: 56px; padding-bottom: 36px; border-bottom: 1px solid var(--line-2); color: var(--cream); }
+    .article-content h2 { font-family: var(--serif); font-weight: 300; font-size: 36px; line-height: 1.1; margin-top: 64px; margin-bottom: 24px; scroll-margin-top: 96px; }
+    .article-content h2 em { color: var(--bronze); font-style: normal; }
+    .article-content p { font-size: 18px; line-height: 1.7; margin-bottom: 20px; color: var(--cream); }
+    .pull-quote { margin: 56px -40px; padding: 0 40px; font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 32px; line-height: 1.3; color: var(--bronze); border-left: 1px solid var(--bronze); }
+    .callout { background: var(--black-3); border: 1px solid var(--line-2); padding: 32px; margin: 40px 0; }
+    .callout-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); font-weight: 500; margin-bottom: 12px; }
+    .callout p { font-size: 16px; line-height: 1.6; color: var(--cream-2); margin: 0; }
+    .setup { margin: 56px 0; background: var(--black-3); border: 1px solid var(--line-2); overflow: hidden; }
+    .ph-tag { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-2); background: rgba(10,10,10,0.75); padding: 5px 10px; backdrop-filter: blur(8px); }
+    .setup-photo { aspect-ratio: 16/10; width: 100%; background: var(--black); overflow: hidden; position: relative; }
+    .setup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .setup-body { padding: 28px 32px 32px; }
+    .setup-body .who { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .setup-body .who span { color: var(--cream-2); margin-left: 8px; font-weight: 300; }
+    .setup-body .quote { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.4; margin-bottom: 14px; }
+    .setup-body .config { font-size: 13px; color: var(--cream-2); letter-spacing: 0.06em; }
+    .setup-body .config strong { color: var(--cream); font-weight: 500; }
+    .guide-cta { margin: 100px 0 0; padding: 80px 56px; text-align: center; background: var(--black-3); border: 1px solid var(--line-2); position: relative; overflow: hidden; }
+    .guide-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,118,0.08), transparent 70%); pointer-events: none; }
+    .guide-cta h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 3.5vw, 52px); margin-bottom: 20px; position: relative; }
+    .guide-cta p { font-size: 17px; color: var(--cream-2); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; position: relative; }
+    .guide-cta .btn { position: relative; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .related { padding: 100px 0 140px; border-top: 1px solid var(--line-2); }
+    .related-header { margin-bottom: 48px; }
+    .related-header .eyebrow { margin-bottom: 16px; }
+    .related-header h2 { font-family: var(--serif); font-weight: 300; font-size: 42px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .related-card { background: var(--black-2); border: 1px solid var(--line-2); overflow: hidden; transition: border-color .3s; text-decoration: none; }
+    .related-card:hover { border-color: var(--line); }
+    .related-cover { aspect-ratio: 16/9; overflow: hidden; background: var(--black-3); }
+    .related-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; display: block; }
+    .related-card:hover .related-cover img { transform: scale(1.04); }
+    .related-body { padding: 24px 28px 28px; }
+    .related-cat { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze); margin-bottom: 10px; font-weight: 500; }
+    .related-body h4 { font-family: var(--serif); font-weight: 300; font-size: 20px; line-height: 1.2; margin-bottom: 14px; transition: color .2s; }
+    .related-card:hover .related-body h4 { color: var(--bronze); }
+    .read-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze); text-decoration: none; font-weight: 500; }
+    @media (max-width: 900px) {
+      .article-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+      .article-side, .toc { display: none; }
+      .pull-quote { margin: 40px 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .guide-cta { padding: 56px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+    <ul class="nav-links">
+      <li class="nav-drop"><a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col"><h5>Moducases</h5><a href="../index.html">Mono</a><a href="../index.html">Sixth</a><a href="../index.html">DF</a><a href="../index.html">Max</a><a href="../index.html">Max Plus</a></div>
+          <div class="nav-menu-col"><h5>Accessories</h5><a href="../index.html">Lighting</a><a href="../index.html">Bases &amp; Risers</a><a href="../index.html">Connectors</a><a href="../index.html">Cleaning Kit</a></div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta"><a href="../consultation.html" class="btn btn-primary">Free Consultation</a></div>
+</nav>
+
+<header class="guide-hero">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">The Library</a><span class="sep">/</span><span class="current">Statues &amp; Dioramas</span></div>
+    <p class="eyebrow">Statues · 10 min read</p>
+    <h1>Display Case Buying Guide<br>for <em>Statues</em>, Dioramas,<br>and Centerpiece Pieces.</h1>
+    <div class="guide-hero-meta">
+      <span>Statues</span><span class="meta-sep">·</span><span>10 min read</span><span class="meta-sep">·</span><span>February 2026</span><span class="meta-sep">·</span><span class="paired">Paired with Max &amp; Max Plus</span>
+    </div>
+    <div class="guide-cover-img"><img src="covers/statues-dioramas.svg" alt="Statues and dioramas display" /></div>
+  </div>
+</header>
+
+<div class="article">
+  <div class="wrap">
+    <div class="article-wrap">
+      <aside class="toc">
+        <h6>Contents</h6>
+        <a href="#centerpiece">The centerpiece problem</a>
+        <a href="#measure">Measuring for a statue</a>
+        <a href="#lighting">The lighting question</a>
+        <a href="#sealing">Sealing &amp; humidity</a>
+        <a href="#max-difference">The Max &amp; Max Plus difference</a>
+      </aside>
+
+      <article class="article-content">
+        <p class="lede">A statue isn't a figure scaled up. It's a different category of object — heavier, more delicate in finish, often more expensive, and almost always meant to be the centerpiece of a room. The display logic that works for a 1/6 figure breaks down at this scale, and the consequences of getting it wrong are visible from across the room.</p>
+
+        <h2 id="centerpiece">The <em>centerpiece</em> problem</h2>
+        <p>Centerpiece pieces — Prime 1 dioramas, Sideshow Premium Format statues, museum-quality reproductions — have a unique display challenge: they have to look right from every viewing angle, from across the room and from a metre away. Most cases optimise for one or the other. The frame disappears at distance but reveals itself uncomfortably close, or vice versa.</p>
+        <p>The Max and Max Plus series were designed around this dual-distance problem. Wider sightlines, deeper internal volume, and a frame profile that minimises visual interruption from any angle — the result is a case that lets the work be seen properly whether you're walking past or studying it.</p>
+
+        <h2 id="measure">How to <em>measure</em> for a statue</h2>
+        <p>The first measurement collectors take is height. The first measurement they should take is diagonal — corner to corner across the base, including any extended limbs, bases, or scenery elements. A 1/4 scale Predator that's 740mm tall might require 920mm of internal length once the spear, the dreadlocks, and the trophy display are accounted for.</p>
+        <p>The second measurement is base depth, including any extended diorama elements. Statue bases often extend 30–60mm beyond the figure's silhouette, and a case sized to the figure rather than the base will crop the base against the front panel — destroying the proportions of the work as the artist intended.</p>
+        <p>The third, and most overlooked, is overhead clearance for accent lighting. A directional spotlight installed inside the case needs 80–120mm of clearance above the highest point of the work. Skipping this calculation results in lights that either touch the figure or sit so close that the heat affects the paint application over time.</p>
+
+        <div class="pull-quote">"A centerpiece statue is the most expensive piece in your collection. Display it like one."</div>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/statues-dioramas-1.svg" alt="Customer setup" />
+            <div class="ph-tag">Diego N. · Madrid</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">DIEGO N. <span>· Madrid, ES</span></div>
+            <div class="quote">"My Sideshow Predator was in a generic case for three years. Wrong proportions, bad light. Moved it into a Max Plus and the room changed. The piece finally looks like it cost what it cost."</div>
+            <div class="config">Configuration: <strong>1× Max Plus 920×620 · Dual-spot LED · Mirror Base</strong></div>
+          </div>
+        </div>
+
+        <h2 id="lighting">The <em>lighting</em> question</h2>
+        <p>Statues benefit from directional lighting in ways figures rarely do. The depth of paint application, the modelling of muscle and fabric, the metallic finishes used on weapons and armour — all of these come alive under directional light and look flat under ambient room lighting. The default setup for a Max series case is two adjustable spotlights mounted at 30° from vertical, both warm-temperature.</p>
+        <p>For dioramas with multiple focal characters, three-point lighting may be appropriate: a key light, a fill, and a back light to separate the figure from the diorama background. This is gallery-grade complexity, and not every collection needs it — but for the truly important pieces, the difference is striking.</p>
+
+        <h2 id="sealing">Sealing <em>and humidity</em></h2>
+        <p>Statues and dioramas with painted resin surfaces are surprisingly sensitive to humidity. High humidity over time can soften paint applications. Low humidity can cause certain resin formulations to develop fine crazing across the surface. Most domestic environments fluctuate enough to do gradual damage over years.</p>
+        <p>A sealed Moducase case provides remarkably stable internal conditions. The magnetic edge seals plus the brush-seal door create an environment that buffers the figure against rapid humidity changes. For collectors in particularly dry or humid climates, an internal humidity card or small silica reservoir extends this stability further.</p>
+
+        <div class="callout">
+          <div class="callout-label">Conservation note</div>
+          <p>Resin and polystone statues should not be displayed in direct sunlight under any conditions. UV exposure causes pigment degradation that is irreversible. Even indirect daylight over years will cause visible fading on darker pigments. The Max Plus lighting kits use UV-filtered LEDs as standard.</p>
+        </div>
+
+        <h2 id="max-difference">The <em>Max &amp; Max Plus</em> difference</h2>
+        <p>Max and Max Plus are not larger versions of the smaller Moducase series. They're a different design language — built around the assumption that the work inside is the focal point of the room, not part of a wall. Single-piece presentation. Heavier-grade frame. Reinforced base panel. Higher-output lighting kits with finer dimming control.</p>
+        <p>The Max series fits most 1/4 scale statues and small to medium dioramas. The Max Plus extends to 1/3 scale work and large dioramas. Both share the connection system with the rest of the Moduspace catalog, so a centerpiece Max Plus can sit at the heart of a wall built from Sixth or DF cases — a room with a clear hierarchy.</p>
+
+        <div class="setup">
+          <div class="setup-photo">
+            <img src="setups/statues-dioramas-2.svg" alt="Customer setup" />
+            <div class="ph-tag">Marisol P. · Mexico City</div>
+          </div>
+          <div class="setup-body">
+            <div class="who">MARISOL P. <span>· Mexico City, MX</span></div>
+            <div class="quote">"I have one Prime 1 Batman diorama. It's the most important object in my house. The Max Plus made it the centerpiece of the room — it had been hiding for years."</div>
+            <div class="config">Configuration: <strong>1× Max Plus 1100×720 · Three-point LED · Black Velvet Base</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="article-side">
+        <div class="callout" style="position:sticky;top:96px;">
+          <div class="callout-label">Paired product</div>
+          <p style="margin-bottom:20px;">Max &amp; Max Plus are sized for centerpiece statues and large dioramas. Made to order to your statue's exact dimensions.</p>
+          <a href="../consultation.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:11px;">Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="guide-cta">
+      <h3>Display your<br><em>centerpiece.</em></h3>
+      <p>Bring your statue's dimensions to a free consultation. We'll spec the case, lighting, and base treatment together.</p>
+      <div class="cta-btns">
+        <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+        <a href="../index.html#shop" class="btn btn-ghost">Shop Max Series</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="related">
+  <div class="wrap">
+    <div class="related-header"><p class="eyebrow">Continue reading</p><h2>More from <em>The Library</em></h2></div>
+    <div class="related-grid">
+      <a href="1-6-figures.html" class="related-card">
+        <div class="related-cover"><img src="covers/1-6-figures.svg" alt="1/6 Figures" /></div>
+        <div class="related-body"><div class="related-cat">Figures</div><h4>How to Choose a Display Case for 1/6 Scale Figures</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="acrylic-vs-glass.html" class="related-card">
+        <div class="related-cover"><img src="covers/acrylic-vs-glass.svg" alt="Acrylic vs Glass" /></div>
+        <div class="related-body"><div class="related-cat">Materials</div><h4>Acrylic vs Glass Display Cases: Which Is Better for Collectors?</h4><span class="read-link">Read →</span></div>
+      </a>
+      <a href="collector-room-layout.html" class="related-card">
+        <div class="related-cover"><img src="covers/collector-room-layout.svg" alt="Collector Room Layout" /></div>
+        <div class="related-body"><div class="related-cat">Room Design</div><h4>How to Plan a Collector Room Without Making It Look Cluttered</h4><span class="read-link">Read →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo"><span class="logo-mark"></span>MODUSPACE</a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="../index.html">All Cases</a><a href="../index.html">Configurator</a><a href="../gallery.html">Gallery</a><a href="../index.html">Accessories</a></div>
+      <div class="footer-col"><h4>Learn</h4><a href="index.html">The Library</a><a href="../features.html">Features</a><a href="../gallery.html">Gallery</a><a href="../index.html#faq">FAQ</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="../consultation.html">Free Consultation</a><a href="../index.html">About</a><a href="../index.html">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 MODUSPACE</span><span>MADE TO ORDER · SHIPPED WORLDWIDE</span></div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : ''; });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = ''; }));
+</script>
+</body>
+</html>

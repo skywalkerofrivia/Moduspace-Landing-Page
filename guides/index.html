@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Library — Moduspace Collector Guides</title>
+  <meta name="description" content="Long-form essays on protecting, presenting, and arranging collections worth keeping. Materials, figures, LEGO, room design, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <style>
+    .logo-mark { background-image: url('../assets/logo.png'); }
+
+    /* ---- LIBRARY HEADER ---- */
+    .lib-header {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lib-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,118,0.12), transparent 65%);
+      pointer-events: none;
+    }
+    .lib-header .eyebrow { margin-bottom: 28px; }
+    .lib-header h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(48px, 6.5vw, 90px);
+      line-height: 1.02;
+      margin-bottom: 28px;
+    }
+    .lib-header p {
+      font-size: 19px;
+      color: var(--cream-2);
+      max-width: 560px;
+      margin: 0 auto 56px;
+      line-height: 1.65;
+    }
+
+    /* ---- FILTER PILLS ---- */
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 20px;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream-2);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .pill:hover { border-color: var(--bronze); color: var(--bronze); }
+    .pill.active { background: var(--bronze); border-color: var(--bronze); color: #1a1306; }
+    .pill-count {
+      font-size: 10px;
+      opacity: 0.6;
+      font-weight: 400;
+    }
+
+    /* ---- EDITOR'S NOTE ---- */
+    .editors-note {
+      margin: 72px 0 0;
+      border-top: 1px solid var(--line-2);
+      padding-top: 72px;
+    }
+    .editors-note-inner {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .editors-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--bronze);
+    }
+    .editors-body .eyebrow { margin-bottom: 14px; }
+    .editors-body blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--cream-2);
+    }
+
+    /* ---- GUIDES GRID ---- */
+    .guides-section {
+      padding: 80px 0 140px;
+    }
+    .guides-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    /* Featured card — first child spans full width */
+    .guide-card:first-child {
+      grid-column: 1 / -1;
+    }
+    .guide-card {
+      background: var(--black-2);
+      border: 1px solid var(--line-2);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .3s;
+      position: relative;
+    }
+    .guide-card:hover { border-color: var(--line); }
+    .guide-card-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    /* Featured card is horizontal */
+    .guide-card:first-child .guide-card-inner {
+      flex-direction: row;
+    }
+    .guide-cover {
+      overflow: hidden;
+      background: var(--black-3);
+      aspect-ratio: 4/3;
+      flex-shrink: 0;
+    }
+    .guide-card:first-child .guide-cover {
+      aspect-ratio: 21/9;
+      width: 100%;
+      flex: none;
+    }
+    .guide-card:first-child .guide-card-inner { flex-direction: column; }
+    .guide-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+      display: block;
+    }
+    .guide-card:hover .guide-cover img { transform: scale(1.04); }
+    .guide-body {
+      padding: 32px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .guide-card:first-child .guide-body { padding: 40px 48px 48px; }
+    .guide-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .guide-cat {
+      font-size: 10.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 500;
+    }
+    .guide-dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+    .guide-time, .guide-date {
+      font-size: 12px;
+      color: var(--cream-2);
+      letter-spacing: 0.08em;
+    }
+    .guide-body h3 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 26px;
+      line-height: 1.12;
+      margin-bottom: 14px;
+      transition: color .2s;
+    }
+    .guide-card:first-child .guide-body h3 {
+      font-size: clamp(30px, 3.2vw, 44px);
+    }
+    .guide-card:hover .guide-body h3 { color: var(--bronze); }
+    .guide-excerpt {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--cream-2);
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .guide-card:first-child .guide-excerpt { max-width: 680px; font-size: 17px; }
+    .guide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .guide-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap .2s;
+    }
+    .guide-card:hover .guide-link { gap: 14px; }
+    .guide-paired {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-2);
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    /* Hidden when filtered */
+    .guide-card.hidden { display: none; }
+
+    /* Reveal animation */
+    .guide-card {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease, transform .5s ease, border-color .3s;
+    }
+    .guide-card.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      .guides-grid { grid-template-columns: 1fr; gap: 2px; }
+      .guide-card:first-child { grid-column: auto; }
+      .editors-note-inner { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .guide-body { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-mark"></span>
+      MODUSPACE
+    </a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <a>Shop</a>
+        <div class="nav-menu">
+          <div class="nav-menu-col">
+            <h5>By Series</h5>
+            <a href="../index.html#shop">Sixth Series</a>
+            <a href="../index.html#shop">DF Series</a>
+            <a href="../index.html#shop">Max &amp; Max Plus</a>
+            <a href="../index.html#shop">Moducase Mini</a>
+          </div>
+          <div class="nav-menu-col">
+            <h5>By Use</h5>
+            <a href="../index.html#shop">Figures &amp; Statues</a>
+            <a href="../index.html#shop">LEGO &amp; Models</a>
+            <a href="../index.html#shop">Dioramas</a>
+            <a href="../index.html#shop">Full Room Walls</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="../gallery.html">Gallery</a></li>
+      <li><a href="../features.html">Features</a></li>
+      <li><a href="index.html" class="active">The Library</a></li>
+      <li><a href="../index.html#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#shop" class="drawer-sub">Shop</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../features.html">Features</a>
+  <a href="index.html">The Library</a>
+  <a href="../index.html#faq">FAQ</a>
+  <div class="drawer-cta">
+    <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+  </div>
+</div>
+
+<!-- LIBRARY HEADER -->
+<header class="lib-header">
+  <div class="wrap">
+    <p class="eyebrow">The Library · Notes for Collectors</p>
+    <h1>How collectors<br>build a <em>display.</em></h1>
+    <p>Long-form essays on protecting, presenting, and arranging collections worth keeping.</p>
+    <div class="filter-row" id="filterRow">
+      <button class="pill active" data-filter="all">All <span class="pill-count">6</span></button>
+      <button class="pill" data-filter="Materials">Materials</button>
+      <button class="pill" data-filter="Figures">Figures</button>
+      <button class="pill" data-filter="LEGO">LEGO</button>
+      <button class="pill" data-filter="Room Design">Room Design</button>
+      <button class="pill" data-filter="Statues">Statues</button>
+      <button class="pill" data-filter="Display Theory">Display Theory</button>
+    </div>
+  </div>
+</header>
+
+<!-- EDITOR'S NOTE -->
+<div class="editors-note">
+  <div class="wrap">
+    <div class="editors-note-inner">
+      <div class="editors-icon">M</div>
+      <div class="editors-body">
+        <p class="eyebrow">From the editors</p>
+        <blockquote>"The Library is our long-form companion to the catalog. Every essay is paired with the case it was written for — and the consultation that turns it into a wall."</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUIDES GRID -->
+<section class="guides-section">
+  <div class="wrap">
+    <div class="guides-grid" id="guidesGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-mark"></span>
+          MODUSPACE
+        </a>
+        <p>Modular display cases for collections worth presenting.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="../index.html#shop">Sixth Series</a>
+        <a href="../index.html#shop">DF Series</a>
+        <a href="../index.html#shop">Max &amp; Max Plus</a>
+        <a href="../index.html#shop">Moducase Mini</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="index.html">The Library</a>
+        <a href="../features.html">Features</a>
+        <a href="../gallery.html">Gallery</a>
+        <a href="../index.html#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../consultation.html">Free Consultation</a>
+        <a href="../index.html">About</a>
+        <a href="../index.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Moduspace. All rights reserved.</span>
+      <span>Designed for collectors, by collectors.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Guide data
+  const guides = [
+    {slug:"acrylic-vs-glass",title:"Acrylic vs Glass Display Cases: Which Is Better for Collectors?",excerpt:"Glass carries an iron-green tint and shatters without warning. Acrylic doesn't. Here's the case-by-case comparison every collector should read before spending another dollar.",category:"Materials",minutes:8,date:"April 2026",productLabel:"All Moducases",image:"covers/acrylic-vs-glass.svg"},
+    {slug:"1-6-figures",title:"How to Choose a Display Case for 1/6 Scale Figures",excerpt:"Hot Toys, Sideshow, Threezero — every figure in the 12-inch class has different posing demands. A field guide to picking case dimensions, lighting, and base configurations.",category:"Figures",minutes:11,date:"April 2026",productLabel:"Sixth Series",image:"covers/1-6-figures.svg"},
+    {slug:"lego-display-size",title:"Best Display Case Size for LEGO Sets",excerpt:"From the Bonsai Tree to the Millennium Falcon UCS, here's how to size a case to a set — and how to plan ahead for the inevitable next build.",category:"LEGO",minutes:7,date:"March 2026",productLabel:"DF Series",image:"covers/lego-display-size.svg"},
+    {slug:"collector-room-layout",title:"How to Plan a Collector Room Without Making It Look Cluttered",excerpt:"The difference between a collection and chaos is rhythm. Six layout principles borrowed from gallery design that work as well in a 200 sq ft room as in a hallway.",category:"Room Design",minutes:12,date:"March 2026",productLabel:"All Moducases",image:"covers/collector-room-layout.svg"},
+    {slug:"statues-dioramas",title:"Display Case Buying Guide for Statues, Dioramas, and Centerpiece Pieces",excerpt:"Centerpiece pieces deserve centerpiece cases. How to size, light, and seal a display for the work you've waited months to display properly.",category:"Statues",minutes:10,date:"February 2026",productLabel:"Max & Max Plus",image:"covers/statues-dioramas.svg"},
+    {slug:"open-shelves",title:"Why Open Shelves Make Expensive Collections Look Cheaper",excerpt:"Dust is only the second-worst thing about open shelving. The first is what it does to perceived value. A short essay on the visual mechanics of frame, edge, and stillness.",category:"Display Theory",minutes:6,date:"February 2026",productLabel:"All Moducases",image:"covers/open-shelves.svg"}
+  ];
+
+  const grid = document.getElementById('guidesGrid');
+
+  function buildCards(filter) {
+    grid.innerHTML = '';
+    let isFirst = true;
+    guides.forEach((g, i) => {
+      if (filter !== 'all' && g.category !== filter) return;
+      const card = document.createElement('div');
+      card.className = 'guide-card';
+      card.dataset.category = g.category;
+      card.innerHTML = `
+        <div class="guide-card-inner">
+          <div class="guide-cover">
+            <img src="${g.image}" alt="${g.title}" loading="lazy" />
+          </div>
+          <div class="guide-body">
+            <div class="guide-meta">
+              <span class="guide-cat">${g.category}</span>
+              <span class="guide-dot"></span>
+              <span class="guide-time">${g.minutes} min read</span>
+              <span class="guide-dot"></span>
+              <span class="guide-date">${g.date}</span>
+            </div>
+            <h3>${g.title}</h3>
+            <p class="guide-excerpt">${g.excerpt}</p>
+            <div class="guide-footer">
+              <a href="${g.slug}.html" class="guide-link">Read essay →</a>
+              <span class="guide-paired">Paired with ${g.productLabel}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+      // Staggered reveal
+      setTimeout(() => card.classList.add('visible'), 60 + i * 80);
+      isFirst = false;
+    });
+  }
+
+  buildCards('all');
+
+  // Filter pills
+  document.getElementById('filterRow').addEventListener('click', e => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    buildCards(pill.dataset.filter);
+  });
+
+  // Mobile hamburger
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

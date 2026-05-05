@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — MODUSPACE</title>
+  <meta name="description" content="50,000 cases. 18 countries. Real Moduspace walls designed by collectors who live with them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+
+  <style>
+    /* ---- Root override for root-level logo path ---- */
+    .logo-mark {
+      background-image: url('assets/logo.png');
+    }
+
+    /* ============================================================
+       GALLERY PAGE STYLES
+    ============================================================ */
+
+    /* ---- HEADER ---- */
+    .gallery-header {
+      padding: 80px 0 64px;
+      border-bottom: 1px solid var(--line-2);
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .breadcrumb a:hover { color: var(--bronze); }
+    .breadcrumb span { margin: 0 8px; }
+
+    .gallery-header .eyebrow { margin-bottom: 18px; }
+
+    .gallery-header h1 {
+      font-size: clamp(52px, 6vw, 88px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .gallery-header .subtitle {
+      font-size: 17px;
+      color: var(--cream-2);
+      max-width: 540px;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    /* ---- FILTER PILLS ---- */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--cream-2);
+      border-radius: 100px;
+      transition: all .2s ease;
+    }
+    .filter-pill:hover {
+      border-color: var(--bronze);
+      color: var(--bronze);
+    }
+    .filter-pill.active {
+      background: var(--bronze);
+      border-color: var(--bronze);
+      color: #1a1306;
+    }
+    .filter-pill .count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(0,0,0,0.2);
+    }
+    .filter-pill.active .count {
+      background: rgba(26,19,6,0.2);
+    }
+
+    /* ============================================================
+       GALLERY GRID
+    ============================================================ */
+    .gallery-section {
+      padding: 64px 0 80px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 120px;
+      gap: 14px;
+    }
+
+    /* ---- Grid item base ---- */
+    .g-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      cursor: pointer;
+      background: var(--black-2);
+    }
+    .g-item img,
+    .g-item .g-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .g-item:hover img,
+    .g-item:hover .g-bg {
+      transform: scale(1.06);
+    }
+
+    /* Overlay */
+    .g-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,10,10,0.88) 0%,
+        rgba(10,10,10,0.2) 50%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      z-index: 2;
+    }
+    .g-item:hover .g-overlay { opacity: 1; }
+
+    .g-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--offwhite);
+      line-height: 1.15;
+      margin-bottom: 5px;
+      transform: translateY(6px);
+      transition: transform 0.35s ease;
+    }
+    .g-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 500;
+      transform: translateY(6px);
+      transition: transform 0.35s ease 0.04s;
+    }
+    .g-item:hover .g-title,
+    .g-item:hover .g-tag {
+      transform: translateY(0);
+    }
+
+    /* Scroll reveal */
+    .g-item {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        box-shadow 0.2s ease;
+    }
+    .g-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .g-item.hidden-cat {
+      display: none;
+    }
+
+    /* ---- Grid spans ---- */
+    /* Item 1 — hero: 7 cols × 4 rows */
+    .g-1 { grid-column: span 7; grid-row: span 4; }
+    /* Item 2 — 5 cols × 2 rows */
+    .g-2 { grid-column: span 5; grid-row: span 2; }
+    /* Item 3 — 5 cols × 2 rows */
+    .g-3 { grid-column: span 5; grid-row: span 2; }
+    /* Item 4 — 4 cols × 3 rows */
+    .g-4 { grid-column: span 4; grid-row: span 3; }
+    /* Item 5 — 4 cols × 3 rows */
+    .g-5 { grid-column: span 4; grid-row: span 3; }
+    /* Item 6 — 4 cols × 3 rows */
+    .g-6 { grid-column: span 4; grid-row: span 3; }
+    /* Item 7 — 3 cols × 2 rows */
+    .g-7 { grid-column: span 3; grid-row: span 2; }
+    /* Item 8 — 4 cols × 2 rows */
+    .g-8 { grid-column: span 4; grid-row: span 2; }
+    /* Item 9 — 5 cols × 3 rows */
+    .g-9 { grid-column: span 5; grid-row: span 3; }
+    /* Item 10 — 4 cols × 3 rows */
+    .g-10 { grid-column: span 4; grid-row: span 3; }
+    /* Item 11 — 4 cols × 2 rows */
+    .g-11 { grid-column: span 4; grid-row: span 2; }
+    /* Item 12 — 4 cols × 2 rows */
+    .g-12 { grid-column: span 4; grid-row: span 2; }
+
+    /* ---- Abstract gradient backgrounds for placeholder items ---- */
+    .g-bg {
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    /* Each placeholder gets a unique cinematic gradient */
+    .g-2 .g-bg {
+      background: linear-gradient(135deg,
+        #1a1008 0%, #2d1e0f 20%, #0f0f1a 45%, #1a0a2e 70%, #0a0a0a 100%
+      );
+    }
+    .g-2 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 75% 30%, rgba(201,168,118,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(80,40,120,0.2) 0%, transparent 50%);
+    }
+
+    .g-3 .g-bg {
+      background: linear-gradient(160deg,
+        #0d1a0d 0%, #102010 25%, #1a1a0a 55%, #0f0f18 80%, #080808 100%
+      );
+    }
+    .g-3 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(201,168,118,0.12) 0%, transparent 55%),
+                  radial-gradient(ellipse at 80% 70%, rgba(40,80,40,0.25) 0%, transparent 45%);
+    }
+
+    .g-4 .g-bg {
+      background: linear-gradient(200deg,
+        #150a0a 0%, #2a1010 30%, #100a1f 60%, #0a0a14 100%
+      );
+    }
+    .g-4 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 25%, rgba(180,60,60,0.15) 0%, transparent 55%),
+                  radial-gradient(ellipse at 20% 75%, rgba(201,168,118,0.1) 0%, transparent 50%);
+    }
+
+    .g-5 .g-bg {
+      background: linear-gradient(120deg,
+        #0a0f1a 0%, #0f1825 30%, #1a1208 60%, #0a0a0a 100%
+      );
+    }
+    .g-5 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 65% 35%, rgba(201,168,118,0.18) 0%, transparent 50%),
+                  radial-gradient(ellipse at 25% 65%, rgba(30,60,100,0.2) 0%, transparent 55%);
+    }
+
+    .g-6 .g-bg {
+      background: linear-gradient(175deg,
+        #0a0a14 0%, #12101e 30%, #0f0f0f 60%, #161008 100%
+      );
+    }
+    .g-6 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 20%, rgba(201,168,118,0.2) 0%, transparent 45%),
+                  radial-gradient(ellipse at 70% 80%, rgba(80,50,120,0.18) 0%, transparent 50%);
+    }
+
+    .g-7 .g-bg {
+      background: linear-gradient(145deg,
+        #1a0808 0%, #2e1010 35%, #1a0a0a 70%, #0a0808 100%
+      );
+    }
+    .g-7 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 55% 40%, rgba(220,80,60,0.18) 0%, transparent 50%),
+                  radial-gradient(ellipse at 20% 80%, rgba(201,168,118,0.1) 0%, transparent 45%);
+    }
+
+    .g-8 .g-bg {
+      background: linear-gradient(110deg,
+        #0a100a 0%, #0f1a10 30%, #141408 55%, #0a0a08 100%
+      );
+    }
+    .g-8 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 30%, rgba(201,168,118,0.14) 0%, transparent 50%),
+                  radial-gradient(ellipse at 30% 70%, rgba(60,120,60,0.15) 0%, transparent 50%);
+    }
+
+    .g-9 .g-bg {
+      background: linear-gradient(155deg,
+        #10080a 0%, #1e0f14 25%, #0a0814 60%, #08080f 100%
+      );
+    }
+    .g-9 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 45% 30%, rgba(201,168,118,0.16) 0%, transparent 50%),
+                  radial-gradient(ellipse at 75% 70%, rgba(120,60,100,0.2) 0%, transparent 55%);
+    }
+
+    .g-10 .g-bg {
+      background: linear-gradient(190deg,
+        #080f0a 0%, #0f1a10 28%, #141e08 55%, #0a0f08 100%
+      );
+    }
+    .g-10 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 35% 25%, rgba(80,160,80,0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 65%, rgba(201,168,118,0.12) 0%, transparent 50%);
+    }
+
+    .g-11 .g-bg {
+      background: linear-gradient(130deg,
+        #0f0f14 0%, #181420 30%, #120a10 60%, #0a0808 100%
+      );
+    }
+    .g-11 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 55% 35%, rgba(150,120,200,0.18) 0%, transparent 50%),
+                  radial-gradient(ellipse at 25% 75%, rgba(201,168,118,0.12) 0%, transparent 45%);
+    }
+
+    .g-12 .g-bg {
+      background: linear-gradient(165deg,
+        #0a0a10 0%, #12101a 30%, #1a1008 60%, #0f0a08 100%
+      );
+    }
+    .g-12 .g-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(201,168,118,0.2) 0%, transparent 50%),
+                  radial-gradient(ellipse at 30% 70%, rgba(60,50,100,0.18) 0%, transparent 50%);
+    }
+
+    /* Abstract shape decorations for placeholders */
+    .g-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+    .g-2 .g-bg::after {
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(201,168,118,0.03) 40px,
+          rgba(201,168,118,0.03) 41px
+        );
+    }
+    .g-shape {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       LIGHTBOX
+    ============================================================ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 960px;
+      width: calc(100% - 48px);
+      max-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.3s ease;
+    }
+    .lightbox.open .lightbox-inner {
+      transform: scale(1) translateY(0);
+    }
+
+    .lightbox-media {
+      position: relative;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      flex-shrink: 0;
+    }
+    .lightbox-media img,
+    .lightbox-media .lb-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-meta {
+      padding: 28px 0 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .lightbox-meta-left {}
+    .lb-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .lb-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      color: var(--offwhite);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .lb-location {
+      font-size: 13px;
+      color: var(--cream-2);
+      letter-spacing: 0.08em;
+    }
+
+    .lightbox-close {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream-2);
+      transition: all .2s;
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--bronze);
+      border-color: var(--bronze);
+    }
+    .lightbox-close svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       CTA STRIP
+    ============================================================ */
+    .cta-strip {
+      background: var(--offwhite);
+      padding: 100px 0;
+    }
+    .cta-strip .eyebrow { color: var(--muted); margin-bottom: 16px; }
+    .cta-strip h2 {
+      font-size: clamp(42px, 5vw, 70px);
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .cta-strip h2 em { color: var(--bronze); }
+    .cta-strip p {
+      font-size: 17px;
+      color: #5a554f;
+      max-width: 480px;
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .cta-strip .btn-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cta-strip .btn-primary { background: var(--black); color: var(--offwhite); }
+    .cta-strip .btn-primary:hover { background: var(--black-2); }
+    .cta-strip .btn-ghost {
+      color: var(--black);
+      border-color: rgba(10,10,10,0.25);
+    }
+    .cta-strip .btn-ghost:hover {
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    /* Tablet: 641–1024 */
+    @media (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .g-1 { grid-column: span 6; grid-row: span 4; }
+      .g-2 { grid-column: span 3; grid-row: span 2; }
+      .g-3 { grid-column: span 3; grid-row: span 2; }
+      .g-4 { grid-column: span 3; grid-row: span 3; }
+      .g-5 { grid-column: span 3; grid-row: span 3; }
+      .g-6 { grid-column: span 3; grid-row: span 3; }
+      .g-7 { grid-column: span 3; grid-row: span 2; }
+      .g-8 { grid-column: span 3; grid-row: span 2; }
+      .g-9 { grid-column: span 3; grid-row: span 3; }
+      .g-10 { grid-column: span 3; grid-row: span 3; }
+      .g-11 { grid-column: span 3; grid-row: span 2; }
+      .g-12 { grid-column: span 3; grid-row: span 2; }
+    }
+
+    /* Mobile: ≤640px */
+    @media (max-width: 640px) {
+      .gallery-header { padding: 52px 0 40px; }
+      .gallery-section { padding: 40px 0 60px; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: unset;
+        gap: 10px;
+      }
+      .g-1, .g-2, .g-3, .g-4, .g-5, .g-6,
+      .g-7, .g-8, .g-9, .g-10, .g-11, .g-12 {
+        grid-column: span 1;
+        grid-row: span 1;
+        height: 220px;
+      }
+
+      .g-overlay { opacity: 1; }
+      .g-title { transform: none; }
+      .g-tag { transform: none; }
+
+      .filter-bar { gap: 7px; }
+      .filter-pill { padding: 7px 14px; font-size: 11.5px; }
+
+      .cta-strip { padding: 72px 0; }
+      .lightbox-inner { width: calc(100% - 32px); }
+      .lightbox-meta { flex-direction: column; gap: 16px; }
+    }
+
+    /* ============================================================
+       STAGGER delays for reveal
+    ============================================================ */
+    .g-1  { transition-delay: 0ms; }
+    .g-2  { transition-delay: 60ms; }
+    .g-3  { transition-delay: 120ms; }
+    .g-4  { transition-delay: 80ms; }
+    .g-5  { transition-delay: 140ms; }
+    .g-6  { transition-delay: 200ms; }
+    .g-7  { transition-delay: 100ms; }
+    .g-8  { transition-delay: 160ms; }
+    .g-9  { transition-delay: 220ms; }
+    .g-10 { transition-delay: 120ms; }
+    .g-11 { transition-delay: 180ms; }
+    .g-12 { transition-delay: 240ms; }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       NAV
+  ================================================================ -->
+  <nav class="top" role="navigation" aria-label="Main navigation">
+    <div class="wrap">
+      <a href="index.html" class="nav-logo" aria-label="Moduspace home">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <span>MODUSPACE</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li class="nav-drop">
+          <a href="#" aria-haspopup="true" aria-expanded="false">Shop</a>
+          <div class="nav-menu" role="menu">
+            <div class="nav-menu-col">
+              <h5>Moducases</h5>
+              <a href="#" role="menuitem">Mono</a>
+              <a href="#" role="menuitem">Sixth</a>
+              <a href="#" role="menuitem">DF</a>
+              <a href="#" role="menuitem">Max</a>
+              <a href="#" role="menuitem">Max Plus</a>
+            </div>
+            <div class="nav-menu-col">
+              <h5>Accessories</h5>
+              <a href="#" role="menuitem">LED Kits</a>
+              <a href="#" role="menuitem">Risers</a>
+              <a href="#" role="menuitem">Backdrops</a>
+              <a href="#" role="menuitem">Wall Mounts</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="gallery.html" class="active" aria-current="page">Gallery</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="index.html#plan">How It Works</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <span class="nav-cart">Cart · 0</span>
+        <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+      </div>
+
+      <button class="nav-burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" role="navigation">
+    <a href="index.html">Home</a>
+    <a href="#" class="drawer-sub">Shop: Mono</a>
+    <a href="#" class="drawer-sub">Shop: Sixth</a>
+    <a href="#" class="drawer-sub">Shop: DF</a>
+    <a href="#" class="drawer-sub">Shop: Max</a>
+    <a href="#" class="drawer-sub">Shop: Max Plus</a>
+    <a href="#" class="drawer-sub">Accessories</a>
+    <a href="gallery.html" style="color: var(--bronze);">Gallery</a>
+    <a href="features.html">Features</a>
+    <a href="index.html#plan">How It Works</a>
+    <a href="index.html#faq">FAQ</a>
+    <div class="drawer-cta">
+      <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+      <a href="index.html#build" class="btn btn-ghost">Shop from $180</a>
+    </div>
+  </nav>
+
+
+  <!-- ================================================================
+       HEADER
+  ================================================================ -->
+  <header class="gallery-header">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Gallery</span>
+      </nav>
+
+      <p class="eyebrow">The Collection · Real Moduspace Walls</p>
+      <h1>The <em>wall</em><br>speaks for itself.</h1>
+      <p class="subtitle">50,000 cases. 18 countries. Every one designed by the collector who lives with it.</p>
+
+      <div class="filter-bar" role="group" aria-label="Filter gallery by category">
+        <button class="filter-pill active" data-filter="all">All <span class="count">12</span></button>
+        <button class="filter-pill" data-filter="Figures">Figures <span class="count">5</span></button>
+        <button class="filter-pill" data-filter="Helmets">Helmets <span class="count">1</span></button>
+        <button class="filter-pill" data-filter="Dioramas">Dioramas <span class="count">2</span></button>
+        <button class="filter-pill" data-filter="Statues">Statues <span class="count">2</span></button>
+        <button class="filter-pill" data-filter="Walls">Walls <span class="count">3</span></button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ================================================================
+       GALLERY GRID
+  ================================================================ -->
+  <section class="gallery-section" aria-label="Gallery">
+    <div class="wrap">
+      <div class="gallery-grid" id="gallery-grid">
+
+        <!-- Item 1: Hero — Batcave Wall -->
+        <article class="g-item g-1"
+          data-cat="Walls"
+          data-title="The Batcave Wall"
+          data-location="Los Angeles"
+          data-category="Walls"
+          role="button"
+          tabindex="0"
+          aria-label="Open: The Batcave Wall, Los Angeles">
+          <img src="assets/hero-batcave.png" alt="The Batcave Wall — a dramatic collector display in Los Angeles" loading="eager" />
+          <div class="g-overlay">
+            <div class="g-title">The Batcave Wall</div>
+            <div class="g-tag">3×3 · Los Angeles</div>
+          </div>
+        </article>
+
+        <!-- Item 2: Helmet Sanctuary -->
+        <article class="g-item g-2"
+          data-cat="Helmets"
+          data-title="Helmet Sanctuary"
+          data-location="Berlin"
+          data-category="Helmets"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Helmet Sanctuary, Berlin">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Helmet Sanctuary</div>
+            <div class="g-tag">Berlin</div>
+          </div>
+        </article>
+
+        <!-- Item 3: Vintage Action Figures -->
+        <article class="g-item g-3"
+          data-cat="Figures"
+          data-title="Vintage Action Figures"
+          data-location="Tokyo"
+          data-category="Figures"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Vintage Action Figures, Tokyo">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Vintage Action Figures</div>
+            <div class="g-tag">Tokyo</div>
+          </div>
+        </article>
+
+        <!-- Item 4: Diorama Showcase -->
+        <article class="g-item g-4"
+          data-cat="Dioramas"
+          data-title="Diorama Showcase"
+          data-location="New York City"
+          data-category="Dioramas"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Diorama Showcase, New York City">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Diorama Showcase</div>
+            <div class="g-tag">NYC</div>
+          </div>
+        </article>
+
+        <!-- Item 5: Statue Pedestal -->
+        <article class="g-item g-5"
+          data-cat="Statues"
+          data-title="Statue Pedestal"
+          data-location="Sydney"
+          data-category="Statues"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Statue Pedestal, Sydney">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Statue Pedestal</div>
+            <div class="g-tag">Sydney</div>
+          </div>
+        </article>
+
+        <!-- Item 6: Modular Wall 2×2 -->
+        <article class="g-item g-6"
+          data-cat="Walls"
+          data-title="Modular Wall 2×2"
+          data-location="London"
+          data-category="Walls"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Modular Wall 2×2, London">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Modular Wall 2×2</div>
+            <div class="g-tag">London</div>
+          </div>
+        </article>
+
+        <!-- Item 7: Iron Man Wall -->
+        <article class="g-item g-7"
+          data-cat="Figures"
+          data-title="Iron Man Wall"
+          data-location="Singapore"
+          data-category="Figures"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Iron Man Wall, Singapore">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Iron Man Wall</div>
+            <div class="g-tag">Singapore</div>
+          </div>
+        </article>
+
+        <!-- Item 8: LEGO Citadel -->
+        <article class="g-item g-8"
+          data-cat="Figures"
+          data-title="LEGO Citadel"
+          data-location="Toronto"
+          data-category="Figures"
+          role="button"
+          tabindex="0"
+          aria-label="Open: LEGO Citadel, Toronto">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">LEGO Citadel</div>
+            <div class="g-tag">Toronto</div>
+          </div>
+        </article>
+
+        <!-- Item 9: Hot Toys Showcase -->
+        <article class="g-item g-9"
+          data-cat="Figures"
+          data-title="Hot Toys Showcase"
+          data-location="Paris"
+          data-category="Figures"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Hot Toys Showcase, Paris">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Hot Toys Showcase</div>
+            <div class="g-tag">Paris</div>
+          </div>
+        </article>
+
+        <!-- Item 10: Diorama Garden -->
+        <article class="g-item g-10"
+          data-cat="Dioramas"
+          data-title="Diorama Garden"
+          data-location="Amsterdam"
+          data-category="Dioramas"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Diorama Garden, Amsterdam">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Diorama Garden</div>
+            <div class="g-tag">Amsterdam</div>
+          </div>
+        </article>
+
+        <!-- Item 11: Knight Armory -->
+        <article class="g-item g-11"
+          data-cat="Statues"
+          data-title="Knight Armory"
+          data-location="Madrid"
+          data-category="Statues"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Knight Armory, Madrid">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Knight Armory</div>
+            <div class="g-tag">Madrid</div>
+          </div>
+        </article>
+
+        <!-- Item 12: Collectors Wall 4×3 -->
+        <article class="g-item g-12"
+          data-cat="Walls"
+          data-title="Collectors Wall 4×3"
+          data-location="Melbourne"
+          data-category="Walls"
+          role="button"
+          tabindex="0"
+          aria-label="Open: Collectors Wall 4×3, Melbourne">
+          <div class="g-bg" aria-hidden="true"></div>
+          <div class="g-overlay">
+            <div class="g-title">Collectors Wall 4×3</div>
+            <div class="g-tag">Melbourne</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       LIGHTBOX
+  ================================================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery lightbox" aria-hidden="true">
+    <div class="lightbox-inner" id="lightbox-inner">
+      <div class="lightbox-media" id="lightbox-media">
+        <!-- content injected by JS -->
+      </div>
+      <div class="lightbox-meta">
+        <div class="lightbox-meta-left">
+          <div class="lb-eyebrow" id="lb-eyebrow"></div>
+          <div class="lb-title" id="lb-title"></div>
+          <div class="lb-location" id="lb-location"></div>
+        </div>
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M1 1l14 14M15 1L1 15"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       CTA STRIP
+  ================================================================ -->
+  <section class="cta-strip" aria-labelledby="cta-heading">
+    <div class="wrap">
+      <p class="eyebrow">Build yours</p>
+      <h2 id="cta-heading">Your collection.<br><em>Your wall.</em></h2>
+      <p>Book a free 20-min consultation with our team. We'll bring layout suggestions to the call.</p>
+      <div class="btn-group">
+        <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+        <a href="index.html#build" class="btn btn-ghost">Shop from $180</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+  ================================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" aria-label="Moduspace home">
+            <div class="logo-mark" aria-hidden="true"></div>
+            <span>MODUSPACE</span>
+          </a>
+          <p>From our collection to yours. Modular display cases, made to order since 2019.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#">All Cases</a>
+          <a href="#">Configurator</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="#">Accessories</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="index.html#plan">How It Works</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="#">Shipping</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">Our Story</a>
+          <a href="#">Press</a>
+          <a href="#">Instagram</a>
+          <a href="#">Retailers</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 MODUSPACE</span>
+        <span>MADE TO ORDER</span>
+        <span>SHIPPED WORLDWIDE</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ================================================================
+       JAVASCRIPT
+  ================================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---- NAV HAMBURGER ---- */
+      const burger  = document.querySelector('.nav-burger');
+      const drawer  = document.querySelector('.nav-drawer');
+
+      if (burger && drawer) {
+        burger.addEventListener('click', () => {
+          const isOpen = drawer.classList.toggle('open');
+          burger.classList.toggle('open', isOpen);
+          burger.setAttribute('aria-expanded', String(isOpen));
+          document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+        // Close drawer on link click
+        drawer.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      /* ---- SCROLL REVEAL ---- */
+      const items = Array.from(document.querySelectorAll('.g-item'));
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      items.forEach(item => revealObserver.observe(item));
+
+      /* ---- FILTER ---- */
+      const pills = Array.from(document.querySelectorAll('.filter-pill'));
+
+      // Build category counts
+      const counts = { all: items.length };
+      items.forEach(item => {
+        const cat = item.dataset.cat;
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+
+      // Update count badges
+      pills.forEach(pill => {
+        const filter = pill.dataset.filter;
+        const countEl = pill.querySelector('.count');
+        if (countEl && counts[filter] !== undefined) {
+          countEl.textContent = counts[filter];
+        }
+      });
+
+      function applyFilter(filter) {
+        items.forEach(item => {
+          const match = filter === 'all' || item.dataset.cat === filter;
+          item.classList.toggle('hidden-cat', !match);
+          // Re-trigger reveal if becoming visible
+          if (match && !item.classList.contains('revealed')) {
+            // small delay so display:none -> block doesn't block animation
+            requestAnimationFrame(() => {
+              item.classList.add('revealed');
+            });
+          }
+        });
+      }
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => {
+            p.classList.remove('active');
+            p.setAttribute('aria-pressed', 'false');
+          });
+          pill.classList.add('active');
+          pill.setAttribute('aria-pressed', 'true');
+          applyFilter(pill.dataset.filter);
+        });
+      });
+
+      /* ---- LIGHTBOX ---- */
+      const lightbox      = document.getElementById('lightbox');
+      const lbMedia       = document.getElementById('lightbox-media');
+      const lbEyebrow     = document.getElementById('lb-eyebrow');
+      const lbTitle       = document.getElementById('lb-title');
+      const lbLocation    = document.getElementById('lb-location');
+      const lbClose       = document.getElementById('lightbox-close');
+
+      function openLightbox(item) {
+        const title    = item.dataset.title    || '';
+        const location = item.dataset.location || '';
+        const category = item.dataset.category || '';
+
+        // Clone media content
+        lbMedia.innerHTML = '';
+        const img = item.querySelector('img');
+        const bg  = item.querySelector('.g-bg');
+
+        if (img) {
+          const clone = img.cloneNode(true);
+          clone.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+          lbMedia.appendChild(clone);
+        } else if (bg) {
+          const clone = bg.cloneNode(true);
+          clone.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+          lbMedia.appendChild(clone);
+        }
+
+        lbEyebrow.textContent  = category;
+        lbTitle.textContent    = title;
+        lbLocation.textContent = location;
+
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Click on gallery items
+      items.forEach(item => {
+        item.addEventListener('click', () => openLightbox(item));
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(item);
+          }
+        });
+      });
+
+      // Close button
+      lbClose.addEventListener('click', closeLightbox);
+
+      // Click outside inner
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Escape key
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
