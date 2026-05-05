@@ -180,16 +180,22 @@
   }
   .guide-bg {
     position: absolute;
-    inset: 0;
+    inset: -10% 0;
     z-index: 0;
     background-image: var(--collectors-bg);
     background-size: cover;
     background-position: center 45%;
+    background-attachment: fixed;
+    will-change: transform;
   }
+  @supports not (background-attachment: fixed) { .guide-bg { background-attachment: scroll; } }
+  @media (hover: none) and (pointer: coarse) { .guide-bg { background-attachment: scroll; } }
   .guide-bg::after {
     content: "";
     position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.25) 100%);
+    background:
+      linear-gradient(90deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.25) 100%),
+      linear-gradient(180deg, rgba(10,10,10,0.7) 0%, transparent 30%, rgba(10,10,10,0.7) 100%);
   }
   .guide .wrap {
     position: relative; z-index: 1;
