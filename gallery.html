@@ -677,39 +677,61 @@
         <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
       </div>
 
-      <button class="nav-burger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+      <button class="nav-burger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </button>
     </div>
-  </nav>
 
-  <!-- Mobile drawer -->
-  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" role="navigation">
-    <a href="index.html">Home</a>
-    <details>
-      <summary>
-        Shop
-        <svg class="drawer-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-      </summary>
-      <div class="drawer-sub-list">
-        <a href="#">Mono</a>
-        <a href="#">Sixth</a>
-        <a href="#">DF</a>
-        <a href="#">Max</a>
-        <a href="#">Max Plus</a>
-        <a href="#">Accessories</a>
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-head">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-mark"></span>
+            <span>MODUSPACE</span>
+          </a>
+          <button class="mobile-nav-close" aria-label="Close menu">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 5l14 14M19 5L5 19"/>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="mobile-nav-body" aria-label="Mobile navigation">
+          <details class="m-group" open>
+            <summary>
+              <span>Shop</span>
+              <svg class="m-chev" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            </summary>
+            <div class="m-sub">
+              <h6>Moducases</h6>
+              <a href="#">Mono</a>
+              <a href="#">Sixth</a>
+              <a href="#">DF</a>
+              <a href="#">Max</a>
+              <a href="#">Max Plus</a>
+              <h6>Accessories</h6>
+              <a href="#">Lighting</a>
+              <a href="#">Bases &amp; Risers</a>
+              <a href="#">Connectors</a>
+              <a href="#">Cleaning Kit</a>
+            </div>
+          </details>
+          <a href="gallery.html" class="m-link" style="color: var(--bronze);">Gallery</a>
+          <a href="features.html" class="m-link">Features</a>
+          <a href="guides/index.html" class="m-link">The Library</a>
+          <a href="index.html#plan" class="m-link">How It Works</a>
+          <a href="index.html#faq" class="m-link">FAQ</a>
+        </nav>
+
+        <div class="mobile-nav-foot">
+          <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
+          <a href="index.html#build" class="btn btn-ghost">Shop from $180</a>
+        </div>
       </div>
-    </details>
-    <a href="gallery.html" style="color: var(--bronze);">Gallery</a>
-    <a href="features.html">Features</a>
-    <a href="guides/index.html">The Library</a>
-    <a href="index.html#plan">How It Works</a>
-    <a href="index.html#faq">FAQ</a>
-    <div class="drawer-cta">
-      <a href="consultation.html" class="btn btn-primary">Free Consultation</a>
-      <a href="index.html#build" class="btn btn-ghost">Shop from $180</a>
+      <div class="mobile-nav-scrim"></div>
     </div>
   </nav>
 
@@ -1037,26 +1059,19 @@
     (function () {
       'use strict';
 
-      /* ---- NAV HAMBURGER ---- */
-      const burger  = document.querySelector('.nav-burger');
-      const drawer  = document.querySelector('.nav-drawer');
-
-      if (burger && drawer) {
-        burger.addEventListener('click', () => {
-          const isOpen = drawer.classList.toggle('open');
-          burger.classList.toggle('open', isOpen);
-          burger.setAttribute('aria-expanded', String(isOpen));
-          document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-        // Close drawer on link click
-        drawer.querySelectorAll('a').forEach(a => {
-          a.addEventListener('click', () => {
-            drawer.classList.remove('open');
-            burger.classList.remove('open');
-            burger.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-          });
-        });
+      /* ---- MOBILE NAV ---- */
+      const nav    = document.getElementById('mobileNav');
+      const burger = document.querySelector('.nav-burger');
+      if (nav && burger) {
+        const close = nav.querySelector('.mobile-nav-close');
+        const scrim = nav.querySelector('.mobile-nav-scrim');
+        const open  = () => { nav.classList.add('open');    nav.setAttribute('aria-hidden','false'); burger.setAttribute('aria-expanded','true');  document.body.classList.add('nav-locked'); };
+        const shut  = () => { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true');  burger.setAttribute('aria-expanded','false'); document.body.classList.remove('nav-locked'); };
+        burger.addEventListener('click', open);
+        close.addEventListener('click', shut);
+        scrim.addEventListener('click', shut);
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', shut));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { shut(); burger.focus(); } });
       }
 
       /* ---- SCROLL REVEAL ---- */

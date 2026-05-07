@@ -319,34 +319,58 @@
     <div class="nav-right">
       <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
     </div>
-    <button class="nav-burger" id="burger" aria-label="Menu">
+    <button class="nav-burger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
-</nav>
-<nav class="nav-drawer" id="drawer" aria-label="Mobile navigation">
-  <a href="../index.html">Home</a>
-  <details>
-    <summary>
-      Shop
-      <svg class="drawer-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-    </summary>
-    <div class="drawer-sub-list">
-      <a href="../index.html">Mono</a>
-      <a href="../index.html">Sixth</a>
-      <a href="../index.html">DF</a>
-      <a href="../index.html">Max</a>
-      <a href="../index.html">Max Plus</a>
-      <a href="../index.html">Accessories</a>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-head">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-mark"></span>
+          <span>MODUSPACE</span>
+        </a>
+        <button class="mobile-nav-close" aria-label="Close menu">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 5l14 14M19 5L5 19"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-body" aria-label="Mobile navigation">
+        <details class="m-group" open>
+          <summary>
+            <span>Shop</span>
+            <svg class="m-chev" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </summary>
+          <div class="m-sub">
+            <h6>Moducases</h6>
+            <a href="../index.html">Mono</a>
+            <a href="../index.html">Sixth</a>
+            <a href="../index.html">DF</a>
+            <a href="../index.html">Max</a>
+            <a href="../index.html">Max Plus</a>
+            <h6>Accessories</h6>
+            <a href="../index.html">Lighting</a>
+            <a href="../index.html">Bases &amp; Risers</a>
+            <a href="../index.html">Connectors</a>
+            <a href="../index.html">Cleaning Kit</a>
+          </div>
+        </details>
+        <a href="../gallery.html" class="m-link">Gallery</a>
+        <a href="../features.html" class="m-link">Features</a>
+        <a href="index.html" class="m-link" style="color:var(--bronze)">The Library</a>
+        <a href="../index.html#plan" class="m-link">How It Works</a>
+        <a href="../index.html#faq" class="m-link">FAQ</a>
+      </nav>
+
+      <div class="mobile-nav-foot">
+        <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+      </div>
     </div>
-  </details>
-  <a href="../gallery.html">Gallery</a>
-  <a href="../features.html">Features</a>
-  <a href="index.html" style="color:var(--bronze)">The Library</a>
-  <a href="../index.html#plan">How It Works</a>
-  <a href="../index.html#faq">FAQ</a>
-  <div class="drawer-cta">
-    <a href="../consultation.html" class="btn btn-primary">Free Consultation</a>
+    <div class="mobile-nav-scrim"></div>
   </div>
 </nav>
 
@@ -490,13 +514,21 @@
     buildCards(pill.dataset.filter);
   });
 
-  // Mobile hamburger
-  const burger = document.getElementById('burger');
-  const drawer = document.getElementById('drawer');
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    drawer.classList.toggle('open');
-  });
+  // Mobile nav
+  (function () {
+    const nav    = document.getElementById('mobileNav');
+    const burger = document.querySelector('.nav-burger');
+    if (!nav || !burger) return;
+    const close = nav.querySelector('.mobile-nav-close');
+    const scrim = nav.querySelector('.mobile-nav-scrim');
+    const open  = () => { nav.classList.add('open');    nav.setAttribute('aria-hidden','false'); burger.setAttribute('aria-expanded','true');  document.body.classList.add('nav-locked'); };
+    const shut  = () => { nav.classList.remove('open'); nav.setAttribute('aria-hidden','true');  burger.setAttribute('aria-expanded','false'); document.body.classList.remove('nav-locked'); };
+    burger.addEventListener('click', open);
+    close.addEventListener('click', shut);
+    scrim.addEventListener('click', shut);
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', shut));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { shut(); burger.focus(); } });
+  })();
 </script>
 </body>
 </html>
