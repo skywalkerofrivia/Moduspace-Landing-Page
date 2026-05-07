@@ -551,6 +551,15 @@
 <body>
 
 <!-- NAV -->
+<!--
+  SITE NAV — CANONICAL SOURCE.
+  This nav is duplicated across all pages. To update site-wide:
+    1. Edit this block in index.html.
+    2. Copy the entire <nav class="top">…</nav> block to every other page.
+    3. On non-index pages, change bare anchors (#plan, #faq, #build) to "index.html#…".
+    4. On /guides/ subpages, also prefix relative URLs with "../"
+       (and the Library link becomes "index.html" since it's a sibling).
+-->
 <nav class="top">
   <div class="wrap">
     <a href="index.html" class="nav-logo">
