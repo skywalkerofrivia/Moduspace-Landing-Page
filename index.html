@@ -165,7 +165,18 @@
     margin: 40px 0; font-style: italic; font-weight: 300;
   }
   .problem-pull strong { color: var(--bronze); font-style: normal; font-weight: 400; }
-  .problem-close { color: var(--bronze); font-family: var(--serif); font-size: 24px; font-style: italic; margin-top: 32px; }
+  .problem-close {
+    color: var(--bronze);
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.2vw, 38px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-top: 56px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(201,168,118,0.28);
+    max-width: 32ch;
+  }
   @media (max-width: 640px) { .problem-body .indent-1 { padding-left: 16px; } .problem-body .indent-2 { padding-left: 32px; } }
 
   /* ---- GUIDE (compact horizontal collectors band) ---- */
@@ -239,7 +250,13 @@
   .guide-press em { color: var(--cream); font-style: italic; font-family: var(--serif); font-size: 16px; }
   @media (max-width: 900px) {
     .guide .wrap { grid-template-columns: 1fr; gap: 24px; padding-top: 56px; padding-bottom: 56px; }
-    .guide-press { white-space: normal; }
+    .guide-press {
+      white-space: normal;
+      justify-self: center;
+      text-align: left;
+      max-width: min(420px, 100%);
+      padding: 16px 22px;
+    }
   }
 
   /* ---- FEATURES ---- */
