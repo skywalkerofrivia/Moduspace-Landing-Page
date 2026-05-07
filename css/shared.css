@@ -77,15 +77,19 @@ h1 em, h2 em, h3 em { color: var(--bronze); font-weight: 300; }
 nav.top {
   position: sticky; top: 0; z-index: 100;
   background: rgba(10,10,10,0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--line-2);
   height: var(--nav-h);
+}
+nav.top::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 nav.top .wrap {
   display: flex; align-items: center;
   height: var(--nav-h);
   gap: 40px;
+  position: relative;
 }
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
