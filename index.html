@@ -16,7 +16,7 @@
 <meta property="og:title" content="Your Collection Deserves Better — Moduspace">
 <meta property="og:description" content="Built by collectors who got tired of settling. Modular display cases that grow with your collection. Start with one. Build a wall.">
 <meta property="og:url" content="https://us.moduspace.sg/">
-<meta property="og:image" content="https://us.moduspace.sg/assets/hero-batcave.png">
+<meta property="og:image" content="https://us.moduspace.sg/assets/hero-batcave.avif">
 <meta property="og:image:alt" content="Moduspace modular display case wall showcasing a Batmobile collection">
 <meta property="og:locale" content="en_US">
 
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Your Collection Deserves Better — Moduspace">
 <meta name="twitter:description" content="Premium modular display cases built by collectors. Start with one. Build a wall. From $180.">
-<meta name="twitter:image" content="https://us.moduspace.sg/assets/hero-batcave.png">
+<meta name="twitter:image" content="https://us.moduspace.sg/assets/hero-batcave.avif">
 <meta name="twitter:image:alt" content="Moduspace modular display case wall showcasing a Batmobile collection">
 
 <!-- Structured data: Organization + Website -->
@@ -54,7 +54,7 @@
       "name": "Moduspace Modular Display Case",
       "description": "Premium modular display case with optically clear acrylic, rigid aluminium frame, magnetic dust seals, and a fully modular system that grows with your collection.",
       "brand": { "@id": "https://us.moduspace.sg/#organization" },
-      "image": "https://us.moduspace.sg/assets/hero-batcave.png",
+      "image": "https://us.moduspace.sg/assets/hero-batcave.avif",
       "offers": {
         "@type": "AggregateOffer",
         "lowPrice": "180",
@@ -169,7 +169,7 @@
   @media (max-width: 640px) { .problem-body .indent-1 { padding-left: 16px; } .problem-body .indent-2 { padding-left: 32px; } }
 
   /* ---- GUIDE (compact horizontal collectors band) ---- */
-  :root { --collectors-bg: url('assets/hero-batcave.png'); }
+  :root { --collectors-bg: url('assets/Hero03.avif'); }
   .guide {
     position: relative;
     padding: 0;
@@ -253,11 +253,45 @@
     gap: 0; border-top: 1px solid var(--line);
   }
   .feature {
-    padding: 40px 28px 36px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    transition: background .25s ease;
+    padding: 48px 32px 40px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    transition: background .25s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change: transform;
   }
   .feature:last-child { border-right: none; }
-  .feature:hover { background: rgba(201,168,118,0.03); }
+  .feature:hover {
+    background: rgba(201,168,118,0.035);
+    transform: scale(1.025);
+    z-index: 2;
+    position: relative;
+  }
+  .feature-learn {
+    margin-top: auto;
+    padding-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    text-decoration: none;
+    font-weight: 500;
+    align-self: flex-start;
+    transition: gap .3s cubic-bezier(.2,.7,.2,1), color .25s ease;
+  }
+  .feature-learn::after {
+    content: "";
+    width: 18px;
+    height: 1px;
+    background: currentColor;
+    transition: width .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .feature:hover .feature-learn { gap: 14px; color: var(--cream); }
+  .feature:hover .feature-learn::after { width: 26px; }
   .feature-icon {
     width: 100%; aspect-ratio: 4/3; margin-bottom: 28px;
     border: 1px solid var(--line-2); background: var(--black-2); overflow: hidden; position: relative;
@@ -656,7 +690,7 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg">
-    <img src="assets/hero-batcave.png" alt="Moducase modular display wall with Batmobile collection" />
+    <img src="assets/hero-batcave.avif" alt="Moducase modular display wall with Batmobile collection" />
   </div>
   <div class="wrap">
     <div class="hero-content">
@@ -768,6 +802,7 @@
         </div>
         <h3>Crystal clear.<br><em>Zero glass risk.</em></h3>
         <p>Acrylic that looks like glass, without the shatter. Child-safe and crystal clear.</p>
+        <a class="feature-learn" href="Features.html#acrylic">Learn more</a>
       </article>
       <article class="feature">
         <div class="feature-icon">
@@ -779,6 +814,7 @@
         </div>
         <h3>No wobble.<br><em>No sag. Ever.</em></h3>
         <p>Rigid metal frames engineered to hold serious weight — and stack securely as you grow.</p>
+        <a class="feature-learn" href="Features.html#frame">Learn more</a>
       </article>
       <article class="feature">
         <div class="feature-icon">
@@ -790,6 +826,7 @@
         </div>
         <h3>Dust stays out.<br><em>You stay in control.</em></h3>
         <p>Precision seals keep figures clean between wipes. No more weekly dusting.</p>
+        <a class="feature-learn" href="Features.html#seal">Learn more</a>
       </article>
       <article class="feature">
         <div class="feature-icon">
@@ -802,6 +839,7 @@
         </div>
         <h3>Start with one.<br><em>Build a wall.</em></h3>
         <p>Every case connects seamlessly — same dimensions, same system. Grows with your collection.</p>
+        <a class="feature-learn" href="Features.html#modular">Learn more</a>
       </article>
     </div>
   </div>
@@ -875,7 +913,7 @@
     </div>
     <div class="gallery-grid">
       <div class="g-item g-1">
-        <img src="assets/hero-batcave.png" alt="Batmobile collection display" />
+        <img src="assets/hero-batcave.avif" alt="Batmobile collection display" />
         <div class="g-meta"><span class="g-title">The Batcave Wall</span><span class="g-tag">3×3 · Los Angeles</span></div>
       </div>
       <div class="g-item g-2">
@@ -1139,8 +1177,6 @@
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#">Our Story</a>
-        <a href="#">Press</a>
         <a href="https://www.instagram.com/moduspacesg/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://www.facebook.com/Moduspacesg" target="_blank" rel="noopener noreferrer">Facebook</a>
       </div>
@@ -1148,7 +1184,6 @@
     <div class="footer-bottom">
       <span>© 2026 MODUSPACE</span>
       <span>MADE TO ORDER · SHIPPED WORLDWIDE · 30-DAY CANCELLATION POLICY</span>
-      <span>TERMS OF SERVICE · PRIVACY POLICY</span>
     </div>
   </div>
 </footer>
