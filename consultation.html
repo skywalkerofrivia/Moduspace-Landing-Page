@@ -437,6 +437,23 @@
   .cal-placeholder { padding: 24px 20px; min-height: 400px; }
 }
 
+/* CALENDAR EMBED (live Google appointment schedule, swapped in on unlock) */
+.cal-placeholder.cal-embed {
+  padding: 0;
+  min-height: 720px;
+  background: #fff;
+}
+.cal-placeholder.cal-embed iframe {
+  width: 100%;
+  height: 720px;
+  border: 0;
+  display: block;
+}
+@media (max-width: 540px) {
+  .cal-placeholder.cal-embed { min-height: 640px; }
+  .cal-placeholder.cal-embed iframe { height: 640px; }
+}
+
 .cal-mock-head {
   display: flex;
   justify-content: space-between;
@@ -929,6 +946,12 @@
 (function () {
   'use strict';
 
+  /* ---- GOOGLE APPOINTMENT SCHEDULE ----
+     Public link: https://calendar.app.google/rwQc7CmDQoS1yAoT7
+     To swap to a different sales rep, replace the URL below with the embed
+     form of their schedule: https://calendar.google.com/calendar/appointments/schedules/<ID>?gv=true */
+  const BOOKING_EMBED_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Mfzdh3WYujU9eBjCUeJsFVne6ABZxSnZByyYONkC4CQ5cltQYFfPulhAbeBZhoFJsLhaEVgXu?gv=true';
+
   /* ---- STATE ---- */
   const state = {
     collection: new Set(),   // multi-select
@@ -1059,6 +1082,20 @@
         ts: Date.now(),
       }));
     } catch (_) {}
+
+    // Replace mock calendar with the live Google appointment schedule
+    const placeholder = calWrap.querySelector('.cal-placeholder');
+    if (placeholder && !placeholder.dataset.embedded) {
+      placeholder.dataset.embedded = 'true';
+      placeholder.innerHTML = '';
+      placeholder.classList.add('cal-embed');
+      const iframe = document.createElement('iframe');
+      iframe.src = BOOKING_EMBED_URL;
+      iframe.title = 'Book your Moduspace consultation';
+      iframe.loading = 'lazy';
+      iframe.setAttribute('frameborder', '0');
+      placeholder.appendChild(iframe);
+    }
 
     // Smooth scroll to calendar
     setTimeout(() => {
