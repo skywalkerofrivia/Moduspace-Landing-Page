@@ -526,42 +526,61 @@
     .lightbox-close svg { width: 16px; height: 16px; }
 
     /* ============================================================
-       CTA STRIP
+       CTA STRIP — dark navy parallax
     ============================================================ */
     .cta-strip {
-      background: var(--offwhite);
-      padding: 100px 0;
+      position: relative; overflow: hidden;
+      padding: 130px 0; text-align: center;
+      color: var(--cream);
+      background-color: #0d1320;
+      background-image: url('assets/hero01.avif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
-    .cta-strip .eyebrow { color: var(--muted); margin-bottom: 16px; }
+    .cta-strip::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(8,12,22,0.80) 0%, rgba(13,19,32,0.58) 35%, rgba(13,19,32,0.58) 65%, rgba(8,12,22,0.88) 100%),
+        linear-gradient(90deg, rgba(8,12,22,0.55) 0%, rgba(13,19,32,0.28) 50%, rgba(8,12,22,0.55) 100%);
+    }
+    .cta-strip > .wrap { position: relative; z-index: 1; }
+    @supports (-webkit-touch-callout: none) { .cta-strip { background-attachment: scroll; } }
+    @media (prefers-reduced-motion: reduce) { .cta-strip { background-attachment: scroll; } }
+    .cta-strip .eyebrow { color: var(--bronze); margin-bottom: 20px; }
     .cta-strip h2 {
       font-size: clamp(42px, 5vw, 70px);
-      color: var(--black);
+      font-family: var(--serif); font-weight: 300;
+      color: var(--cream);
+      line-height: 1.04; letter-spacing: -0.02em;
       margin-bottom: 20px;
     }
-    .cta-strip h2 em { color: var(--bronze); }
+    .cta-strip h2 em { color: var(--bronze); font-style: italic; }
     .cta-strip p {
       font-size: 17px;
-      color: #5a554f;
+      color: var(--cream-2);
       max-width: 480px;
       font-weight: 300;
       line-height: 1.65;
-      margin-bottom: 36px;
+      margin: 0 auto 36px;
     }
     .cta-strip .btn-group {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
     }
-    .cta-strip .btn-primary { background: var(--black); color: var(--offwhite); }
-    .cta-strip .btn-primary:hover { background: var(--black-2); }
+    .cta-strip .btn-primary { background: var(--bronze); color: var(--black); border-color: var(--bronze); }
+    .cta-strip .btn-primary:hover { background: #c9a057; border-color: #c9a057; }
     .cta-strip .btn-ghost {
-      color: var(--black);
-      border-color: rgba(10,10,10,0.25);
+      color: var(--cream);
+      border-color: rgba(216,208,200,0.40);
     }
     .cta-strip .btn-ghost:hover {
-      border-color: var(--black);
-      color: var(--black);
+      border-color: var(--cream);
+      color: var(--cream);
     }
 
     /* ============================================================
@@ -664,7 +683,7 @@
         </li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="features.html">Features</a></li>
-        <li><a href="guides/index.html">The Library</a></li>
+        <li><a href="guides/index.html">Guides</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
       </ul>
       <div class="nav-right">
@@ -677,7 +696,7 @@
           <div class="region-popover" id="region-popover" role="dialog" aria-label="Choose your region">
             <div class="region-pop-head">
               <h4>Choose your <em>region</em></h4>
-              <p>Localised pricing, currency &amp; shipping for your country.</p>
+              <p>Prices and shipping for your region</p>
             </div>
             <ul class="region-list" id="region-list" role="list"></ul>
           </div>
@@ -734,7 +753,7 @@
           </details>
           <a href="gallery.html" class="m-link">Gallery</a>
           <a href="features.html" class="m-link">Features</a>
-          <a href="guides/index.html" class="m-link">The Library</a>
+          <a href="guides/index.html" class="m-link">Guides</a>
           <a href="index.html#faq" class="m-link">FAQ</a>
 
           <div class="m-utility">
