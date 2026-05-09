@@ -323,25 +323,27 @@ h1.hero-title em { font-style: italic; color: var(--bronze); font-weight: 300; }
 .video-play {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 88px; height: 88px; border-radius: 50%; background: var(--bronze);
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--navy); border: 1px solid var(--navy-2);
   display: flex; align-items: center; justify-content: center; z-index: 3;
   transition: transform .3s ease, background .2s ease;
   animation: pulse 2.4s ease-out infinite;
+  box-shadow: 0 8px 28px rgba(28,44,74,0.45);
 }
-.video-wrap:hover .video-play { transform: translate(-50%, -50%) scale(1.08); background: var(--bronze-2); }
-.video-play svg { width: 32px; height: 32px; fill: #0a0a0a; margin-left: 6px; }
+.video-wrap:hover .video-play { transform: translate(-50%, -50%) scale(1.08); background: var(--navy-2); }
+.video-play svg { width: 32px; height: 32px; fill: var(--navy-ink); margin-left: 6px; }
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(201,168,118,0.45); }
-  70% { box-shadow: 0 0 0 28px rgba(201,168,118,0); }
-  100% { box-shadow: 0 0 0 0 rgba(201,168,118,0); }
+  0% { box-shadow: 0 0 0 0 rgba(28,44,74,0.45); }
+  70% { box-shadow: 0 0 0 28px rgba(28,44,74,0); }
+  100% { box-shadow: 0 0 0 0 rgba(28,44,74,0); }
 }
 .video-meta { position: absolute; left: 24px; bottom: 20px; z-index: 3; display: flex; align-items: center; gap: 14px; }
 .video-avatar {
   width: 48px; height: 48px; border-radius: 50%;
-  background: linear-gradient(135deg, #c9a876, #8b6e42);
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
   display: flex; align-items: center; justify-content: center;
-  color: #0a0a0a; font-weight: 600; font-size: 14px; letter-spacing: 0.05em;
-  border: 2px solid rgba(240,235,227,0.9);
+  color: var(--navy-ink); font-weight: 600; font-size: 14px; letter-spacing: 0.05em;
+  border: 2px solid rgba(255,255,255,0.08);
 }
 .video-meta-text strong { display: block; color: var(--cream); font-size: 14px; font-weight: 500; margin-bottom: 2px; }
 .video-meta-text span { font-size: 12px; color: var(--cream-2); letter-spacing: 0.05em; }

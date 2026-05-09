@@ -17,6 +17,10 @@
   --line-2:   rgba(216, 208, 200, 0.10);
   --danger:   #b04a3a;
 
+  --navy:     #1c2c4a;
+  --navy-2:   #2a3f63;
+  --navy-ink: #e8edf6;
+
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans:  'Inter', system-ui, sans-serif;
 
@@ -361,3 +365,157 @@ footer.site-footer {
 section { padding: 120px 0; }
 @media (max-width: 768px) { section { padding: 80px 0; } }
 @media (max-width: 480px) { section { padding: 60px 0; } }
+
+/* =====================================================
+   NAV ADD-ONS — region switcher, account/cart icons
+===================================================== */
+
+/* ---- Region trigger (desktop) ---- */
+.region-wrap { position: relative; }
+.region-trigger {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 10px 7px 7px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  color: var(--cream-2);
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+  border-radius: 3px;
+  line-height: 1;
+}
+.region-trigger:hover { border-color: var(--bronze); color: var(--cream); }
+.region-trigger .region-code {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 26px; height: 18px; padding: 0 4px;
+  background: rgba(201,168,118,0.10);
+  color: var(--cream);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+}
+.region-trigger .region-lang { color: var(--cream); letter-spacing: 0.14em; }
+.region-trigger svg { width: 10px; height: 10px; opacity: .55; transition: transform .25s; }
+.region-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.region-trigger[aria-expanded="true"] { border-color: var(--bronze); color: var(--cream); }
+
+/* ---- Region popover ---- */
+.region-popover {
+  position: absolute; top: calc(100% + 14px); right: 0;
+  width: min(440px, calc(100vw - 32px));
+  background: rgba(13,19,32,0.98);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--line);
+  padding: 22px;
+  display: none;
+  z-index: 250;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.6);
+  border-radius: 4px;
+}
+.region-popover.open { display: block; }
+.region-pop-head { padding-bottom: 14px; border-bottom: 1px solid var(--line-2); margin-bottom: 14px; }
+.region-pop-head h4 {
+  font-family: var(--serif); font-size: 24px; font-weight: 400;
+  color: var(--cream); margin-bottom: 4px; line-height: 1.1;
+}
+.region-pop-head h4 em { color: var(--bronze); font-style: italic; }
+.region-pop-head p { font-size: 12.5px; color: var(--cream-2); font-weight: 300; }
+.region-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.region-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 12px 12px 10px;
+  text-decoration: none; color: inherit;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 3px;
+  transition: background .2s, border-color .2s;
+  cursor: pointer;
+}
+.region-item:hover { background: rgba(201,168,118,0.05); border-color: var(--line); }
+.region-item.is-current { border-color: var(--bronze); background: rgba(201,168,118,0.05); }
+.region-item .ri-code {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; height: 24px; padding: 0 6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--line-2);
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em;
+  border-radius: 2px; color: var(--cream); flex-shrink: 0;
+}
+.region-item.is-current .ri-code { background: var(--bronze); color: #1a1306; border-color: var(--bronze); }
+.region-item .ri-meta { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.region-item .ri-name { font-size: 13.5px; color: var(--cream); font-weight: 500; line-height: 1.1; }
+.region-item .ri-sub { font-size: 11px; color: var(--cream-2); letter-spacing: 0.05em; }
+
+@media (max-width: 520px) { .region-list { grid-template-columns: 1fr; } }
+
+/* ---- Account & Cart icons (desktop) ---- */
+.nav-icon {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 6px;
+  color: var(--cream-2);
+  text-decoration: none;
+  font-family: var(--sans); font-size: 13px;
+  transition: color .2s;
+}
+.nav-icon:hover { color: var(--bronze); }
+.nav-icon svg { width: 18px; height: 18px; flex-shrink: 0; }
+.nav-icon-label { display: none; letter-spacing: 0.04em; }
+@media (min-width: 1180px) { .nav-icon-label { display: inline; } }
+
+.nav-cart .cart-count {
+  position: absolute; top: 2px; right: -2px;
+  min-width: 16px; height: 16px; padding: 0 4px;
+  background: var(--bronze); color: #1a1306;
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: 0; line-height: 1;
+  border-radius: 9px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 2px solid var(--black);
+}
+.nav-cart .cart-count[data-empty="true"] { display: none; }
+
+/* Mobile breakpoint: hide desktop region/account/cart in nav-right.
+   The mobile drawer carries its own equivalents. */
+@media (max-width: 1024px) {
+  .nav-right .region-wrap,
+  .nav-right .nav-icon { display: none; }
+}
+
+/* ---- Mobile drawer: utility row + region grid ---- */
+.m-utility {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin-top: 18px;
+}
+.m-util-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 14px;
+  border: 1px solid var(--line-2);
+  color: var(--cream); text-decoration: none;
+  font-size: 13px; letter-spacing: 0.04em;
+  transition: border-color .2s, color .2s;
+  position: relative;
+}
+.m-util-link:hover { border-color: var(--bronze); color: var(--bronze); }
+.m-util-link svg { width: 18px; height: 18px; }
+.m-util-badge {
+  margin-left: auto;
+  min-width: 20px; height: 20px; padding: 0 6px;
+  background: var(--bronze); color: #1a1306;
+  font-size: 10px; font-weight: 700; line-height: 1;
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.m-util-badge[data-empty="true"] { display: none; }
+
+.m-region { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+.m-region-label {
+  font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--bronze); font-weight: 500; margin-bottom: 14px;
+}
+.m-region-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.m-region-list .region-item { padding: 10px; }
+.m-region-list .ri-name { font-size: 13px; }
+.m-region-list .ri-sub { font-size: 10.5px; }

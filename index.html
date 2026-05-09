@@ -117,8 +117,44 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-right">
-      <span class="nav-cart">Cart · 0</span>
-      <a class="btn btn-primary" href="#build">Build your Display</a>
+      <!-- REGION SWITCHER (desktop) — populated from REGIONS[] in js/nav.js -->
+      <div class="region-wrap">
+        <button type="button" class="region-trigger" id="region-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="region-popover">
+          <span class="region-code" data-region-code>US</span>
+          <span class="region-lang" data-region-lang>EN</span>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="region-popover" id="region-popover" role="dialog" aria-label="Choose your region">
+          <div class="region-pop-head">
+            <h4>Choose your <em>region</em></h4>
+            <p>Localised pricing, currency &amp; shipping for your country.</p>
+          </div>
+          <ul class="region-list" id="region-list" role="list">
+            <!-- region items rendered by js/nav.js -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- ACCOUNT — BigCommerce will swap label/href on login -->
+      <a class="nav-icon nav-account" href="/login.php" data-bc="account" aria-label="Account">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="3.5"/>
+          <path d="M5 20c1.2-3.6 4-5 7-5s5.8 1.4 7 5"/>
+        </svg>
+        <span class="nav-icon-label" data-bc-account-name>Sign in</span>
+      </a>
+
+      <!-- CART — BigCommerce updates [data-bc-cart-count] on add/remove -->
+      <a class="nav-icon nav-cart" href="/cart.php" data-bc="cart" aria-label="Cart">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 5h2.2l2.4 11.2a2 2 0 0 0 2 1.6h7.5a2 2 0 0 0 2-1.5L21.5 8H7"/>
+          <circle cx="10" cy="20.5" r="1.2"/>
+          <circle cx="18" cy="20.5" r="1.2"/>
+        </svg>
+        <span class="cart-count" data-bc-cart-count="0" data-empty="true">0</span>
+      </a>
+
+      <a class="btn btn-primary nav-build-cta" href="#build">Build your Display</a>
     </div>
     <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -164,6 +200,25 @@
         <a href="features.html" class="m-link">Features</a>
         <a href="guides/index.html" class="m-link">Guides</a>
         <a href="#faq" class="m-link">FAQ</a>
+
+        <div class="m-utility">
+          <a class="m-util-link" href="/login.php" data-bc="account">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5 7-5s5.8 1.4 7 5"/></svg>
+            <span data-bc-account-name>Sign in</span>
+          </a>
+          <a class="m-util-link" href="/cart.php" data-bc="cart">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h2.2l2.4 11.2a2 2 0 0 0 2 1.6h7.5a2 2 0 0 0 2-1.5L21.5 8H7"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="18" cy="20.5" r="1.2"/></svg>
+            <span>Cart</span>
+            <span class="m-util-badge" data-bc-cart-count="0" data-empty="true">0</span>
+          </a>
+        </div>
+
+        <div class="m-region">
+          <div class="m-region-label">Region &amp; language</div>
+          <ul class="m-region-list" id="m-region-list" role="list">
+            <!-- region items rendered by js/nav.js -->
+          </ul>
+        </div>
       </nav>
 
       <div class="mobile-nav-foot">
@@ -284,7 +339,7 @@
     <div class="feature-grid">
       <article class="feature">
         <div class="feature-icon">
-          <img src="assets/case-01.avif" alt="Acrylic display case panel">
+          <img src="assets/case-12.avif" alt="Acrylic display case panel">
         </div>
         <h3>Crystal clear.<br><em>Zero glass risk.</em></h3>
         <p>Acrylic that looks like glass, without the shatter. Child-safe and crystal clear.</p>
@@ -308,7 +363,7 @@
       </article>
       <article class="feature">
         <div class="feature-icon">
-          <img src="assets/features-hero.avif" alt="Modular wall of display cases">
+          <img src="assets/mycsculptures-5.avif" alt="Modular wall of display cases">
         </div>
         <h3>Start with one.<br><em>Build a wall.</em></h3>
         <p>Every case connects seamlessly — same dimensions, same system. Grows with your collection.</p>
@@ -386,7 +441,7 @@
     </div>
     <div class="gallery-grid">
       <div class="g-item g-1">
-        <img src="assets/hero-batcave.avif" alt="Batmobile collection display" />
+        <img src="assets/luke-2edited.avif" alt="Batmobile collection display" />
         <div class="g-meta"><span class="g-title">The Batcave Wall</span><span class="g-tag">3×3 · Los Angeles</span></div>
       </div>
       <div class="g-item g-2">
@@ -398,7 +453,7 @@
         <div class="g-meta"><span class="g-title">Vintage Action Figures</span><span class="g-tag">3×1 · Tokyo</span></div>
       </div>
       <div class="g-item g-4">
-        <img src="assets/transformer-glore-1.avif" alt="Transformer collection">
+        <img src="assets/alice-adrenochrome-1.avif" alt="Transformer collection">
         <div class="g-meta"><span class="g-title">Diorama Showcase</span><span class="g-tag">1×1 · NYC</span></div>
       </div>
       <div class="g-item g-5">
@@ -645,6 +700,7 @@
   </div>
 </footer>
 
+<script src="js/nav.js" defer></script>
 <script src="js/index.js" defer></script>
 </body>
 </html>
