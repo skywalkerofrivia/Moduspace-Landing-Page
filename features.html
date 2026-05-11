@@ -295,7 +295,22 @@
 .compare-caption.bad { color: var(--danger); }
 .compare-caption.good { color: var(--bronze); }
 
-/* ---- PLACEHOLDER ARTWORK ---- */
+/* ---- COMPARE IMAGES ---- */
+.compare-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+
+.compare-frame:hover img {
+  transform: scale(1.04);
+}
+
+/* ---- PLACEHOLDER ARTWORK (unused — kept for future fallback) ---- */
 .ph {
   position: absolute;
   inset: 0;
@@ -832,22 +847,14 @@
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge bad">Tempered Glass</span>
-              <div class="ph ph-glass">
-                <div class="ph-glass-pane">
-                  <div class="ph-glass-tint"></div>
-                  <div class="ph-glass-crack"></div>
-                </div>
-              </div>
+              <img src="assets/accidents/detolf-shattered-glass-shelf-02.avif" alt="An Iron Man Hot Toys figure trapped inside a shattered tempered-glass display case, with shards collapsed around it" loading="lazy" />
             </div>
-            <p class="compare-caption bad">Tempered glass — green hue</p>
+            <p class="compare-caption bad">Tempered glass — shatters &amp; tints green</p>
           </div>
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge good">Moducase Acrylic</span>
-              <div class="ph ph-good">
-                <div class="ph-good-inner"></div>
-                <div class="ph-good-glow"></div>
-              </div>
+              <img src="assets/alex-wellhausen-6.avif" alt="A brightly lit Moducase wall of Transformers figures behind optically clear acrylic showing no green tint" loading="lazy" />
             </div>
             <p class="compare-caption good">Moducase acrylic — true clarity</p>
           </div>
@@ -882,33 +889,17 @@
         <div class="compare-row">
           <div class="compare-item">
             <div class="compare-frame">
-              <span class="compare-badge bad">Plywood Shelf</span>
-              <div class="ph ph-sag">
-                <div class="ph-sag-shelf">
-                  <div class="ph-sag-weight"></div>
-                  <div class="ph-sag-shelf-board"></div>
-                </div>
-                <div class="ph-sag-shelf">
-                  <div class="ph-sag-weight"></div>
-                  <div class="ph-sag-shelf-board"></div>
-                </div>
-                <div class="ph-sag-shelf">
-                  <div class="ph-sag-weight"></div>
-                  <div class="ph-sag-shelf-board"></div>
-                </div>
-              </div>
+              <span class="compare-badge bad">Open Steel Rack</span>
+              <img src="assets/accidents/large-statue-unstable-open-shelving.avif" alt="A heavy resin statue balanced on a thin open steel rack with no enclosure or load support" loading="lazy" />
             </div>
-            <p class="compare-caption bad">Sagging plywood — structural failure</p>
+            <p class="compare-caption bad">Unstable rack — structural failure</p>
           </div>
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge good">Moducase Frame</span>
-              <div class="ph ph-good">
-                <div class="ph-good-inner"></div>
-                <div class="ph-good-glow"></div>
-              </div>
+              <img src="assets/peter-pang.avif" alt="A tall stacked Moducase column loaded floor-to-ceiling with heavy Gundam, Transformers and Star Wars collectibles" loading="lazy" />
             </div>
-            <p class="compare-caption good">Clean rigid frame — zero flex</p>
+            <p class="compare-caption good">Welded aluminium — zero flex</p>
           </div>
         </div>
       </div>
@@ -942,21 +933,16 @@
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge bad">Open Shelving</span>
-              <div class="ph ph-dust">
-                <div class="ph-dust-fig"></div>
-              </div>
+              <img src="assets/accidents/open-shelf-unprotected-figures.avif" alt="A tall open-front white shelf packed with Marvel Hot Toys figures, completely exposed to airborne dust" loading="lazy" />
             </div>
-            <p class="compare-caption bad">Dusty open shelves — weekly cleaning</p>
+            <p class="compare-caption bad">Open shelving — weekly dusting</p>
           </div>
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge good">Moducase Sealed</span>
-              <div class="ph ph-good">
-                <div class="ph-good-inner"></div>
-                <div class="ph-good-glow"></div>
-              </div>
+              <img src="assets/mark-carlin.avif" alt="A sealed Moducase media wall surrounding a television, MCU and Avengers figures kept dust-free behind acrylic" loading="lazy" />
             </div>
-            <p class="compare-caption good">Sealed clean display — monthly cleaning</p>
+            <p class="compare-caption good">Sealed display — monthly cleaning</p>
           </div>
         </div>
       </div>
@@ -989,25 +975,15 @@
         <div class="compare-row">
           <div class="compare-item">
             <div class="compare-frame">
-              <span class="compare-badge bad">Mismatched Shelves</span>
-              <div class="ph ph-mess">
-                <div class="ph-mess-item"></div>
-                <div class="ph-mess-item"></div>
-                <div class="ph-mess-item"></div>
-                <div class="ph-mess-item"></div>
-                <div class="ph-mess-item"></div>
-                <div class="ph-mess-item"></div>
-              </div>
+              <span class="compare-badge bad">Off-the-Shelf Furniture</span>
+              <img src="assets/accidents/standard-furniture-limited-visibility.avif" alt="A stack of mismatched white off-the-shelf cabinets crammed with figures behind narrow side panels that block the view" loading="lazy" />
             </div>
-            <p class="compare-caption bad">Mismatched shelves — no cohesion</p>
+            <p class="compare-caption bad">Off-the-shelf — no cohesion</p>
           </div>
           <div class="compare-item">
             <div class="compare-frame">
               <span class="compare-badge good">Moducase System</span>
-              <div class="ph ph-good">
-                <div class="ph-good-inner"></div>
-                <div class="ph-good-glow"></div>
-              </div>
+              <img src="assets/hero01.avif" alt="A floor-to-ceiling modular Moducase wall split by a television, every case aligned with identical dimensions" loading="lazy" />
             </div>
             <p class="compare-caption good">Seamless modular wall — one system</p>
           </div>

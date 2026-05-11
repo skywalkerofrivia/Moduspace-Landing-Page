@@ -8,7 +8,7 @@
   --sans: 'Inter', system-ui, sans-serif;
 }
 /* Override logo-mark path for root-level pages */
-.logo-mark { background-image: url('../assets/logo.png'); }
+.logo-mark { background-image: url('../assets/logo/moduspace_logo.png'); }
 
 /* ---- HERO ---- */
 .hero {
