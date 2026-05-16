@@ -55,6 +55,14 @@ h1.hero-title em { font-style: italic; color: var(--bronze); font-weight: 300; }
 .trust-stars { display: flex; align-items: center; gap: 8px; }
 .stars { display: flex; gap: 2px; }
 .stars svg { width: 14px; height: 14px; fill: var(--bronze); flex-shrink: 0; }
+.stars-rating { position: relative; display: inline-flex; margin: 4px 0 2px; }
+.stars-rating .stars-track,
+.stars-rating .stars-fill { display: flex; gap: 2px; }
+.stars-rating .stars-track svg { fill: var(--line-2); }
+.stars-rating .stars-fill {
+  position: absolute; top: 0; left: 0; overflow: hidden; white-space: nowrap;
+}
+.stars-rating .stars-fill svg { fill: var(--bronze); }
 
 @media (max-width: 768px) {
   .hero { min-height: auto; padding: 60px 0 50px; }
